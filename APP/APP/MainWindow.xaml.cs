@@ -25,27 +25,13 @@ namespace APP
             InitializeComponent();
         }
 
+        private void btnAddCont(object sender, RoutedEventArgs e)
+        {
+            CFormWindow win2 = new CFormWindow();
+            win2.ShowDialog();
+        }
+
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void B1_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void B2_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void B3_Click(object sender, RoutedEventArgs e)
         {
 
         }
