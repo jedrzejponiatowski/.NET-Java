@@ -16,3 +16,26 @@ E:\C#_projects\Source\Repos\jedrzejponiatowski\.NET-Java\APP\APP\obj\Debug\APP.e
 E:\C#_projects\Source\Repos\jedrzejponiatowski\.NET-Java\APP\APP\obj\Debug\APP.pdb
 E:\C#_projects\Source\Repos\jedrzejponiatowski\.NET-Java\APP\APP\obj\Debug\CFormWindow.g.cs
 E:\C#_projects\Source\Repos\jedrzejponiatowski\.NET-Java\APP\APP\obj\Debug\CFormWindow.baml
+D:\.NET + Java\github\APP\APP\bin\Debug\APP.exe.config
+D:\.NET + Java\github\APP\APP\bin\Debug\APP.exe
+D:\.NET + Java\github\APP\APP\bin\Debug\APP.pdb
+D:\.NET + Java\github\APP\APP\bin\Debug\EntityFramework.dll
+D:\.NET + Java\github\APP\APP\bin\Debug\EntityFramework.SqlServer.dll
+D:\.NET + Java\github\APP\APP\bin\Debug\EntityFramework.xml
+D:\.NET + Java\github\APP\APP\bin\Debug\EntityFramework.SqlServer.xml
+D:\.NET + Java\github\APP\APP\obj\Debug\APP.csproj.AssemblyReference.cache
+D:\.NET + Java\github\APP\APP\obj\Debug\APP.csproj.SuggestedBindingRedirects.cache
+D:\.NET + Java\github\APP\APP\obj\Debug\CFormWindow.g.cs
+D:\.NET + Java\github\APP\APP\obj\Debug\MainWindow.g.cs
+D:\.NET + Java\github\APP\APP\obj\Debug\App.g.cs
+D:\.NET + Java\github\APP\APP\obj\Debug\APP_MarkupCompile.cache
+D:\.NET + Java\github\APP\APP\obj\Debug\APP_MarkupCompile.lref
+D:\.NET + Java\github\APP\APP\obj\Debug\CFormWindow.baml
+D:\.NET + Java\github\APP\APP\obj\Debug\MainWindow.baml
+D:\.NET + Java\github\APP\APP\obj\Debug\APP.g.resources
+D:\.NET + Java\github\APP\APP\obj\Debug\APP.Properties.Resources.resources
+D:\.NET + Java\github\APP\APP\obj\Debug\APP.csproj.GenerateResource.cache
+D:\.NET + Java\github\APP\APP\obj\Debug\APP.csproj.CoreCompileInputs.cache
+D:\.NET + Java\github\APP\APP\obj\Debug\APP.csproj.CopyComplete
+D:\.NET + Java\github\APP\APP\obj\Debug\APP.exe
+D:\.NET + Java\github\APP\APP\obj\Debug\APP.pdb

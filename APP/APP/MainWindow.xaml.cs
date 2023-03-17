@@ -23,6 +23,7 @@ namespace APP
         public MainWindow()
         {
             InitializeComponent();
+            Console.WriteLine("Init commit");
         }
 
         private void btnAddCont(object sender, RoutedEventArgs e)
