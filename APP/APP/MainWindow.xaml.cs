@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,6 +25,19 @@ namespace APP
         {
             InitializeComponent();
             Console.WriteLine("Init commit");
+
+            var context = new PaymentsDB();
+            /*var newPerson = new Person() { FirstName = "XXX", LastName = "YYY" };
+            context.Persons.Add(newPerson);
+            context.SaveChanges();*/
+
+            IList<Person> people;
+            people = context.Persons.ToList();
+
+            foreach (var person in people)
+            {
+                Console.WriteLine(person.ID + " " + person.FirstName + " " + person.LastName);
+            }
         }
 
         private void btnAddCont(object sender, RoutedEventArgs e)
