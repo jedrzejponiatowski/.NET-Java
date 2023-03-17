@@ -24,7 +24,37 @@ namespace APP
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
         // public virtual DbSet<MyEntity> MyEntities { get; set; }
+
+        public void AddNewPerson(Person person)
+        {
+            using (var context = new PaymentsDB())
+            {
+                context.Persons.Add(person);
+                context.SaveChanges();
+            }
+        }
+
+        public void DeletePerson(Person person)
+        {
+            using (var context = new PaymentsDB())
+            {
+                context.Persons.Attach(person);
+                context.Persons.Remove(person);
+                context.SaveChanges();
+            }
+        }
+
+        public Person GetFirstPerson() 
+        {
+            using (var context = new PaymentsDB())
+            {
+                var query = context.Persons.First();
+                return query;
+            }
+        }
     }
+
+
 
     //public class MyEntity
     //{

@@ -27,9 +27,15 @@ namespace APP
             Console.WriteLine("Init commit");
 
             var context = new PaymentsDB();
-            /*var newPerson = new Person() { FirstName = "XXX", LastName = "YYY" };
+            /*
+            var newPerson = new Person() { ID = 5 ,FirstName = "RRR", LastName = "HHH" };
             context.Persons.Add(newPerson);
-            context.SaveChanges();*/
+            context.SaveChanges();
+            */
+
+            //var newPerson = new Person() { ID = 5, FirstName = "BBB", LastName = "NNN" };
+            //context.AddNewPerson(newPerson);
+            //context.Database.Log = Console.WriteLine;
 
             IList<Person> people;
             people = context.Persons.ToList();
@@ -38,6 +44,19 @@ namespace APP
             {
                 Console.WriteLine(person.ID + " " + person.FirstName + " " + person.LastName);
             }
+
+            //context.DeletePerson(context.GetFirstPerson() );
+  
+            people = context.Persons.ToList();
+
+            Console.WriteLine("*****");
+
+            foreach (var person in people)
+            {
+                Console.WriteLine(person.ID + " " + person.FirstName + " " + person.LastName);
+            }
+            
+
         }
 
         private void btnAddCont(object sender, RoutedEventArgs e)
