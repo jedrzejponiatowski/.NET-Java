@@ -48,6 +48,12 @@ namespace APP
             return query; 
         }
 
+        public Person GetPerson(string firstName, string lastName)
+        {
+            var query = Persons.Where(p => p.FirstName == firstName && p.LastName == lastName).FirstOrDefault();
+            return query;
+        }
+
         public void AddNewLoanGranted(LoanGranted loan)
         {
             LoansGranted.Add(loan);

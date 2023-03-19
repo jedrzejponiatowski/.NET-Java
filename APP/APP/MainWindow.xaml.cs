@@ -31,10 +31,10 @@ namespace APP
             context.PrintAllPersons();
             context.PrintAllLoans();
 
-            var NewLoanObtained = new LoanObtained() { PersonID = 1, LoanSize = 200, DateOfIssue = "12.05.2020", DateOfExpiry = "12.06.2020" };
-            var NewLoanGranted = new LoanGranted() { PersonID = 2, LoanSize = 300, DateOfIssue = "01.01.2021", DateOfExpiry = "01.02.2021" };
-            context.AddNewLoanGranted(NewLoanGranted);
-            context.AddNewLoanObtained(NewLoanObtained);
+            //var NewLoanObtained = new LoanObtained() { PersonID = 1, LoanSize = 200, DateOfIssue = "12.05.2020", DateOfExpiry = "12.06.2020" };
+            //var NewLoanGranted = new LoanGranted() { PersonID = 2, LoanSize = 300, DateOfIssue = "01.01.2021", DateOfExpiry = "01.02.2021" };
+            //context.AddNewLoanGranted(NewLoanGranted);
+            //context.AddNewLoanObtained(NewLoanObtained);
 
             context.PrintAllPersons();
             context.PrintAllLoans();
