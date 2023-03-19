@@ -5,14 +5,14 @@
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<APP.PaymentsDB>
+    internal sealed class Configuration : DbMigrationsConfiguration<APP.PaymentsContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(APP.PaymentsDB context)
+        protected override void Seed(APP.PaymentsContext context)
         {
             //  This method will be called after migrating to the latest version.
 

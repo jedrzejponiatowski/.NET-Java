@@ -26,37 +26,18 @@ namespace APP
             InitializeComponent();
             Console.WriteLine("Init commit");
 
-            var context = new PaymentsDB();
-            /*
-            var newPerson = new Person() { ID = 5 ,FirstName = "RRR", LastName = "HHH" };
-            context.Persons.Add(newPerson);
-            context.SaveChanges();
-            */
+            var context = new PaymentsContext();
 
-            //var newPerson = new Person() { ID = 5, FirstName = "BBB", LastName = "NNN" };
-            //context.AddNewPerson(newPerson);
-            //context.Database.Log = Console.WriteLine;
+            context.PrintAllPersons();
+            context.PrintAllLoans();
 
-            IList<Person> people;
-            people = context.Persons.ToList();
+            var NewLoanObtained = new LoanObtained() { PersonID = 1, LoanSize = 200, DateOfIssue = "12.05.2020", DateOfExpiry = "12.06.2020" };
+            var NewLoanGranted = new LoanGranted() { PersonID = 2, LoanSize = 300, DateOfIssue = "01.01.2021", DateOfExpiry = "01.02.2021" };
+            context.AddNewLoanGranted(NewLoanGranted);
+            context.AddNewLoanObtained(NewLoanObtained);
 
-            foreach (var person in people)
-            {
-                Console.WriteLine(person.ID + " " + person.FirstName + " " + person.LastName);
-            }
-
-            //context.DeletePerson(context.GetFirstPerson() );
-  
-            people = context.Persons.ToList();
-
-            Console.WriteLine("*****");
-
-            foreach (var person in people)
-            {
-                Console.WriteLine(person.ID + " " + person.FirstName + " " + person.LastName);
-            }
-            
-
+            context.PrintAllPersons();
+            context.PrintAllLoans();
         }
 
         private void btnAddCont(object sender, RoutedEventArgs e)

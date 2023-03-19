@@ -39,4 +39,4 @@ D:\.NET + Java\github\APP\APP\obj\Debug\APP.csproj.CoreCompileInputs.cache
 D:\.NET + Java\github\APP\APP\obj\Debug\APP.csproj.CopyComplete
 D:\.NET + Java\github\APP\APP\obj\Debug\APP.exe
 D:\.NET + Java\github\APP\APP\obj\Debug\APP.pdb
-D:\.NET + Java\github\APP\APP\obj\Debug\APP.Migrations.Initial.resources
+D:\.NET + Java\github\APP\APP\obj\Debug\APP.Migrations.InitialMigration.resources
