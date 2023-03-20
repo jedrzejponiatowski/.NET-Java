@@ -93,8 +93,6 @@ namespace APP
             {
                 Console.WriteLine(loan.LoanObtainedID + " " + loan.Person.FirstName + " " + loan.Person.LastName + " " + loan.LoanSize);
             }
-
-
         }
 
         public class PaymentsDBInitializer : DropCreateDatabaseAlways<PaymentsContext>
@@ -109,6 +107,49 @@ namespace APP
                 base.Seed(context);
             }
         }
+
+
+        public IList<string> TakeAllPersons()
+        {
+            IList<Person> people;
+            IList<string> peopleOutput = new List<string>();
+            people = Persons.ToList();
+            foreach (var person in people)
+            {
+                peopleOutput.Add($"{person.FirstName} {person.LastName} {person.E_Mail} {person.PhoneNumber}");
+            }
+            return peopleOutput;
+        }
+
+
+
+        public IList<string> TakeAllGrants()
+        {
+            IList<LoanGranted> lGranted;
+            IList<string> GrantedOutput = new List<string>();
+            lGranted = LoansGranted.ToList();
+            foreach (var loan in lGranted)
+            {
+                GrantedOutput.Add($"{loan.LoanSize} {loan.PersonID} {loan.DateOfExpiry}");
+            }
+            return GrantedOutput;
+        }
+
+
+        public IList<string> TakeAllObtains()
+        {
+            IList<LoanObtained> lObtained;
+            IList<string> GrantedOutput = new List<string>();
+            lObtained = LoansObtained.ToList();
+            foreach (var loan in lObtained)
+            {
+                GrantedOutput.Add($"{loan.LoanSize} {loan.PersonID} {loan.DateOfExpiry}");
+            }
+            return GrantedOutput;
+        }
+
+
+
     }
 
 

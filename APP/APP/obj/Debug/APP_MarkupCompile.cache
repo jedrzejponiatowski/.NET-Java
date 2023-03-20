@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\.NET + Java\github\APP\APP\obj\Debug\
+E:\C#_projects\source\repos\Loans\.NET-Java\APP\APP\obj\Debug\
 APP
 none
 false
 DEBUG;TRACE
-D:\.NET + Java\github\APP\APP\App.xaml
+E:\C#_projects\source\repos\Loans\.NET-Java\APP\APP\App.xaml
 2-94468884
 
 13326438732
-18819235977
+181746206591
 CFormWindow.xaml;MainWindow.xaml;
 
 False

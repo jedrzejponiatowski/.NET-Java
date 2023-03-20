@@ -5,12 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:APP"
         mc:Ignorable="d"
-        Title="CFormWindow" Height="450" Width="800">
+        Title="CFormWindow" Height="200" Width="400">
     <Grid>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="56" Margin="171,57,0,0" VerticalAlignment="Top" Width="464">
-            <Label Content="Hello" HorizontalAlignment="Left" Height="27" Margin="48,9,0,0" VerticalAlignment="Top" Width="213"/>
-        </Border>
-        <Button Content="Exit" HorizontalAlignment="Left" Height="39" Margin="153,163,0,0" VerticalAlignment="Top" Width="177" Click="btnExit"/>
-
+        <Button Content="Submit" HorizontalAlignment="Left" Height="39" Margin="146,92,0,0" VerticalAlignment="Top" Width="102" Click="btnAddSubmit"/>
+        <Button Content="Exit" HorizontalAlignment="Left" Height="39" Margin="146,92,0,0" VerticalAlignment="Top" Width="102" Click="btnAddExit"/>
     </Grid>
 </Window>
