@@ -60,6 +60,19 @@ namespace APP
             SaveChanges();
         }
 
+        public LoanGranted GetFirstLoanGranted()
+        {
+            var query = LoansGranted.First();
+            return query;
+        }
+
+        public void DeleteLoanGranted(LoanGranted loan)
+        {
+            LoansGranted.Attach(loan);
+            LoansGranted.Remove(loan);
+            SaveChanges();
+        }
+
         public void AddNewLoanObtained(LoanObtained loan)
         {
             LoansObtained.Add(loan);
@@ -104,6 +117,14 @@ namespace APP
                 defaultPersons.Add(new Person() { FirstName = "BBB", LastName = "222", E_Mail = "bbb@222.com", PhoneNumber = "234567891" });
                 defaultPersons.Add(new Person() { FirstName = "CCC", LastName = "333", E_Mail = "ccc@333.com", PhoneNumber = "345678912" });
                 context.Persons.AddRange(defaultPersons);
+                context.SaveChanges();
+                //base.Seed(context);
+
+                context.LoansObtained.Add(new LoanObtained() { PersonID = 2, LoanSize = 400, DateOfIssue = "12.05.2020", DateOfExpiry = "12.06.2020" });
+                context.LoansGranted.Add(new LoanGranted() { PersonID = 1, LoanSize = 700, DateOfIssue = "01.01.2021", DateOfExpiry = "01.02.2021" });
+
+                context.SaveChanges();
+
                 base.Seed(context);
             }
         }
