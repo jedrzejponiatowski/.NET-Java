@@ -7,7 +7,9 @@
         mc:Ignorable="d"
         Title="CFormWindow" Height="200" Width="400">
     <Grid>
-        <Button Content="Submit" HorizontalAlignment="Left" Height="39" Margin="146,92,0,0" VerticalAlignment="Top" Width="102" Click="btnAddSubmit"/>
-        <Button Content="Exit" HorizontalAlignment="Left" Height="39" Margin="146,92,0,0" VerticalAlignment="Top" Width="102" Click="btnAddExit"/>
+        <Button Content="Submit" HorizontalAlignment="Left" Height="39" Margin="64,130,0,0" VerticalAlignment="Top" Width="102" Click="btnAddSubmit"/>
+        <Button Content="Exit" HorizontalAlignment="Left" Height="39" Margin="255,130,0,0" VerticalAlignment="Top" Width="102" Click="btnAddExit"/>
+        <TextBox HorizontalAlignment="Left" Height="19" Margin="70,18,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="104"/>
+        <TextBox HorizontalAlignment="Left" Height="19" Margin="70,53,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="104"/>
     </Grid>
 </Window>

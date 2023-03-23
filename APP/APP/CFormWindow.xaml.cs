@@ -24,7 +24,12 @@ namespace APP
             InitializeComponent();
         }
 
-        private void btnExit(object sender, RoutedEventArgs e)
+        private void btnAddSubmit(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnAddExit(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
