@@ -26,7 +26,8 @@ namespace APP
 
         private void btnAddSubmit(object sender, RoutedEventArgs e)
         {
-
+            //string tb1 = TextBox1.Text.Trim();
+            //Console.WriteLine(tb1);
         }
 
         private void btnAddExit(object sender, RoutedEventArgs e)

@@ -54,6 +54,12 @@ namespace APP
             return query;
         }
 
+        public Person GetPersonWithID(int ID)
+        {
+            var query = Persons.Where(p => p.ID == ID).FirstOrDefault();
+            return query;
+        }
+
         public void AddNewLoanGranted(LoanGranted loan)
         {
             LoansGranted.Add(loan);
@@ -137,7 +143,7 @@ namespace APP
             people = Persons.ToList();
             foreach (var person in people)
             {
-                peopleOutput.Add($"{person.FirstName} {person.LastName} {person.E_Mail} {person.PhoneNumber}");
+                peopleOutput.Add($"{person.ID} {person.FirstName} {person.LastName} {person.E_Mail} {person.PhoneNumber}");
             }
             return peopleOutput;
         }

@@ -41,6 +41,17 @@ namespace APP
             context.PrintAllLoans();
             */
 
+            /*
+            ContactsList.ItemsSource = context.TakeAllPersons();
+            GrantedList.ItemsSource = context.TakeAllGrants();
+            ObtainsList.ItemsSource = context.TakeAllObtains();
+            */
+            MainWindowRefresh();
+        }
+
+        public void MainWindowRefresh()
+        {
+            var context = new PaymentsContext();
             ContactsList.ItemsSource = context.TakeAllPersons();
             GrantedList.ItemsSource = context.TakeAllGrants();
             ObtainsList.ItemsSource = context.TakeAllObtains();
@@ -55,6 +66,20 @@ namespace APP
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void BtnAddContact(object sender, RoutedEventArgs e)
+        {
+            NewContactWindow win2 = new NewContactWindow();
+            win2.ShowDialog();
+            MainWindowRefresh();
+        }
+
+        private void BtnEraseContact(object sender, RoutedEventArgs e)
+        {
+            EraseContactWindow win2 = new EraseContactWindow();
+            win2.ShowDialog();
+            MainWindowRefresh();
         }
     }
 }

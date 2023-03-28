@@ -64,3 +64,7 @@ E:\C#_projects\source\repos\Loans\.NET-Java\APP\APP\obj\Debug\APP.csproj.CoreCom
 E:\C#_projects\source\repos\Loans\.NET-Java\APP\APP\obj\Debug\APP.csproj.CopyComplete
 E:\C#_projects\source\repos\Loans\.NET-Java\APP\APP\obj\Debug\APP.exe
 E:\C#_projects\source\repos\Loans\.NET-Java\APP\APP\obj\Debug\APP.pdb
+D:\.NET + Java\github\APP\APP\obj\Debug\NewContactWindow.g.cs
+D:\.NET + Java\github\APP\APP\obj\Debug\NewContactWindow.baml
+D:\.NET + Java\github\APP\APP\obj\Debug\EraseContactWindow.g.cs
+D:\.NET + Java\github\APP\APP\obj\Debug\EraseContactWindow.baml

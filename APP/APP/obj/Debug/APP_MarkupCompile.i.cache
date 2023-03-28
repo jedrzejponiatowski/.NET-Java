@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\.NET + Java\github\APP\APP\App.xaml
-2-94468884
+4-135237320
 
-14-1755649886
+16-708855018
 18819235977
-CFormWindow.xaml;MainWindow.xaml;
+CFormWindow.xaml;EraseContactWindow.xaml;MainWindow.xaml;NewContactWindow.xaml;
 
 True
 
