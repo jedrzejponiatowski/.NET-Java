@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\C#_projects\source\repos\APP\APP\obj\Debug\
+D:\.NET + Java\github\APP\APP\obj\Debug\
 APP
 none
 false
 DEBUG;TRACE
-E:\C#_projects\source\repos\APP\APP\App.xaml
-1219584333
+D:\.NET + Java\github\APP\APP\App.xaml
+5830776297
 
-6-502434485
-13-1310406943
-MainWindow.xaml;
+17-933127431
+18819235977
+ErasePaymentWindow.xaml;NewPaymentWindow.xaml;EraseContactWindow.xaml;MainWindow.xaml;NewContactWindow.xaml;
 
 True
 

@@ -5,8 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:APP"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="800">
     <Grid>
-        
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="41" Margin="0,21,0,0" VerticalAlignment="Top" Width="656">
+            <TextBox HorizontalAlignment="Center" Height="auto"  TextWrapping="Wrap" Text="Bilans" VerticalAlignment="Center" Width="auto" TextChanged="TextBox_TextChanged"/>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="448,87,0,0" VerticalAlignment="Top" Width="280">
+            <Label Content="MENU" HorizontalAlignment="Center" Height="auto" VerticalAlignment="Center" Width="auto" FontSize="16" FontStyle="Oblique" FontWeight="Bold" />
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="72,87,0,0" VerticalAlignment="Top" Width="164">
+            <Label Content="Loans in plus" HorizontalAlignment="Center" Height="auto" VerticalAlignment="Center" Width="auto" FontSize="16" FontStyle="Oblique" FontWeight="Bold" />
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="236,87,0,0" VerticalAlignment="Top" Width="164">
+            <Label Content="Loans in minus" HorizontalAlignment="Center" Height="auto" VerticalAlignment="Center" Width="auto" FontSize="16" FontStyle="Oblique" FontWeight="Bold" />
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="400" Margin="72,128,0,0" VerticalAlignment="Top" Width="164">
+            <ListBox x:Name="GrantedList" HorizontalAlignment="Left" Height="400" Margin="0,0,0,0" VerticalAlignment="Top" Width="164" />
+
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="400" Margin="236,128,0,0" VerticalAlignment="Top" Width="164">
+            <ListBox x:Name="ObtainsList" HorizontalAlignment="Center" Height="400" VerticalAlignment="Center" Width="164"/>
+
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="220" Margin="448,128,0,0" VerticalAlignment="Top" Width="280">
+            <Grid>
+                <Button x:Name="B1" Content="Add Payment" HorizontalAlignment="Center" Height="25" Margin="0,5,0,0" VerticalAlignment="Top" Width="249" Click="btnAddCont"/>
+                <Button x:Name="B2" Content="Erase Payment" HorizontalAlignment="Center" Height="25" Margin="0,35,0,0" VerticalAlignment="Top" Width="249" Click="btnErasePayment"/>
+                <Button x:Name="B3" Content="Simulate" HorizontalAlignment="Center" Height="25" Margin="0,65,0,0" VerticalAlignment="Top" Width="249" />
+                <Button x:Name="B4" Content="Add Contact" HorizontalAlignment="Center" Height="25" Margin="0,95,0,0" VerticalAlignment="Top" Width="249" Click="BtnAddContact"/>
+                <Button x:Name="B5" Content="Erase Contact" HorizontalAlignment="Center" Height="25" Margin="0,125,0,0" VerticalAlignment="Top" Width="249" Click="BtnEraseContact" />
+                <Button x:Name="B6" Content="Button6" HorizontalAlignment="Center" Height="25" Margin="0,155,0,0" VerticalAlignment="Top" Width="249" />
+                <Button x:Name="B7" Content="Button7" HorizontalAlignment="Center" Height="25" Margin="0,185,0,0" VerticalAlignment="Top" Width="249" />
+            </Grid>
+
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="448,360,0,0" VerticalAlignment="Top" Width="280">
+            <Label Content="CONTACTS" HorizontalAlignment="Center" Height="auto" VerticalAlignment="Center" Width="auto" FontSize="16" FontStyle="Oblique" FontWeight="Bold" />
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="127" Margin="448,401,0,0" VerticalAlignment="Top" Width="280">
+            <ListBox x:Name ="ContactsList" Margin="-1,-1,-1,-1"/>
+
+        </Border>
+
+
     </Grid>
 </Window>
