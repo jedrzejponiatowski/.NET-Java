@@ -25,12 +25,10 @@ D:\.NET + Java\github\APP\APP\bin\Debug\EntityFramework.xml
 D:\.NET + Java\github\APP\APP\bin\Debug\EntityFramework.SqlServer.xml
 D:\.NET + Java\github\APP\APP\obj\Debug\APP.csproj.AssemblyReference.cache
 D:\.NET + Java\github\APP\APP\obj\Debug\APP.csproj.SuggestedBindingRedirects.cache
-D:\.NET + Java\github\APP\APP\obj\Debug\CFormWindow.g.cs
 D:\.NET + Java\github\APP\APP\obj\Debug\MainWindow.g.cs
 D:\.NET + Java\github\APP\APP\obj\Debug\App.g.cs
 D:\.NET + Java\github\APP\APP\obj\Debug\APP_MarkupCompile.cache
 D:\.NET + Java\github\APP\APP\obj\Debug\APP_MarkupCompile.lref
-D:\.NET + Java\github\APP\APP\obj\Debug\CFormWindow.baml
 D:\.NET + Java\github\APP\APP\obj\Debug\MainWindow.baml
 D:\.NET + Java\github\APP\APP\obj\Debug\APP.g.resources
 D:\.NET + Java\github\APP\APP\obj\Debug\APP.Properties.Resources.resources
@@ -64,7 +62,11 @@ E:\C#_projects\source\repos\Loans\.NET-Java\APP\APP\obj\Debug\APP.csproj.CoreCom
 E:\C#_projects\source\repos\Loans\.NET-Java\APP\APP\obj\Debug\APP.csproj.CopyComplete
 E:\C#_projects\source\repos\Loans\.NET-Java\APP\APP\obj\Debug\APP.exe
 E:\C#_projects\source\repos\Loans\.NET-Java\APP\APP\obj\Debug\APP.pdb
-D:\.NET + Java\github\APP\APP\obj\Debug\NewContactWindow.g.cs
-D:\.NET + Java\github\APP\APP\obj\Debug\NewContactWindow.baml
 D:\.NET + Java\github\APP\APP\obj\Debug\EraseContactWindow.g.cs
+D:\.NET + Java\github\APP\APP\obj\Debug\NewContactWindow.g.cs
 D:\.NET + Java\github\APP\APP\obj\Debug\EraseContactWindow.baml
+D:\.NET + Java\github\APP\APP\obj\Debug\NewContactWindow.baml
+D:\.NET + Java\github\APP\APP\obj\Debug\NewPaymentWindow.g.cs
+D:\.NET + Java\github\APP\APP\obj\Debug\NewPaymentWindow.baml
+D:\.NET + Java\github\APP\APP\obj\Debug\ErasePaymentWindow.g.cs
+D:\.NET + Java\github\APP\APP\obj\Debug\ErasePaymentWindow.baml

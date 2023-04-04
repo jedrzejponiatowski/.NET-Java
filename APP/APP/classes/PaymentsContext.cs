@@ -72,10 +72,29 @@ namespace APP
             return query;
         }
 
+        public LoanGranted GetLoanGrantedwithID(int ID)
+        {
+            var query = LoansGranted.Where(p => p.LoanGrantedID == ID).FirstOrDefault();
+            return query;
+        }
+
+        public LoanObtained GetLoanObtainedwithID(int ID)
+        {
+            var query = LoansObtained.Where(p => p.LoanObtainedID == ID).FirstOrDefault();
+            return query;
+        }
+
         public void DeleteLoanGranted(LoanGranted loan)
         {
             LoansGranted.Attach(loan);
             LoansGranted.Remove(loan);
+            SaveChanges();
+        }
+
+        public void DeleteLoanObtained(LoanObtained loan)
+        {
+            LoansObtained.Attach(loan);
+            LoansObtained.Remove(loan);
             SaveChanges();
         }
 
@@ -119,15 +138,18 @@ namespace APP
             protected override void Seed(PaymentsContext context)
             {
                 IList<Person> defaultPersons = new List<Person>();
-                defaultPersons.Add(new Person() { FirstName = "AAA", LastName = "111", E_Mail = "aaa@111.com", PhoneNumber = "123456789" });
-                defaultPersons.Add(new Person() { FirstName = "BBB", LastName = "222", E_Mail = "bbb@222.com", PhoneNumber = "234567891" });
-                defaultPersons.Add(new Person() { FirstName = "CCC", LastName = "333", E_Mail = "ccc@333.com", PhoneNumber = "345678912" });
+                defaultPersons.Add(new Person() { FirstName = "Maciej", LastName = "Nowak", E_Mail = "mnowak@op.pl", PhoneNumber = "123456789" });
+                defaultPersons.Add(new Person() { FirstName = "Kacper", LastName = "Kowal", E_Mail = "kkowal22@gmail.com", PhoneNumber = "234567891" });
+                defaultPersons.Add(new Person() { FirstName = "Adam", LastName = "Ssak", E_Mail = "ssaku123@gmail.com", PhoneNumber = "345678912" });
                 context.Persons.AddRange(defaultPersons);
                 context.SaveChanges();
                 //base.Seed(context);
 
-                context.LoansObtained.Add(new LoanObtained() { PersonID = 2, LoanSize = 400, DateOfIssue = "12.05.2020", DateOfExpiry = "12.06.2020" });
-                context.LoansGranted.Add(new LoanGranted() { PersonID = 1, LoanSize = 700, DateOfIssue = "01.01.2021", DateOfExpiry = "01.02.2021" });
+                context.LoansObtained.Add(new LoanObtained() { PersonID = 1, LoanSize = 123, DateOfIssue = "05.05.2022", DateOfExpiry = "25.05.2022" });
+                context.LoansObtained.Add(new LoanObtained() { PersonID = 2, LoanSize = 400, DateOfIssue = "12.05.2021", DateOfExpiry = "12.06.2021" });
+                context.LoansGranted.Add(new LoanGranted() { PersonID = 1, LoanSize = 432, DateOfIssue = "01.01.2021", DateOfExpiry = "21.02.2021" });
+                context.LoansGranted.Add(new LoanGranted() { PersonID = 2, LoanSize = 96, DateOfIssue = "21.01.2022", DateOfExpiry = "14.03.2022" });
+                context.LoansGranted.Add(new LoanGranted() { PersonID = 3, LoanSize = 54, DateOfIssue = "16.01.2020", DateOfExpiry = "11.11.2021" });
 
                 context.SaveChanges();
 
@@ -143,7 +165,7 @@ namespace APP
             people = Persons.ToList();
             foreach (var person in people)
             {
-                peopleOutput.Add($"{person.ID} {person.FirstName} {person.LastName} {person.E_Mail} {person.PhoneNumber}");
+                peopleOutput.Add($"{person.ID}.{person.FirstName} {person.LastName} {person.E_Mail} {person.PhoneNumber}");
             }
             return peopleOutput;
         }
@@ -157,7 +179,8 @@ namespace APP
             lGranted = LoansGranted.ToList();
             foreach (var loan in lGranted)
             {
-                GrantedOutput.Add($"{loan.LoanSize} {loan.PersonID} {loan.DateOfExpiry}");
+                //Console.WriteLine($"{loan.Person.ID}.{loan.Person.FirstName}: {loan.LoanSize}PLN, {loan.DateOfExpiry}");
+                GrantedOutput.Add($"{loan.LoanGrantedID}.{loan.Person.FirstName}: {loan.LoanSize}PLN, {loan.DateOfExpiry}");
             }
             return GrantedOutput;
         }
@@ -170,7 +193,8 @@ namespace APP
             lObtained = LoansObtained.ToList();
             foreach (var loan in lObtained)
             {
-                GrantedOutput.Add($"{loan.LoanSize} {loan.PersonID} {loan.DateOfExpiry}");
+                //Console.WriteLine($"{loan.Person.ID}.{loan.Person.FirstName}: {loan.LoanSize}PLN, {loan.DateOfExpiry}");
+                GrantedOutput.Add($"{loan.LoanObtainedID}.{loan.Person.FirstName}: {loan.LoanSize}PLN, {loan.DateOfExpiry}");
             }
             return GrantedOutput;
         }

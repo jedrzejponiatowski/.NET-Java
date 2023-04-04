@@ -13,9 +13,8 @@
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="90,73,0,0" VerticalAlignment="Top" Width="280">
             <Label Content="CONTACTS" HorizontalAlignment="Center" Height="auto" VerticalAlignment="Center" Width="auto" FontSize="16" FontStyle="Oblique" FontWeight="Bold" />
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="127" Margin="90,114,0,0" VerticalAlignment="Top" Width="280">
-            <ListBox x:Name ="ContactsList2" Margin="-1,-1,-1,-113"/>
-
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="204" Margin="90,114,0,0" VerticalAlignment="Top" Width="280">
+            <ListBox x:Name ="ContactsList2" BorderBrush="#FF050505" Height="204" VerticalAlignment="Center" HorizontalAlignment="Center" Width="280"/>
         </Border>
     </Grid>
 </Window>

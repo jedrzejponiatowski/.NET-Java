@@ -31,21 +31,7 @@ namespace APP
             context.PrintAllPersons();
             context.PrintAllLoans();
 
-            /*
-            var NewLoanObtained = new LoanObtained() { PersonID = 2, LoanSize = 400, DateOfIssue = "12.05.2020", DateOfExpiry = "12.06.2020" };
-            var NewLoanGranted = new LoanGranted() { PersonID = 1, LoanSize = 700, DateOfIssue = "01.01.2021", DateOfExpiry = "01.02.2021" };
-            context.AddNewLoanGranted(NewLoanGranted);
-            context.AddNewLoanObtained(NewLoanObtained);
 
-            context.PrintAllPersons();
-            context.PrintAllLoans();
-            */
-
-            /*
-            ContactsList.ItemsSource = context.TakeAllPersons();
-            GrantedList.ItemsSource = context.TakeAllGrants();
-            ObtainsList.ItemsSource = context.TakeAllObtains();
-            */
             MainWindowRefresh();
         }
 
@@ -59,8 +45,9 @@ namespace APP
 
         private void btnAddCont(object sender, RoutedEventArgs e)
         {
-            CFormWindow win2 = new CFormWindow();
+            NewPaymentWindow win2 = new NewPaymentWindow();
             win2.ShowDialog();
+            MainWindowRefresh();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -78,6 +65,15 @@ namespace APP
         private void BtnEraseContact(object sender, RoutedEventArgs e)
         {
             EraseContactWindow win2 = new EraseContactWindow();
+            win2.ShowDialog();
+            MainWindowRefresh();
+        }
+
+        private void btnErasePayment(object sender, RoutedEventArgs e)
+        {
+            ErasePaymentWindow win2 = new ErasePaymentWindow();
+            //var context = new PaymentsContext();
+            //context.PrintAllLoans();
             win2.ShowDialog();
             MainWindowRefresh();
         }

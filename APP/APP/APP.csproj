@@ -67,7 +67,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="CFormWindow.xaml">
+    <Page Include="ErasePaymentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NewPaymentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -83,14 +87,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CFormWindow.xaml.cs">
-      <DependentUpon>CFormWindow.xaml</DependentUpon>
+    <Compile Include="ErasePaymentWindow.xaml.cs">
+      <DependentUpon>ErasePaymentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NewPaymentWindow.xaml.cs">
+      <DependentUpon>NewPaymentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="EraseContactWindow.xaml.cs">
       <DependentUpon>EraseContactWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LoanGranted.cs" />
-    <Compile Include="LoanObtained.cs" />
+    <Compile Include="classes\LoanGranted.cs" />
+    <Compile Include="classes\LoanObtained.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -109,8 +116,8 @@
     <Compile Include="NewContactWindow.xaml.cs">
       <DependentUpon>NewContactWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PaymentsContext.cs" />
-    <Compile Include="Person.cs" />
+    <Compile Include="classes\PaymentsContext.cs" />
+    <Compile Include="classes\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

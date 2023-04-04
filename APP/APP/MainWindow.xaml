@@ -29,8 +29,8 @@
         </Border>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="220" Margin="448,128,0,0" VerticalAlignment="Top" Width="280">
             <Grid>
-                <Button x:Name="B1" Content="Add Content" HorizontalAlignment="Center" Height="25" Margin="0,5,0,0" VerticalAlignment="Top" Width="249" Click="btnAddCont"/>
-                <Button x:Name="B2" Content="Erase Content" HorizontalAlignment="Center" Height="25" Margin="0,35,0,0" VerticalAlignment="Top" Width="249" />
+                <Button x:Name="B1" Content="Add Payment" HorizontalAlignment="Center" Height="25" Margin="0,5,0,0" VerticalAlignment="Top" Width="249" Click="btnAddCont"/>
+                <Button x:Name="B2" Content="Erase Payment" HorizontalAlignment="Center" Height="25" Margin="0,35,0,0" VerticalAlignment="Top" Width="249" Click="btnErasePayment"/>
                 <Button x:Name="B3" Content="Simulate" HorizontalAlignment="Center" Height="25" Margin="0,65,0,0" VerticalAlignment="Top" Width="249" />
                 <Button x:Name="B4" Content="Add Contact" HorizontalAlignment="Center" Height="25" Margin="0,95,0,0" VerticalAlignment="Top" Width="249" Click="BtnAddContact"/>
                 <Button x:Name="B5" Content="Erase Contact" HorizontalAlignment="Center" Height="25" Margin="0,125,0,0" VerticalAlignment="Top" Width="249" Click="BtnEraseContact" />
