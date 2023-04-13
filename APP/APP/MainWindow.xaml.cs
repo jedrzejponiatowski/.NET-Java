@@ -77,5 +77,12 @@ namespace APP
             win2.ShowDialog();
             MainWindowRefresh();
         }
+
+        private void btnSimulate(object sender, RoutedEventArgs e)
+        {
+            SimulateWindow win2 = new SimulateWindow();
+            win2.ShowDialog();
+            MainWindowRefresh();
+        }
     }
 }
