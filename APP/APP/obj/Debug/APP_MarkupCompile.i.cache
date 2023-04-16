@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\.NET + Java\github\APP\APP\App.xaml
-61655518233
+71699992956
 
-18857453337
-18819235977
-ErasePaymentWindow.xaml;NewPaymentWindow.xaml;EraseContactWindow.xaml;MainWindow.xaml;NewContactWindow.xaml;SimulateWindow.xaml;
+19-1621731258
+21-1200740936
+ErasePaymentWindow.xaml;NewPaymentWindow.xaml;EraseContactWindow.xaml;MainWindow.xaml;NewContactWindow.xaml;NotificationWindow.xaml;SimulateWindow.xaml;
 
 True
 

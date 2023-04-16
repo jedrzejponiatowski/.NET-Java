@@ -141,6 +141,7 @@ namespace APP
                 defaultPersons.Add(new Person() { FirstName = "Maciej", LastName = "Nowak", E_Mail = "mnowak@op.pl", PhoneNumber = "123456789" });
                 defaultPersons.Add(new Person() { FirstName = "Kacper", LastName = "Kowal", E_Mail = "kkowal22@gmail.com", PhoneNumber = "234567891" });
                 defaultPersons.Add(new Person() { FirstName = "Adam", LastName = "Ssak", E_Mail = "ssaku123@gmail.com", PhoneNumber = "345678912" });
+                defaultPersons.Add(new Person() { FirstName = "Jedrek", LastName = "P", E_Mail = "259297@student.pwr.edu.pl", PhoneNumber = "508100332" });
                 context.Persons.AddRange(defaultPersons);
                 context.SaveChanges();
                 //base.Seed(context);
@@ -150,6 +151,7 @@ namespace APP
                 context.LoansGranted.Add(new LoanGranted() { PersonID = 1, LoanSize = 432, DateOfIssue = "01.01.2021", DateOfExpiry = "21.02.2021" });
                 context.LoansGranted.Add(new LoanGranted() { PersonID = 2, LoanSize = 96, DateOfIssue = "21.01.2022", DateOfExpiry = "14.03.2022" });
                 context.LoansGranted.Add(new LoanGranted() { PersonID = 3, LoanSize = 54, DateOfIssue = "16.01.2020", DateOfExpiry = "11.11.2021" });
+                context.LoansGranted.Add(new LoanGranted() { PersonID = 4, LoanSize = 420, DateOfIssue = "16.02.2020", DateOfExpiry = "11.11.2021" });
 
                 context.SaveChanges();
 

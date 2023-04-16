@@ -13,6 +13,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SendGrid;
+using SendGrid.Helpers.Mail;
+using System;
+using System.Threading.Tasks;
+
 
 namespace APP
 {
@@ -81,6 +86,13 @@ namespace APP
         private void btnSimulate(object sender, RoutedEventArgs e)
         {
             SimulateWindow win2 = new SimulateWindow();
+            win2.ShowDialog();
+            MainWindowRefresh();
+        }
+
+        private void BtnNotification(object sender, RoutedEventArgs e)
+        {
+            NotificationWindow win2 = new NotificationWindow();
             win2.ShowDialog();
             MainWindowRefresh();
         }

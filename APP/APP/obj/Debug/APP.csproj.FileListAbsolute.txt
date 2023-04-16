@@ -72,3 +72,11 @@ D:\.NET + Java\github\APP\APP\obj\Debug\ErasePaymentWindow.g.cs
 D:\.NET + Java\github\APP\APP\obj\Debug\ErasePaymentWindow.baml
 D:\.NET + Java\github\APP\APP\obj\Debug\SimulateWindow.g.cs
 D:\.NET + Java\github\APP\APP\obj\Debug\SimulateWindow.baml
+D:\.NET + Java\github\APP\APP\bin\Debug\Newtonsoft.Json.dll
+D:\.NET + Java\github\APP\APP\bin\Debug\SendGrid.dll
+D:\.NET + Java\github\APP\APP\bin\Debug\StarkbankEcdsa.dll
+D:\.NET + Java\github\APP\APP\bin\Debug\Newtonsoft.Json.xml
+D:\.NET + Java\github\APP\APP\bin\Debug\SendGrid.pdb
+D:\.NET + Java\github\APP\APP\bin\Debug\SendGrid.xml
+D:\.NET + Java\github\APP\APP\obj\Debug\NotificationWindow.g.cs
+D:\.NET + Java\github\APP\APP\obj\Debug\NotificationWindow.baml
