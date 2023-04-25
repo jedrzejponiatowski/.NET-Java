@@ -4,11 +4,16 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 E:\C#_projects\source\repos\Loans\.NET-Java\APP\APP\obj\Debug\
+=======
+D:\.NET + Java\github\APP\APP\obj\Debug\
+>>>>>>> 8beaa83736aba4fdcc2d03310ae493e91478137d
 APP
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 E:\C#_projects\source\repos\Loans\.NET-Java\APP\APP\App.xaml
 1219584333
 
@@ -17,4 +22,14 @@ E:\C#_projects\source\repos\Loans\.NET-Java\APP\APP\App.xaml
 MainWindow.xaml;
 
 True
+=======
+D:\.NET + Java\github\APP\APP\App.xaml
+5830776297
+
+161148961187
+18819235977
+ErasePaymentWindow.xaml;NewPaymentWindow.xaml;EraseContactWindow.xaml;MainWindow.xaml;NewContactWindow.xaml;
+
+False
+>>>>>>> 8beaa83736aba4fdcc2d03310ae493e91478137d
 
