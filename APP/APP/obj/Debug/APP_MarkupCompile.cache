@@ -16,5 +16,5 @@ E:\.NET-Java\APP\APP\App.xaml
 21-533072738
 ErasePaymentWindow.xaml;NewPaymentWindow.xaml;EraseContactWindow.xaml;MainWindow.xaml;NewContactWindow.xaml;NotificationWindow.xaml;SimulateWindow.xaml;
 
-True
+False
 

@@ -120,3 +120,4 @@ E:\.NET-Java\APP\APP\obj\Debug\APP.csproj.CoreCompileInputs.cache
 E:\.NET-Java\APP\APP\obj\Debug\APP.csproj.CopyComplete
 E:\.NET-Java\APP\APP\obj\Debug\APP.exe
 E:\.NET-Java\APP\APP\obj\Debug\APP.pdb
+E:\.NET-Java\APP\APP\obj\Debug\App.baml

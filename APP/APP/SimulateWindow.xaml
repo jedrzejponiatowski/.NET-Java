@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:APP"
         mc:Ignorable="d"
         Title="SimulateWindow" Height="450" Width="800">
-    <Grid Background="DarkGray">
+    <Grid Background="DarkGray" Margin="0,0,0,-26">
         <Button Content="Simulate" HorizontalAlignment="Left" Height="32" Margin="621,348,0,0" VerticalAlignment="Top" Width="112" Click="BtnSimulate"/>
         <Button Content="Exit" HorizontalAlignment="Left" Height="34" Margin="422,348,0,0" VerticalAlignment="Top" Width="112" Click="BtnExit"/>
         <Button Content="Check" HorizontalAlignment="Left" Height="34" Margin="507,60,0,0" VerticalAlignment="Top" Width="150" Click="BtnCheck"/>
@@ -25,18 +25,18 @@
         <Border BorderThickness="1" BorderBrush="Black" Width="60" Height="26" HorizontalAlignment="Left" Margin="552,139,0,269" Background="BurlyWood">
             <TextBox Name="NameTextBox" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="Name" VerticalAlignment="Center" TextChanged="NameTextBox_TextChanged" TextAlignment="Center" Background="BurlyWood"/>
         </Border>
-        <TextBox Name="YouPayBox" HorizontalAlignment="Left" Height="19" Margin="602,228,0,0" TextWrapping="Wrap" Text=" ---" VerticalAlignment="Top" Width="150" TextChanged="NameTextBox_TextChanged" TextAlignment="Center"/>
-        <TextBox Name="YouReceiveBox" HorizontalAlignment="Left" Height="18" Margin="403,228,0,0" TextWrapping="Wrap" Text="+++" VerticalAlignment="Top" Width="150" TextChanged="NameTextBox_TextChanged" TextAlignment="Center"/>
+        <TextBox Name="YouPayBox" HorizontalAlignment="Left" Height="19" Margin="602,247,0,0" TextWrapping="Wrap" Text=" ---" VerticalAlignment="Top" Width="150" TextChanged="NameTextBox_TextChanged" TextAlignment="Center" Background="LightGray"/>
+        <TextBox Name="YouReceiveBox" HorizontalAlignment="Left" Height="18" Margin="400,247,0,0" TextWrapping="Wrap" Text="+++" VerticalAlignment="Top" Width="150" TextChanged="NameTextBox_TextChanged" TextAlignment="Center" Background="LightGray"/>
 
         <Border BorderThickness="1" BorderBrush="Black" Width="80" Height="26" HorizontalAlignment="Left" Margin="637,191,0,217" Background="BurlyWood">
             <TextBlock x:Name = "textBlock1" HorizontalAlignment = "Center"  
                      TextWrapping = "Wrap"
-                     VerticalAlignment = "Center" Foreground="#FF111111" TextAlignment="Center" Background="BurlyWood"><Run Text="You Receive"/><Run Language="pl-pl" Text=":"/></TextBlock>    
+                     VerticalAlignment = "Center" Foreground="#FF111111" TextAlignment="Center" Background="BurlyWood"><Run Text="You Receive"/><Run Language="pl-pl" Text=":"/></TextBlock>
         </Border>
         <Border BorderThickness="1" BorderBrush="Black" Width="80" Height="26" HorizontalAlignment="Left" Margin="438,191,0,217" Background="BurlyWood">
             <TextBlock x:Name = "textBlock2" HorizontalAlignment = "Center"  
                      TextWrapping = "Wrap"
-                     VerticalAlignment = "Center" Foreground="#FF111111" TextAlignment="Center" ><Run Text="You Pay" Background="BurlyWood"/><Run Language="pl-pl" Text=":"/></TextBlock>    
+                     VerticalAlignment = "Center" Foreground="#FF111111" TextAlignment="Center" ><Run Text="You Pay" Background="BurlyWood"/><Run Language="pl-pl" Text=":"/></TextBlock>
         </Border>
 
     </Grid>
