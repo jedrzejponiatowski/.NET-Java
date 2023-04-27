@@ -6,25 +6,25 @@
         xmlns:local="clr-namespace:APP"
         mc:Ignorable="d"
         Title="ErasePaymentWindow" Height="606" Width="800">
-    <Grid>
+    <Grid Background="DarkGray">
 
-        
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="110,37,0,0" VerticalAlignment="Top" Width="296">
+
+        <Border BorderBrush="Black" Background="BurlyWood" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="110,37,0,0" VerticalAlignment="Top" Width="296">
             <Label Content="Loans in plus" HorizontalAlignment="Center" Height="auto" VerticalAlignment="Center" Width="296" FontSize="16" FontStyle="Oblique" FontWeight="Bold" HorizontalContentAlignment="Center" />
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="406,37,0,0" VerticalAlignment="Top" Width="289">
+        <Border BorderBrush="Black" Background="BurlyWood" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="406,37,0,0" VerticalAlignment="Top" Width="289">
             <Label Content="Loans in minus" HorizontalAlignment="Center" Height="auto" VerticalAlignment="Center" Width="289" FontSize="16" FontStyle="Oblique" FontWeight="Bold" HorizontalContentAlignment="Center" />
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="400" Margin="110,78,0,0" VerticalAlignment="Top" Width="296">
-            <ListBox x:Name="GrantedList_EPW" HorizontalAlignment="Center" Height="400" VerticalAlignment="Top" Width="289" SelectionMode="Multiple"/>
+        <Border BorderBrush="Black" BorderThickness="1" Background="LightGray" HorizontalAlignment="Left" Height="400" Margin="110,78,0,0" VerticalAlignment="Top" Width="296">
+            <ListBox x:Name="GrantedList_EPW" Background="LightGray" HorizontalAlignment="Center" Height="400" VerticalAlignment="Top" Width="289" SelectionMode="Multiple"/>
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="400" Margin="406,78,0,0" VerticalAlignment="Top" Width="289">
-            <ListBox x:Name="ObtainedList_EPW" HorizontalAlignment="Center" Height="400" VerticalAlignment="Center" Width="289" SelectionMode="Multiple"/>
+        <Border BorderBrush="Black" BorderThickness="1" Background="LightGray" HorizontalAlignment="Left" Height="400" Margin="406,78,0,0" VerticalAlignment="Top" Width="289">
+            <ListBox x:Name="ObtainedList_EPW" Background="LightGray" HorizontalAlignment="Center" Height="400" VerticalAlignment="Center" Width="289" SelectionMode="Multiple"/>
         </Border>
 
 
-        <Button Content="Erase" HorizontalAlignment="Left" Height="39" Margin="500,523,0,0" VerticalAlignment="Top" Width="102" Click="BtnErase"/>
-        <Button Content="Exit" HorizontalAlignment="Left" Height="38" Margin="207,524,0,0" VerticalAlignment="Top" Width="102" Click="BtnExit"/>
+        <Button Content="Erase" Background="Tan" HorizontalAlignment="Left" Height="39" Margin="500,523,0,0" VerticalAlignment="Top" Width="102" Click="BtnErase"/>
+        <Button Content="Exit"  Background="Tan" HorizontalAlignment="Left" Height="38" Margin="207,524,0,0" VerticalAlignment="Top" Width="102" Click="BtnExit"/>
 
 
 

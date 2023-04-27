@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:APP"
         mc:Ignorable="d"
-        Title="CFormWindow" Height="451" Width="629">
+        Title="NewLoan" Height="455" Width="629">
 
-    <Grid>
-        <TextBlock x:Name = "textBlock" HorizontalAlignment = "Left"  
-         Margin = "360,44,0,0" TextWrapping = "Wrap" Text = "Loan:"
-         VerticalAlignment = "Top" Width = "88" Height="25" />
+    <Grid Background="DarkGray" Height="445" VerticalAlignment="Top">
+        <Border BorderThickness="1" BorderBrush="Black" Width="61" Height="26" HorizontalAlignment="Left" Margin="350,-325,0,0" Background="BurlyWood">
+            <TextBlock x:Name = "textBlock" HorizontalAlignment = "Center" TextWrapping = "Wrap" Text = "Loan:"
+             VerticalAlignment = "Center" Width = "40" Height="26" RenderTransformOrigin="0.456,1.634" />
+        </Border>
+
 
         <RadioButton x:Name = "rb1" Content = "Plus" HorizontalAlignment = "Left"  
          Margin = "430,46,0,0" VerticalAlignment = "Top"  
@@ -20,37 +22,38 @@
          Margin = "508,46,0,0" VerticalAlignment = "Top"  
          GroupName = "Gender" Width = "86" Checked = "HandleCheckMinus" Height="23" />
 
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="34,83,0,0" VerticalAlignment="Top" Width="280">
+        <Border BorderBrush="Black" Background="BurlyWood" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="34,37,0,0" VerticalAlignment="Top" Width="280">
             <Label Content="CONTACTS" HorizontalAlignment="Center" Height="auto" VerticalAlignment="Center" Width="auto" FontSize="16" FontStyle="Oblique" FontWeight="Bold" />
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="250" Margin="34,124,0,0" VerticalAlignment="Top" Width="280">
-            <ListBox x:Name ="ContactsList3" BorderBrush="#FF050505" Height="230" VerticalAlignment="Center" HorizontalAlignment="Center" Width="260"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="250" Margin="34,78,0,0" VerticalAlignment="Top" Width="280">
+            <ListBox x:Name ="ContactsList3" Background="LightGray" BorderBrush="#FF050505" Height="249" VerticalAlignment="Center" HorizontalAlignment="Center" Width="279"/>
         </Border>
-
-        <TextBlock x:Name = "textBlock2" HorizontalAlignment = "Left"  
-         Margin = "361,134,0,0" TextWrapping = "Wrap"
-         VerticalAlignment = "Top" Width = "121" Height="18" Foreground="#FF111111" ><Run Text="Date of issue"/><Run Language="pl-pl" Text=":"/></TextBlock>
-
-        <DatePicker HorizontalAlignment = "Left" Margin = "466,131,0,0" 
+        <Border BorderThickness="1" BorderBrush="Black" Width="100" Height="26" HorizontalAlignment="Left" Margin="350,90,0,323" Background="BurlyWood">
+            <TextBlock x:Name = "textBlock2" HorizontalAlignment = "Center"  
+             Margin = "0,2,0,0" TextWrapping = "Wrap"
+             VerticalAlignment = "Top" Width = "79" Height="18" Foreground="#FF111111" ><Run Text="Date of issue"/><Run Language="pl-pl" Text=":"/></TextBlock>
+        </Border>
+        <DatePicker HorizontalAlignment = "Left" Margin = "466,92,0,0" 
          VerticalAlignment = "Top" SelectedDateChanged = "DatePicker_SelectedDateChangedIssue"/>
 
-        <DatePicker HorizontalAlignment = "Left" Margin = "466,183,0,0" 
+        <DatePicker HorizontalAlignment = "Left" Margin = "466,146,0,0" 
          VerticalAlignment = "Top" SelectedDateChanged = "DatePicker_SelectedDateChangedExpire"/>
 
+        <Border BorderThickness="1" BorderBrush="Black" Width="100" Height="26" HorizontalAlignment="Left" Margin="350,142,0,271" Background="BurlyWood">
+            <TextBlock x:Name = "textBlock5" HorizontalAlignment = "Left"  
+         Margin = "10,2,0,0" TextWrapping = "Wrap"
+         VerticalAlignment = "Top" Width = "89" Height="18" ><Run Text="Date of "/><Run Language="pl-pl" Text="expire:"/></TextBlock>
+        </Border>
+        <TextBox Name="TextBoxLoanSize" Background="LightGray" HorizontalAlignment="Left" Height="19" Margin="466,198,0,0" TextWrapping="Wrap" 
+                 Text="PLN" VerticalAlignment="Top" Width="102"/>
 
-        <TextBlock x:Name = "textBlock5" HorizontalAlignment = "Left"  
-         Margin = "360,186,0,0" TextWrapping = "Wrap"
-         VerticalAlignment = "Top" Width = "122" Height="18" ><Run Text="Date of "/><Run Language="pl-pl" Text="expire"/></TextBlock>
-
-        <TextBox Name="TextBoxLoanSize" HorizontalAlignment="Left" Height="19" Margin="466,277,0,0" TextWrapping="Wrap" 
-                 Text="PLN" VerticalAlignment="Top" Width="136"/>
-
-        <TextBlock x:Name = "textBlock6" HorizontalAlignment = "Left"  
-         Margin = "361,277,0,0" TextWrapping = "Wrap"
-         VerticalAlignment = "Top" Width = "122" Height="18" ><Run Language="pl-pl" Text="Loan Size"/></TextBlock>
-
-        <Button Content="Submit" HorizontalAlignment="Left" Height="39" Margin="500,350,0,0" VerticalAlignment="Top" Width="102" Click="BtnSubmit"/>
-        <Button Content="Exit" HorizontalAlignment="Left" Height="39" Margin="360,350,0,0" VerticalAlignment="Top" Width="102" Click="BtnExit"/>
+        <Border BorderThickness="1" BorderBrush="Black" Width="100" Height="26" HorizontalAlignment="Left" Margin="350,194,0,219" Background="BurlyWood">
+            <TextBlock x:Name = "textBlock6" HorizontalAlignment = "Left"  
+             Margin = "10,2,0,0" TextWrapping = "Wrap"
+             VerticalAlignment = "Top" Width = "65" Height="18" ><Run Language="pl-pl" Text="Loan Size: "/></TextBlock>
+        </Border>
+        <Button Content="Submit" Background="Tan" HorizontalAlignment="Left" Height="39" Margin="466,268,0,0" VerticalAlignment="Top" Width="102" Click="BtnSubmit"/>
+        <Button Content="Exit" Background="Tan" HorizontalAlignment="Left" Height="39" Margin="348,268,0,0" VerticalAlignment="Top" Width="102" Click="BtnExit"/>
 
 
 

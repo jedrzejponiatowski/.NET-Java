@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:APP"
         mc:Ignorable="d"
-        Title="EraseContactWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="Erase Contact" HorizontalAlignment="Left" Height="51" Margin="533,125,0,0" VerticalAlignment="Top" Width="131" Click="BtnEraseContact"/>
-        <Button Content="Exit" HorizontalAlignment="Left" Height="53" Margin="533,265,0,0" VerticalAlignment="Top" Width="131" Click="BtnExit"/>
+        Title="EraseContact" Height="388" Width="714">
+    <Grid Background="DarkGray">
+        <Button Content="Erase Contact" Background="Tan" HorizontalAlignment="Left" Height="51" Margin="467,135,0,0" VerticalAlignment="Top" Width="130" Click="BtnEraseContact"/>
+        <Button Content="Exit" Background="Tan" HorizontalAlignment="Left" Height="53" Margin="467,225,0,0" VerticalAlignment="Top" Width="131" Click="BtnExit"/>
 
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="90,73,0,0" VerticalAlignment="Top" Width="280">
+        <Border BorderBrush="Black"  Background="BurlyWood" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="90,73,0,0" VerticalAlignment="Top" Width="280">
             <Label Content="CONTACTS" HorizontalAlignment="Center" Height="auto" VerticalAlignment="Center" Width="auto" FontSize="16" FontStyle="Oblique" FontWeight="Bold" />
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="204" Margin="90,114,0,0" VerticalAlignment="Top" Width="280">
-            <ListBox x:Name ="ContactsList2" BorderBrush="#FF050505" Height="204" VerticalAlignment="Center" HorizontalAlignment="Center" Width="280"/>
+        <Border BorderBrush="Black" BorderThickness="1" Background="LightGray" HorizontalAlignment="Left" Height="204" Margin="90,114,0,0" VerticalAlignment="Top" Width="280">
+            <ListBox x:Name ="ContactsList2" Background="LightGray" BorderBrush="#FF050505" Height="204" VerticalAlignment="Center" HorizontalAlignment="Center" Width="280"/>
         </Border>
     </Grid>
 </Window>

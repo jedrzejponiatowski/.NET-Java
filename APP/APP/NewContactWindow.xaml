@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:APP"
         mc:Ignorable="d"
-        Title="NewContactWindow" Height="230" Width="400">
-    <Grid>
-        <Button Content="Submit" HorizontalAlignment="Left" Height="39" Margin="81,130,0,0" VerticalAlignment="Top" Width="102" Click="BtnSubmit"/>
-        <Button Content="Exit" HorizontalAlignment="Left" Height="39" Margin="240,130,0,0" VerticalAlignment="Top" Width="102" Click="BtnExit"/>
-        <TextBox Name="TextBoxFirstName" HorizontalAlignment="Left" Height="19" Margin="64,18,0,0" TextWrapping="Wrap" Text="Imie" VerticalAlignment="Top" Width="136"/>
-        <TextBox Name="TextBoxLastName" HorizontalAlignment="Left" Height="19" Margin="223,18,0,0" TextWrapping="Wrap" Text="Nazwisko" VerticalAlignment="Top" Width="136"/>
-        <TextBox Name="TextBoxEMail" HorizontalAlignment="Left" Height="19" Margin="64,73,0,0" TextWrapping="Wrap" Text="E-Mail" VerticalAlignment="Top" Width="136"/>
-        <TextBox Name="TextBoxPhoneNumber" HorizontalAlignment="Left" Height="19" Margin="223,73,0,0" TextWrapping="Wrap" Text="Telefon" VerticalAlignment="Top" Width="136"/>
+        Title="NewContact" Height="230" Width="400">
+    <Grid Background="DarkGray">
+        <Button Content="Submit" Background="Tan" HorizontalAlignment="Left" Height="39" Margin="81,130,0,0" VerticalAlignment="Top" Width="102" Click="BtnSubmit"/>
+        <Button Content="Exit" Background="Tan" HorizontalAlignment="Left" Height="39" Margin="240,130,0,0" VerticalAlignment="Top" Width="102" Click="BtnExit"/>
+        <TextBox Name="TextBoxFirstName" Background="LightGray" HorizontalAlignment="Left" Height="19" Margin="64,18,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="136"/>
+        <TextBox Name="TextBoxLastName" Background="LightGray" HorizontalAlignment="Left" Height="19" Margin="223,18,0,0" TextWrapping="Wrap" Text="Surname" VerticalAlignment="Top" Width="136"/>
+        <TextBox Name="TextBoxEMail" Background="LightGray" HorizontalAlignment="Left" Height="19" Margin="64,73,0,0" TextWrapping="Wrap" Text="E-Mail" VerticalAlignment="Top" Width="136"/>
+        <TextBox Name="TextBoxPhoneNumber" Background="LightGray" HorizontalAlignment="Left" Height="19" Margin="223,73,0,0" TextWrapping="Wrap" Text="Phone" VerticalAlignment="Top" Width="136"/>
     </Grid>
 </Window>
