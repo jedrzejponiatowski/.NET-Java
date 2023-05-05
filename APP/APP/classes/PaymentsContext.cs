@@ -6,6 +6,9 @@ using System.Runtime.Remoting.Contexts;
 
 namespace APP
 {
+    /// <summary>
+    /// Model of the local database
+    /// </summary>
     public class PaymentsContext : DbContext
     {
         // Your context has been configured to use a 'Model1' connection string from your application's 
@@ -14,6 +17,10 @@ namespace APP
         // 
         // If you wish to target a different database and/or database provider, modify the 'Model1' 
         // connection string in the application configuration file.
+        /// <summary>
+        /// Parameterless constructor of the database
+        /// </summary>
+        /// <returns>New database object with seed data set by initializer</returns>
         public PaymentsContext()
             : base("name=PaymentsContext")
         {
@@ -28,81 +35,126 @@ namespace APP
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
         // public virtual DbSet<MyEntity> MyEntities { get; set; }
-
+        /// <summary>
+        /// Adds new person to the table Persons
+        /// </summary>
+        /// <param name="person">An entity Person object to add</param>
         public void AddNewPerson(Person person)
         {
             Persons.Add(person);
             SaveChanges();
         }
-
+        /// <summary>
+        /// Deletes given person
+        /// </summary>
+        /// <param name="person">An entity Person object to delete</param>
         public void DeletePerson(Person person)
         {
             Persons.Attach(person);
             Persons.Remove(person);
             SaveChanges();
         }
-
+        /// <summary>
+        /// Part of user interface to acces Persons table
+        /// </summary>
+        /// <returns>Returns first Person object from the Persons table</returns>
         public Person GetFirstPerson() 
         {
             var query = Persons.First();
             return query; 
         }
-
+        /// <summary>
+        /// Part of user interface to acces Persons table
+        /// </summary>
+        /// <param name="firstName">First name of the person looked for</param>
+        /// <param name="lastName">Last name of the person looked for</param>
+        /// <returns>Returns first Person object with matched given keys</returns>
         public Person GetPerson(string firstName, string lastName)
         {
             var query = Persons.Where(p => p.FirstName == firstName && p.LastName == lastName).FirstOrDefault();
             return query;
         }
-
+        /// <summary>
+        /// Part of user interface to acces Persons table
+        /// </summary>
+        /// <param name="ID">ID of the person looked for</param>
+        /// <returns>Returns first Person object with matched given ID</returns>
         public Person GetPersonWithID(int ID)
         {
             var query = Persons.Where(p => p.ID == ID).FirstOrDefault();
             return query;
         }
-
+        /// <summary>
+        /// Adds new loan to LoansGranted table
+        /// </summary>
+        /// <param name="loan">LoanGranted object to add</param>
         public void AddNewLoanGranted(LoanGranted loan)
         {
             LoansGranted.Add(loan);
             SaveChanges();
         }
-
+        /// <summary>
+        /// Part of user interface to acces LoansGranted table
+        /// </summary>
+        /// <returns>Returns first LoanGranted object from table</returns>
         public LoanGranted GetFirstLoanGranted()
         {
             var query = LoansGranted.First();
             return query;
         }
-
+        /// <summary>
+        /// Part of user interface to acces LoansGranted table
+        /// </summary>
+        /// <param name="ID">ID of the loan looked for</param>
+        /// <returns>Returns first LoanGranted object with matched given ID</returns>
         public LoanGranted GetLoanGrantedwithID(int ID)
         {
             var query = LoansGranted.Where(p => p.LoanGrantedID == ID).FirstOrDefault();
             return query;
         }
-
+        /// <summary>
+        /// Part of user interface to acces LoansObtained table
+        /// </summary>
+        /// <param name="ID">ID of the loan looked for</param>
+        /// <returns>Returns first LoanObtained object with matched given ID</returns>
         public LoanObtained GetLoanObtainedwithID(int ID)
         {
             var query = LoansObtained.Where(p => p.LoanObtainedID == ID).FirstOrDefault();
             return query;
         }
-
+        /// <summary>
+        /// Deletes given loan
+        /// </summary>
+        /// <param name="loan">LoanGranted object to be deleted</param>
         public void DeleteLoanGranted(LoanGranted loan)
         {
             LoansGranted.Attach(loan);
             LoansGranted.Remove(loan);
             SaveChanges();
         }
-
+        /// <summary>
+        /// Deletes given loan
+        /// </summary>
+        /// <param name="loan">LoanObtained object to be deleted</param>
         public void DeleteLoanObtained(LoanObtained loan)
         {
             LoansObtained.Attach(loan);
             LoansObtained.Remove(loan);
             SaveChanges();
         }
-
+        /// <summary>
+        /// Adds new loan
+        /// </summary>
+        /// <param name="loan">LoanObtained object to add</param>
         public void AddNewLoanObtained(LoanObtained loan)
         {
             LoansObtained.Add(loan);
             SaveChanges();
         }
+        /// <summary>
+        /// Creates list of all objects in Persons table
+        /// and prints it in human readable format.
+        /// </summary>
         public void PrintAllPersons()
         {
             IList<Person> people;
@@ -113,7 +165,10 @@ namespace APP
             }
 
         }
-
+        /// <summary>
+        /// Creates two list of all objects in LoansGranted and LoansObtained tables
+        /// and prints them in human readable format.
+        /// </summary>
         public void PrintAllLoans()
         {
             IList<LoanGranted> loansG;
@@ -132,7 +187,9 @@ namespace APP
                 Console.WriteLine(loan.LoanObtainedID + " " + loan.Person.FirstName + " " + loan.Person.LastName + " " + loan.LoanSize);
             }
         }
-
+        /// <summary>
+        /// Class of database initializer used to create seed for aplication testing
+        /// </summary>
         public class PaymentsDBInitializer : DropCreateDatabaseAlways<PaymentsContext>
         {
             protected override void Seed(PaymentsContext context)
@@ -159,7 +216,10 @@ namespace APP
             }
         }
 
-
+        /// <summary>
+        /// Part of user interface to acces Persons table
+        /// </summary>
+        /// <returns>Return list of all objects in Persons table</returns>
         public IList<string> TakeAllPersons()
         {
             IList<Person> people;
@@ -173,7 +233,10 @@ namespace APP
         }
 
 
-
+        /// <summary>
+        /// Part of user interface to acces LoansGranted table
+        /// </summary>
+        /// <returns>Returns list of all objects in LoansGranted table</returns>
         public IList<string> TakeAllGrants()
         {
             IList<LoanGranted> lGranted;
@@ -187,7 +250,10 @@ namespace APP
             return GrantedOutput;
         }
 
-
+        /// <summary>
+        /// Part of user interface to acces LoansObtained table
+        /// </summary>
+        /// <returns>Returns list of all objects in LoansObtained table</returns>
         public IList<string> TakeAllObtains()
         {
             IList<LoanObtained> lObtained;

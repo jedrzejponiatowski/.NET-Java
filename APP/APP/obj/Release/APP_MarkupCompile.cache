@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-E:\.NET-Java\APP\APP\obj\Release\
+E:\C#_projects\source\repos\final\.NET-Java\APP\APP\obj\Release\
 APP
 none
 false
 TRACE
-E:\.NET-Java\APP\APP\App.xaml
+E:\C#_projects\source\repos\final\.NET-Java\APP\APP\App.xaml
 71699992956
 
 18460357360
-21-533072738
+212043899667
 ErasePaymentWindow.xaml;NewPaymentWindow.xaml;EraseContactWindow.xaml;MainWindow.xaml;NewContactWindow.xaml;NotificationWindow.xaml;SimulateWindow.xaml;
 
 True

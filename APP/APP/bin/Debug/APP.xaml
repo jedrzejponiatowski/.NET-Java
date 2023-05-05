@@ -1,0 +1,271 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>APP</name>
+    </assembly>
+    <members>
+        <member name="T:APP.NotificationWindow">
+            <summary>
+            Logika interakcji dla klasy NotificationWindow.xaml
+            </summary>
+            <summary>
+            NotificationWindow
+            </summary>
+        </member>
+        <member name="M:APP.NotificationWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:APP.SimulateWindow">
+            <summary>
+            Logika interakcji dla klasy SimulateWindow.xaml
+            </summary>
+            <summary>
+            SimulateWindow
+            </summary>
+        </member>
+        <member name="M:APP.SimulateWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:APP.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:APP.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:APP.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:APP.ErasePaymentWindow">
+            <summary>
+            Logika interakcji dla klasy ErasePaymentWindow.xaml
+            </summary>
+            <summary>
+            ErasePaymentWindow
+            </summary>
+        </member>
+        <member name="M:APP.ErasePaymentWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:APP.NewPaymentWindow">
+            <summary>
+            Interaction logic for CFormWindow.xaml
+            </summary>
+            <summary>
+            NewPaymentWindow
+            </summary>
+        </member>
+        <member name="M:APP.NewPaymentWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:APP.EraseContactWindow">
+            <summary>
+            Logika interakcji dla klasy EraseContactWindow.xaml
+            </summary>
+            <summary>
+            EraseContactWindow
+            </summary>
+        </member>
+        <member name="M:APP.EraseContactWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:APP.LoanGranted">
+            <summary>
+            LoanGranted object definition for LoansGranted table
+            </summary>
+        </member>
+        <member name="T:APP.LoanObtained">
+            <summary>
+            LoanObtained object definition for LoansObtained table
+            </summary>
+        </member>
+        <member name="T:APP.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:APP.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:APP.NewContactWindow">
+            <summary>
+            Logika interakcji dla klasy NewContactWindow.xaml
+            </summary>
+            <summary>
+            NewContactWindow
+            </summary>
+        </member>
+        <member name="M:APP.NewContactWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:APP.PaymentsContext">
+            <summary>
+            Model of the local database
+            </summary>
+        </member>
+        <member name="M:APP.PaymentsContext.#ctor">
+            <summary>
+            Parameterless constructor of the database
+            </summary>
+            <returns>New database object with seed data set by initializer</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.AddNewPerson(APP.Person)">
+            <summary>
+            Adds new person to the table Persons
+            </summary>
+            <param name="person">An entity Person object to add</param>
+        </member>
+        <member name="M:APP.PaymentsContext.DeletePerson(APP.Person)">
+            <summary>
+            Deletes given person
+            </summary>
+            <param name="person">An entity Person object to delete</param>
+        </member>
+        <member name="M:APP.PaymentsContext.GetFirstPerson">
+            <summary>
+            Part of user interface to acces Persons table
+            </summary>
+            <returns>Returns first Person object from the Persons table</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.GetPerson(System.String,System.String)">
+            <summary>
+            Part of user interface to acces Persons table
+            </summary>
+            <param name="firstName">First name of the person looked for</param>
+            <param name="lastName">Last name of the person looked for</param>
+            <returns>Returns first Person object with matched given keys</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.GetPersonWithID(System.Int32)">
+            <summary>
+            Part of user interface to acces Persons table
+            </summary>
+            <param name="ID">ID of the person looked for</param>
+            <returns>Returns first Person object with matched given ID</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.AddNewLoanGranted(APP.LoanGranted)">
+            <summary>
+            Adds new loan to LoansGranted table
+            </summary>
+            <param name="loan">LoanGranted object to add</param>
+        </member>
+        <member name="M:APP.PaymentsContext.GetFirstLoanGranted">
+            <summary>
+            Part of user interface to acces LoansGranted table
+            </summary>
+            <returns>Returns first LoanGranted object from table</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.GetLoanGrantedwithID(System.Int32)">
+            <summary>
+            Part of user interface to acces LoansGranted table
+            </summary>
+            <param name="ID">ID of the loan looked for</param>
+            <returns>Returns first LoanGranted object with matched given ID</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.GetLoanObtainedwithID(System.Int32)">
+            <summary>
+            Part of user interface to acces LoansObtained table
+            </summary>
+            <param name="ID">ID of the loan looked for</param>
+            <returns>Returns first LoanObtained object with matched given ID</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.DeleteLoanGranted(APP.LoanGranted)">
+            <summary>
+            Deletes given loan
+            </summary>
+            <param name="loan">LoanGranted object to be deleted</param>
+        </member>
+        <member name="M:APP.PaymentsContext.DeleteLoanObtained(APP.LoanObtained)">
+            <summary>
+            Deletes given loan
+            </summary>
+            <param name="loan">LoanObtained object to be deleted</param>
+        </member>
+        <member name="M:APP.PaymentsContext.AddNewLoanObtained(APP.LoanObtained)">
+            <summary>
+            Adds new loan
+            </summary>
+            <param name="loan">LoanObtained object to add</param>
+        </member>
+        <member name="M:APP.PaymentsContext.PrintAllPersons">
+            <summary>
+            Creates list of all objects in Persons table
+            and prints it in human readable format.
+            </summary>
+        </member>
+        <member name="M:APP.PaymentsContext.PrintAllLoans">
+            <summary>
+            Creates two list of all objects in LoansGranted and LoansObtained tables
+            and prints them in human readable format.
+            </summary>
+        </member>
+        <member name="T:APP.PaymentsContext.PaymentsDBInitializer">
+            <summary>
+            Class of database initializer used to create seed for aplication testing
+            </summary>
+        </member>
+        <member name="M:APP.PaymentsContext.TakeAllPersons">
+            <summary>
+            Part of user interface to acces Persons table
+            </summary>
+            <returns>Return list of all objects in Persons table</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.TakeAllGrants">
+            <summary>
+            Part of user interface to acces LoansGranted table
+            </summary>
+            <returns>Returns list of all objects in LoansGranted table</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.TakeAllObtains">
+            <summary>
+            Part of user interface to acces LoansObtained table
+            </summary>
+            <returns>Returns list of all objects in LoansObtained table</returns>
+        </member>
+        <member name="T:APP.Person">
+            <summary>
+            Person object definition for Persons table
+            </summary>
+        </member>
+        <member name="T:APP.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:APP.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:APP.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>
