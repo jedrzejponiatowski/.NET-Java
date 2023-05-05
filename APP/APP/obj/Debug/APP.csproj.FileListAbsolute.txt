@@ -122,6 +122,7 @@ E:\.NET-Java\APP\APP\obj\Debug\APP.exe
 E:\.NET-Java\APP\APP\obj\Debug\APP.pdb
 E:\.NET-Java\APP\APP\obj\Debug\App.baml
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\APP.exe.config
+E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\APP.xml
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\APP.exe
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\APP.pdb
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\EntityFramework.dll
@@ -162,4 +163,3 @@ E:\C#_projects\source\repos\final\.NET-Java\APP\APP\obj\Debug\APP.csproj.CoreCom
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP\obj\Debug\APP.csproj.CopyComplete
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP\obj\Debug\APP.exe
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP\obj\Debug\APP.pdb
-E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\APP.xaml

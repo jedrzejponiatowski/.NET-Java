@@ -30,6 +30,7 @@ namespace APP
         public DbSet<Person> Persons { get; set; }
         public DbSet<LoanGranted> LoansGranted { get; set; }
         public DbSet<LoanObtained> LoansObtained { get; set; }
+        public DbSet<Wallet> Wallets { get; set; }
 
         // Add a DbSet for each entity type that you want to include in your model. For more information 
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
@@ -210,6 +211,7 @@ namespace APP
                 context.LoansGranted.Add(new LoanGranted() { PersonID = 3, LoanSize = 54, DateOfIssue = "16.01.2020", DateOfExpiry = "11.11.2021" });
                 context.LoansGranted.Add(new LoanGranted() { PersonID = 4, LoanSize = 420, DateOfIssue = "16.02.2020", DateOfExpiry = "11.11.2021" });
 
+                context.Wallets.Add(new Wallet() { WalletID = 1, E_Mail = "poniatowskijedrzej@gmail.com", PhoneNumber = "123321321", Value = 200 });
                 context.SaveChanges();
 
                 base.Seed(context);
@@ -266,6 +268,36 @@ namespace APP
             }
             return GrantedOutput;
         }
+        /// <summary>
+        /// Adds new wallet to the table Wallets
+        /// </summary>
+        /// <param name="wallet">An entity Wallet object to add</param>
+        public void AddNewWallet(Wallet wallet)
+        {
+            Wallets.Add(wallet);
+            SaveChanges();
+        }
+        /// <summary>
+        /// Changes wallet value by given ID
+        /// </summary>
+        /// <param name="ID">ID of the Wallet to chnge</param>
+        public void ChangeWalletValue(int ID)
+        {
+
+        }
+
+
+        /// <summary>
+        /// Part of user interface to acces Wallets table
+        /// </summary>
+        /// <param name="ID">ID of the wallet looked for</param>
+        /// <returns>Returns first Wallet object with matched given ID</returns>
+        public Wallet GetWalletWithID(int ID)
+        {
+            var query = Wallets.Where(p => p.WalletID == ID).FirstOrDefault();
+            return query;
+        }
+
 
 
 

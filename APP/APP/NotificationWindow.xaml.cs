@@ -17,10 +17,14 @@ using System.Windows.Shapes;
 namespace APP
 {
     /// <summary>
-    /// Logika interakcji dla klasy NotificationWindow.xaml
+    /// Interaction logic for NotificationWindow.xaml
     /// </summary>
     public partial class NotificationWindow : Window
     {
+        /// <summary>
+        /// Set up when opened. Creates connection to DB
+        /// and lists all contacts
+        /// </summary>
         public NotificationWindow()
         {
             InitializeComponent();
@@ -32,7 +36,11 @@ namespace APP
         {
 
         }
-
+        /// <summary>
+        /// Handling external API to send an email to selected contact on click
+        /// </summary>
+        /// <param name="sender">Automated parameter from WPF</param>
+        /// <param name="e">Automatic parameter. In this situation is NULL</param>
         private void BtnSend(object sender, RoutedEventArgs e)
         {
             if (ContactsList2.SelectedItem == null)
@@ -56,12 +64,20 @@ namespace APP
             Execute(msg);
             this.Close();
         }
-
+        /// <summary>
+        /// Closes window.
+        /// </summary>
+        /// <param name="sender">Automated parameter from WPF</param>
+        /// <param name="e">Automatic parameter. In this situation is NULL</param>
         private void BtnExit(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
+        /// <summary>
+        /// Takes selected contact and sums up all loans by it
+        /// </summary>
+        /// <param name="sender">Automated parameter from WPF</param>
+        /// <param name="e">Automatic parameter. In this situation is NULL</param>
         private void BtnCheck(object sender, RoutedEventArgs e)
         {
             if (ContactsList2.SelectedItem == null)
@@ -90,7 +106,11 @@ namespace APP
             }
             YouReceiveBox.Text = lGrantedCounter.ToString();
         }
-
+        /// <summary>
+        /// Connection with API and wait for the response
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <returns></returns>
         static async Task Execute(SendGridMessage msg)
         {
             var apiKey = "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";

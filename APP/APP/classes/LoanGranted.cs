@@ -12,6 +12,7 @@ namespace APP
     /// </summary>
     public class LoanGranted
     {
+
         public int LoanGrantedID { get; set; }
         public int LoanSize { get; set; }
         public string DateOfIssue { get; set; }

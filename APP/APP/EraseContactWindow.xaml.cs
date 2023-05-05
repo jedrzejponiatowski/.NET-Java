@@ -15,17 +15,25 @@ using System.Windows.Shapes;
 namespace APP
 {
     /// <summary>
-    /// Logika interakcji dla klasy EraseContactWindow.xaml
+    /// Interaction logic for EraseContactWindow.xaml
     /// </summary>
     public partial class EraseContactWindow : Window
     {
+        /// <summary>
+        /// Set up when opened. Creates connection to DB
+        /// and lists all contacts
+        /// </summary>
         public EraseContactWindow()
         {
             InitializeComponent();
             var context = new PaymentsContext();
             ContactsList2.ItemsSource = context.TakeAllPersons();
         }
-
+        /// <summary>
+        /// Takes selected contact and deletes it from table Persons
+        /// </summary>
+        /// <param name="sender">Automated parameter from WPF</param>
+        /// <param name="e">Automatic parameter. In this situation is NULL</param>
         private void BtnEraseContact(object sender, RoutedEventArgs e)
         {
             string pp = (string) ContactsList2.SelectedItems[0];
@@ -36,7 +44,11 @@ namespace APP
             context.DeletePerson( context.GetPersonWithID(ID));
             this.Close();
         }
-
+        /// <summary>
+        /// Closes window.
+        /// </summary>
+        /// <param name="sender">Automated parameter from WPF</param>
+        /// <param name="e">Automatic parameter. In this situation is NULL</param>
         private void BtnExit(object sender, RoutedEventArgs e)
         {
             this.Close();

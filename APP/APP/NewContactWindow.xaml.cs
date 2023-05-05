@@ -17,15 +17,22 @@ using System.Windows.Shapes;
 namespace APP
 {
     /// <summary>
-    /// Logika interakcji dla klasy NewContactWindow.xaml
+    /// Interaction logic for NewContactWindow.xaml
     /// </summary>
     public partial class NewContactWindow : Window
     {
+        /// <summary>
+        /// Set up window when opened
+        /// </summary>
         public NewContactWindow()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Takes data from form and adds it to database
+        /// </summary>
+        /// <param name="sender">Automated parameter from WPF</param>
+        /// <param name="e">Automatic parameter. In this situation is NULL</param>
         private void BtnSubmit(object sender, RoutedEventArgs e)
         {
             string firstName = TextBoxFirstName.Text.Trim();
@@ -44,7 +51,11 @@ namespace APP
             this.Close();
 
         }
-
+        /// <summary>
+        /// Closes window.
+        /// </summary>
+        /// <param name="sender">Automated parameter from WPF</param>
+        /// <param name="e">Automatic parameter. In this situation is NULL</param>
         private void BtnExit(object sender, RoutedEventArgs e)
         {
             this.Close();

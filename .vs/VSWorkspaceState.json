@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\APP",
+    "\\APP\\APP.Tests"
   ],
-  "SelectedNode": "\\APP.sln",
+  "SelectedNode": "\\APP\\APP.Tests\\APP.Tests.csproj",
   "PreviewInSolutionExplorer": false
 }

@@ -106,8 +106,8 @@ E:\.NET-Java\APP\APP.Tests\obj\Debug\net6.0\refint\APP.Tests.dll
 E:\.NET-Java\APP\APP.Tests\obj\Debug\net6.0\APP.Tests.pdb
 E:\.NET-Java\APP\APP.Tests\obj\Debug\net6.0\APP.Tests.genruntimeconfig.cache
 E:\.NET-Java\APP\APP.Tests\obj\Debug\net6.0\ref\APP.Tests.dll
-E:\C#_projects\source\repos\final\.NET-Java\APP\APP.Tests\bin\Debug\net6.0\testhost.exe
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP.Tests\bin\Debug\net6.0\testhost.dll
+E:\C#_projects\source\repos\final\.NET-Java\APP\APP.Tests\bin\Debug\net6.0\testhost.exe
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP.Tests\bin\Debug\net6.0\NUnit3.TestAdapter.dll
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP.Tests\bin\Debug\net6.0\NUnit3.TestAdapter.pdb
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP.Tests\bin\Debug\net6.0\nunit.engine.dll
@@ -199,6 +199,7 @@ E:\C#_projects\source\repos\final\.NET-Java\APP\APP.Tests\bin\Debug\net6.0\SendG
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP.Tests\bin\Debug\net6.0\EntityFramework.dll
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP.Tests\bin\Debug\net6.0\StarkbankEcdsa.dll
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP.Tests\bin\Debug\net6.0\APP.pdb
+E:\C#_projects\source\repos\final\.NET-Java\APP\APP.Tests\bin\Debug\net6.0\APP.xml
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP.Tests\bin\Debug\net6.0\APP.exe.config
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP.Tests\bin\Debug\net6.0\SendGrid.pdb
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP.Tests\bin\Debug\net6.0\SendGrid.xml

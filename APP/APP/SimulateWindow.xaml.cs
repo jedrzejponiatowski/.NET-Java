@@ -15,10 +15,14 @@ using System.Windows.Shapes;
 namespace APP
 {
     /// <summary>
-    /// Logika interakcji dla klasy SimulateWindow.xaml
+    /// Interaction logic for SimulateWindow.xaml
     /// </summary>
     public partial class SimulateWindow : Window
     {
+        /// <summary>
+        /// Set up when opened. Creates connection to DB
+        /// and lists all contacts
+        /// </summary>
         public SimulateWindow()
         {
             InitializeComponent();
@@ -30,12 +34,21 @@ namespace APP
         {
 
         }
-
+        /// <summary>
+        /// Closes window.
+        /// </summary>
+        /// <param name="sender">Automated parameter from WPF</param>
+        /// <param name="e">Automatic parameter. In this situation is NULL</param>
         private void BtnExit(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
+        /// <summary>
+        /// Takes selected contact and deletes all loans connected to it,
+        /// then change value of the wallet
+        /// </summary>
+        /// <param name="sender">Automated parameter from WPF</param>
+        /// <param name="e">Automatic parameter. In this situation is NULL</param>
         private void BtnSimulate(object sender, RoutedEventArgs e)
         {
             if (ContactsList2.SelectedItem == null)
@@ -72,7 +85,11 @@ namespace APP
 
             this.Close();
         }
-
+        /// <summary>
+        /// Takes selected contact and sums up all loans by it
+        /// </summary>
+        /// <param name="sender">Automated parameter from WPF</param>
+        /// <param name="e">Automatic parameter. In this situation is NULL</param>
         private void BtnCheck(object sender, RoutedEventArgs e)
         {
             if (ContactsList2.SelectedItem == null)
@@ -113,6 +130,16 @@ namespace APP
                 }
             }
             YouPayBox.Text = lObtainedCounter.ToString();
+        }
+        /// <summary>
+        /// Sums loans values
+        /// </summary>
+        /// <param name="ObtainedSum">Sum of loans in plus</param>
+        /// <param name="GainedSum">Sum of loans in minus</param>
+        /// <returns>Value of the </returns>
+        int SumLoans(int ObtainedSum, int GainedSum)
+        {
+            return ObtainedSum + GainedSum;
         }
     }
 }
