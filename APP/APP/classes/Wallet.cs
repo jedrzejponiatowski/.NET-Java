@@ -11,9 +11,9 @@ namespace APP
     /// </summary>
     public class Wallet
     {
-        public int ID { get; set; }
+        public int WalletID { get; set; }
         public string E_Mail { get; set; }
         public string PhoneNumber { get; set; }
-        public string Value { get; set; } 
+        public int Value { get; set; } 
     }
 }

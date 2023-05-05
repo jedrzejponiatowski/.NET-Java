@@ -51,6 +51,7 @@ namespace APP
             ContactsList.ItemsSource = context.TakeAllPersons();
             GrantedList.ItemsSource = context.TakeAllGrants();
             ObtainsList.ItemsSource = context.TakeAllObtains();
+            Money.ItemsSource = context.GetValue(context.GetWalletWithID(1));
         }
         /// <summary>
         /// Definition of click action on button AddPayment.
@@ -63,11 +64,6 @@ namespace APP
             NewPaymentWindow win2 = new NewPaymentWindow();
             win2.ShowDialog();
             MainWindowRefresh();
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
         /// <summary>
         /// Definition of click action on button AddContact.

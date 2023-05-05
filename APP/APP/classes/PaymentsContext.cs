@@ -278,15 +278,14 @@ namespace APP
             SaveChanges();
         }
         /// <summary>
-        /// Changes wallet value by given ID
+        /// Changes given wallet value
         /// </summary>
-        /// <param name="ID">ID of the Wallet to chnge</param>
-        public void ChangeWalletValue(int ID)
+        /// <param name="wallet">Wallet object to be changed</param>
+        /// <param name="value">Value to be inserted</param>
+        public void ChangeWalletValue(Wallet wallet,int value)
         {
-
+            wallet.Value = value;
         }
-
-
         /// <summary>
         /// Part of user interface to acces Wallets table
         /// </summary>
@@ -297,10 +296,21 @@ namespace APP
             var query = Wallets.Where(p => p.WalletID == ID).FirstOrDefault();
             return query;
         }
-
-
-
-
+        /// <summary>
+        /// Part of user interface to acces Wallets table
+        /// </summary>
+        /// <param name="wallet">Wallet object which value to get</param>
+        /// <returns>Value of the given wallet</returns>
+        public IList<int> GetValue(Wallet wallet)
+        {
+            IList<int> valueOutput = new List<int>();
+            var list = Wallets.ToList();
+            foreach (var item in list)
+            {
+                valueOutput.Add(item.Value);
+            }
+            return valueOutput;
+        }
     }
 
 

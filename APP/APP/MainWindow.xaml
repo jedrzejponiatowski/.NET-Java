@@ -7,13 +7,17 @@
         mc:Ignorable="d"
         Title="Check your loan" Height="575" Width="800">
     <Grid Background="DarkGray" Margin="0,0,0,0">
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="41" Margin="0,21,0,0" VerticalAlignment="Top" Width="656" Background="BurlyWood">
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="72,23,0,0" VerticalAlignment="Top" Width="328" Background="BurlyWood">
             <Border.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10"></Setter>
                 </Style>
             </Border.Resources>
-            <TextBox HorizontalAlignment="Center" Height="auto"  TextWrapping="Wrap" Text="Bilans" VerticalAlignment="Center" Width="auto" TextChanged="TextBox_TextChanged"/>
+            <Grid>
+                <Label HorizontalAlignment="Left" Height="auto" VerticalAlignment="Center" Width="auto" Background="Tan" Margin="30,0,0,0">Your wallet's value:</Label>
+                <ListBox x:Name="Money" HorizontalAlignment="Left" Height="auto" VerticalAlignment="Center" Width="auto" Margin="150,0,0,0" Background="Tan"/>
+            </Grid>
+            
         </Border>
         <Border BorderBrush="Black" Background="BurlyWood" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="448,87,0,0" VerticalAlignment="Top" Width="280">
             <Border.Resources>
