@@ -156,10 +156,10 @@ E:\C#_projects\source\repos\final\.NET-Java\APP\APP\obj\Debug\NewContactWindow.b
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP\obj\Debug\NotificationWindow.baml
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP\obj\Debug\SimulateWindow.baml
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP\obj\Debug\APP.g.resources
-E:\C#_projects\source\repos\final\.NET-Java\APP\APP\obj\Debug\APP.Migrations.InitialMigration.resources
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP\obj\Debug\APP.Properties.Resources.resources
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP\obj\Debug\APP.csproj.GenerateResource.cache
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP\obj\Debug\APP.csproj.CoreCompileInputs.cache
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP\obj\Debug\APP.csproj.CopyComplete
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP\obj\Debug\APP.exe
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP\obj\Debug\APP.pdb
+E:\C#_projects\source\repos\final\.NET-Java\APP\APP\obj\Debug\APP.Migrations.InitialCreate.resources

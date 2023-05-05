@@ -23,7 +23,7 @@
             <ListBox x:Name ="ContactsList2" Background="LightGray" BorderBrush="#FF050505" Height="266" VerticalAlignment="Center" HorizontalAlignment="Center" Width="280"/>
         </Border>
         <Border BorderThickness="1" BorderBrush="Black" Width="60" Height="26" HorizontalAlignment="Left" Margin="552,139,0,269" Background="BurlyWood">
-            <TextBox Name="NameTextBox" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="Name" VerticalAlignment="Center" TextChanged="NameTextBox_TextChanged" TextAlignment="Center" Background="BurlyWood"/>
+            <TextBlock Name="NameTextBox" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="Name" VerticalAlignment="Center" TextAlignment="Center" Background="BurlyWood"/>
         </Border>
         <TextBox Name="YouPayBox" HorizontalAlignment="Left" Height="19" Margin="602,247,0,0" TextWrapping="Wrap" Text=" ---" VerticalAlignment="Top" Width="150" TextChanged="NameTextBox_TextChanged" TextAlignment="Center" Background="LightGray"/>
         <TextBox Name="YouReceiveBox" HorizontalAlignment="Left" Height="18" Margin="400,247,0,0" TextWrapping="Wrap" Text="+++" VerticalAlignment="Top" Width="150" TextChanged="NameTextBox_TextChanged" TextAlignment="Center" Background="LightGray"/>

@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialMigration : DbMigration
+    public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {
@@ -47,6 +47,17 @@
                 .ForeignKey("dbo.People", t => t.PersonID, cascadeDelete: true)
                 .Index(t => t.PersonID);
             
+            CreateTable(
+                "dbo.Wallets",
+                c => new
+                    {
+                        WalletID = c.Int(nullable: false, identity: true),
+                        E_Mail = c.String(),
+                        PhoneNumber = c.String(),
+                        Value = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.WalletID);
+            
         }
         
         public override void Down()
@@ -55,6 +66,7 @@
             DropForeignKey("dbo.LoanGranteds", "PersonID", "dbo.People");
             DropIndex("dbo.LoanObtaineds", new[] { "PersonID" });
             DropIndex("dbo.LoanGranteds", new[] { "PersonID" });
+            DropTable("dbo.Wallets");
             DropTable("dbo.LoanObtaineds");
             DropTable("dbo.People");
             DropTable("dbo.LoanGranteds");
