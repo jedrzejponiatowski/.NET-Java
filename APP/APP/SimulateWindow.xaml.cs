@@ -60,6 +60,9 @@ namespace APP
             int ID = int.Parse(IDstring);
 
             var context = new PaymentsContext();
+            var sum = int.Parse(SumBox.Text.Trim());
+            
+            context.ChangeWalletValue(context.GetWalletWithID(1), context.GetValue(1) + sum);
 
             IList<LoanGranted> lGranted;
             lGranted = context.LoansGranted.ToList();
@@ -82,7 +85,6 @@ namespace APP
                     context.DeleteLoanObtained(loan);
                 }
             }
-
             this.Close();
         }
         /// <summary>
@@ -130,16 +132,9 @@ namespace APP
                 }
             }
             YouPayBox.Text = lObtainedCounter.ToString();
-        }
-        /// <summary>
-        /// Sums loans values
-        /// </summary>
-        /// <param name="ObtainedSum">Sum of loans in plus</param>
-        /// <param name="GainedSum">Sum of loans in minus</param>
-        /// <returns>Value of the </returns>
-        int SumLoans(int ObtainedSum, int GainedSum)
-        {
-            return ObtainedSum + GainedSum;
+            var result = lGrantedCounter - lObtainedCounter;
+
+            SumBox.Text = result.ToString();
         }
     }
 }

@@ -125,14 +125,6 @@
             <param name="sender">Automated parameter from WPF</param>
             <param name="e">Automatic parameter. In this situation is NULL</param>
         </member>
-        <member name="M:APP.SimulateWindow.SumLoans(System.Int32,System.Int32)">
-            <summary>
-            Sums loans values
-            </summary>
-            <param name="ObtainedSum">Sum of loans in plus</param>
-            <param name="GainedSum">Sum of loans in minus</param>
-            <returns>Value of the </returns>
-        </member>
         <member name="M:APP.SimulateWindow.InitializeComponent">
             <summary>
             InitializeComponent
