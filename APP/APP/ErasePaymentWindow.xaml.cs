@@ -15,10 +15,14 @@ using System.Windows.Shapes;
 namespace APP
 {
     /// <summary>
-    /// Logika interakcji dla klasy ErasePaymentWindow.xaml
+    /// Interaction logic for ErasePaymentWindow.xaml
     /// </summary>
     public partial class ErasePaymentWindow : Window
     {
+        /// <summary>
+        /// Set up when opened. Creates connection to DB
+        /// and lists all payments
+        /// </summary>
         public ErasePaymentWindow()
         {
             InitializeComponent();
@@ -45,7 +49,11 @@ namespace APP
             }
             ObtainedList_EPW.ItemsSource = ObtainedOutput;
         }
-
+        /// <summary>
+        /// Takes selected loan and deletes it from table
+        /// </summary>
+        /// <param name="sender">Automated parameter from WPF</param>
+        /// <param name="e">Automatic parameter. In this situation is NULL</param>
         private void BtnErase(object sender, RoutedEventArgs e)
         {
             var context = new PaymentsContext();
@@ -66,7 +74,11 @@ namespace APP
 
             this.Close();
         }
-
+        /// <summary>
+        /// Closes window.
+        /// </summary>
+        /// <param name="sender">Automated parameter from WPF</param>
+        /// <param name="e">Automatic parameter. In this situation is NULL</param>
         private void BtnExit(object sender, RoutedEventArgs e)
         {
             this.Close();

@@ -5,46 +5,74 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:APP"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
-    <Grid>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="41" Margin="0,21,0,0" VerticalAlignment="Top" Width="656">
-            <TextBox HorizontalAlignment="Center" Height="auto"  TextWrapping="Wrap" Text="Bilans" VerticalAlignment="Center" Width="auto" TextChanged="TextBox_TextChanged"/>
-        </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="448,87,0,0" VerticalAlignment="Top" Width="280">
-            <Label Content="MENU" HorizontalAlignment="Center" Height="auto" VerticalAlignment="Center" Width="auto" FontSize="16" FontStyle="Oblique" FontWeight="Bold" />
-        </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="72,87,0,0" VerticalAlignment="Top" Width="164">
-            <Label Content="Loans in plus" HorizontalAlignment="Center" Height="auto" VerticalAlignment="Center" Width="auto" FontSize="16" FontStyle="Oblique" FontWeight="Bold" />
-        </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="236,87,0,0" VerticalAlignment="Top" Width="164">
-            <Label Content="Loans in minus" HorizontalAlignment="Center" Height="auto" VerticalAlignment="Center" Width="auto" FontSize="16" FontStyle="Oblique" FontWeight="Bold" />
-        </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="400" Margin="72,128,0,0" VerticalAlignment="Top" Width="164">
-            <ListBox x:Name="GrantedList" HorizontalAlignment="Left" Height="400" Margin="0,0,0,0" VerticalAlignment="Top" Width="164" />
-
-        </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="400" Margin="236,128,0,0" VerticalAlignment="Top" Width="164">
-            <ListBox x:Name="ObtainsList" HorizontalAlignment="Center" Height="400" VerticalAlignment="Center" Width="164"/>
-
-        </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="220" Margin="448,128,0,0" VerticalAlignment="Top" Width="280">
+        Title="Check your loan" Height="575" Width="800">
+    <Grid Background="DarkGray" Margin="0,0,0,0">
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="72,23,0,0" VerticalAlignment="Top" Width="328" Background="BurlyWood">
+            <Border.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"></Setter>
+                </Style>
+            </Border.Resources>
             <Grid>
-                <Button x:Name="B1" Content="Add Payment" HorizontalAlignment="Center" Height="25" Margin="0,5,0,0" VerticalAlignment="Top" Width="249" Click="btnAddCont"/>
-                <Button x:Name="B2" Content="Erase Payment" HorizontalAlignment="Center" Height="25" Margin="0,35,0,0" VerticalAlignment="Top" Width="249" Click="btnErasePayment"/>
-                <Button x:Name="B3" Content="Simulate" HorizontalAlignment="Center" Height="25" Margin="0,65,0,0" VerticalAlignment="Top" Width="249" />
-                <Button x:Name="B4" Content="Add Contact" HorizontalAlignment="Center" Height="25" Margin="0,95,0,0" VerticalAlignment="Top" Width="249" Click="BtnAddContact"/>
-                <Button x:Name="B5" Content="Erase Contact" HorizontalAlignment="Center" Height="25" Margin="0,125,0,0" VerticalAlignment="Top" Width="249" Click="BtnEraseContact" />
-                <Button x:Name="B6" Content="Button6" HorizontalAlignment="Center" Height="25" Margin="0,155,0,0" VerticalAlignment="Top" Width="249" />
-                <Button x:Name="B7" Content="Button7" HorizontalAlignment="Center" Height="25" Margin="0,185,0,0" VerticalAlignment="Top" Width="249" />
+                <Label HorizontalAlignment="Left" Height="auto" VerticalAlignment="Center" Width="auto" Background="Tan" Margin="30,0,0,0">Your wallet's value:</Label>
+                <ListBox x:Name="Money" HorizontalAlignment="Left" Height="auto" VerticalAlignment="Center" Width="auto" Margin="150,0,0,0" Background="Tan"/>
             </Grid>
 
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="448,360,0,0" VerticalAlignment="Top" Width="280">
+        <Border BorderBrush="Black" Background="BurlyWood" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="448,23,0,0" VerticalAlignment="Top" Width="280">
+            <Border.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10,10,0,0"></Setter>
+                </Style>
+            </Border.Resources>
+            <Label Content="MENU" HorizontalAlignment="Center" Height="auto" VerticalAlignment="Center" Width="auto" FontSize="16" FontStyle="Oblique" FontWeight="Bold" />
+        </Border>
+        <Border BorderBrush="Black" Background="BurlyWood" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="72,87,0,0" VerticalAlignment="Top" Width="164">
+            <Border.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10,0,0,0"></Setter>
+                </Style>
+            </Border.Resources>
+            <Label Content="Loans in plus" HorizontalAlignment="Center" Height="auto" VerticalAlignment="Center" Width="auto" FontSize="16" FontStyle="Oblique" FontWeight="Bold" />
+        </Border>
+        <Border BorderBrush="Black" Background="BurlyWood" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="236,87,0,0" VerticalAlignment="Top" Width="164">
+            <Border.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="0,10,0,0"></Setter>
+                </Style>
+            </Border.Resources>
+            <Label Content="Loans in minus" HorizontalAlignment="Right" Height="auto" VerticalAlignment="Center" Width="auto" FontSize="16" FontStyle="Oblique" FontWeight="Bold" Margin="0,0,20,0" />
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="400" Margin="72,128,0,0" VerticalAlignment="Top" Width="164">
+            <ListBox x:Name="GrantedList" HorizontalAlignment="Left" Height="400" Margin="0,0,0,0" VerticalAlignment="Top" Width="164" Background="LightGray"/>
+
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="400" Margin="236,128,0,0" VerticalAlignment="Top" Width="164">
+            <ListBox x:Name="ObtainsList" HorizontalAlignment="Center" Height="400" VerticalAlignment="Center" Width="164" Background="LightGray"/>
+
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="223" Margin="448,64,0,0" VerticalAlignment="Top" Width="280">
+            <Grid Background="LightGray" Margin="1,1,1,1">
+                <Button x:Name="B1" Content="Add Payment" Background="Tan" HorizontalAlignment="Center" Height="25" Margin="0,5,0,0" VerticalAlignment="Top" Width="250" Click="btnAddCont"/>
+                <Button x:Name="B2" Content="Erase Payment" Background="Tan" HorizontalAlignment="Center" Height="25" Margin="0,35,0,0" VerticalAlignment="Top" Width="250" Click="btnErasePayment"/>
+                <Button x:Name="B3" Content="Simulate" Background="Tan" HorizontalAlignment="Center" Height="25" Margin="0,65,0,0" VerticalAlignment="Top" Width="250" Click="btnSimulate" />
+                <Button x:Name="B4" Content="Add Contact" Background="Tan" HorizontalAlignment="Center" Height="25" Margin="0,95,0,0" VerticalAlignment="Top" Width="250" Click="BtnAddContact"/>
+                <Button x:Name="B5" Content="Erase Contact" Background="Tan" HorizontalAlignment="Center" Height="25" Margin="0,125,0,0" VerticalAlignment="Top" Width="250" Click="BtnEraseContact" Grid.RowSpan="2" />
+                <Button x:Name="B6" Content="Notification"  Background="Tan" HorizontalAlignment="Center" Height="25" Margin="0,155,0,0" VerticalAlignment="Top" Width="250" Click="BtnNotification" Grid.RowSpan="2" />
+                <Button x:Name="B7" Content="My data"  Background="Tan" HorizontalAlignment="Center" Height="25" Margin="0,185,0,0" VerticalAlignment="Top" Width="250" Click="BtnMyData" />
+            </Grid>
+
+        </Border>
+        <Border BorderBrush="Black" Background="BurlyWood" BorderThickness="1" HorizontalAlignment="Left" Height="40" Margin="448,308,0,0" VerticalAlignment="Top" Width="280">
+            <Border.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10,10,0,0"></Setter>
+                </Style>
+            </Border.Resources>
             <Label Content="CONTACTS" HorizontalAlignment="Center" Height="auto" VerticalAlignment="Center" Width="auto" FontSize="16" FontStyle="Oblique" FontWeight="Bold" />
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="127" Margin="448,401,0,0" VerticalAlignment="Top" Width="280">
-            <ListBox x:Name ="ContactsList" Margin="-1,-1,-1,-1"/>
-
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="180" Margin="448,348,0,0" VerticalAlignment="Top" Width="280">
+            <ListBox x:Name ="ContactsList" Margin="0,0,0,0" Background="LightGray"/>
         </Border>
 
 

@@ -1,0 +1,32 @@
+﻿<Window x:Class="APP.MyData"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:APP"
+        mc:Ignorable="d"
+        Title="MyData" Height="411" Width="421">
+    <Grid Background="DarkGray" Margin="0,0,-18,-16">
+        <Button Content="Change Value" HorizontalAlignment="Left" Height="27" Margin="231,203,0,0" VerticalAlignment="Top" Width="102" Click="BtnChangeValue"/>
+        <Button Content="Exit" HorizontalAlignment="Left" Height="27" Margin="53,203,0,0" VerticalAlignment="Top" Width="109" Click="BtnExit"/>
+
+        <Border BorderBrush="Black" Background="BurlyWood" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="53,32,0,0" VerticalAlignment="Top" Width="280">
+            <Border.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10,10,0,0"></Setter>
+                </Style>
+            </Border.Resources>
+            <Label Content="MyData" HorizontalAlignment="Center" Height="auto" VerticalAlignment="Center" Width="auto" FontSize="16" FontStyle="Oblique" FontWeight="Bold" />
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="57" Margin="53,73,0,0" VerticalAlignment="Top" Width="280">
+            <ListBox x:Name ="Wallets" Background="LightGray" Margin="0,0,0,0"/>
+        </Border>
+        <Border BorderBrush="Black" Background="BurlyWood" BorderThickness="1" HorizontalAlignment="Left" Height="40" Margin="53,144,0,208" Width="109">
+            <Label Content="New Value: " HorizontalAlignment="Center" Height="auto" VerticalAlignment="Center" Width="auto" RenderTransformOrigin="0.5,0.5" >
+            </Label>
+        </Border>
+        <TextBox x:Name="TextBoxValue" Background="LightGray" HorizontalAlignment="Left" Height="18" Margin="231,155,0,0" TextWrapping="Wrap" 
+            Text="PLN" VerticalAlignment="Top" Width="102"/>
+
+    </Grid>
+</Window>

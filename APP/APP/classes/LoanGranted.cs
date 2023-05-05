@@ -7,8 +7,12 @@ using System.Threading.Tasks;
 
 namespace APP
 {
+    /// <summary>
+    /// LoanGranted object definition for LoansGranted table
+    /// </summary>
     public class LoanGranted
     {
+
         public int LoanGrantedID { get; set; }
         public int LoanSize { get; set; }
         public string DateOfIssue { get; set; }
