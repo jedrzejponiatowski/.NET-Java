@@ -163,3 +163,5 @@ E:\C#_projects\source\repos\final\.NET-Java\APP\APP\obj\Debug\APP.csproj.CopyCom
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP\obj\Debug\APP.exe
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP\obj\Debug\APP.pdb
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP\obj\Debug\APP.Migrations.InitialCreate.resources
+E:\C#_projects\source\repos\final\.NET-Java\APP\APP\obj\Debug\MyData.g.cs
+E:\C#_projects\source\repos\final\.NET-Java\APP\APP\obj\Debug\MyData.baml

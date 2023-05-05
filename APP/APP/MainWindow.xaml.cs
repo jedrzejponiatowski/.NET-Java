@@ -51,7 +51,7 @@ namespace APP
             ContactsList.ItemsSource = context.TakeAllPersons();
             GrantedList.ItemsSource = context.TakeAllGrants();
             ObtainsList.ItemsSource = context.TakeAllObtains();
-            Money.ItemsSource = context.GetValue(context.GetWalletWithID(1));
+            Money.ItemsSource = context.GetValues();
         }
         /// <summary>
         /// Definition of click action on button AddPayment.
@@ -124,6 +124,13 @@ namespace APP
         private void BtnNotification(object sender, RoutedEventArgs e)
         {
             NotificationWindow win2 = new NotificationWindow();
+            win2.ShowDialog();
+            MainWindowRefresh();
+        }
+
+        private void BtnMyData(object sender, RoutedEventArgs e)
+        {
+            MyData win2 = new MyData();
             win2.ShowDialog();
             MainWindowRefresh();
         }

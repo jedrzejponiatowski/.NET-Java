@@ -9,6 +9,39 @@
             Wallet object definition for Wallets table
             </summary>
         </member>
+        <member name="T:APP.MyData">
+            <summary>
+            Interaction logic for MyData.xaml
+            </summary>
+            <summary>
+            MyData
+            </summary>
+        </member>
+        <member name="M:APP.MyData.#ctor">
+            <summary>
+            Set up when opened. Creates connection to DB
+            and lists all wallets
+            </summary>
+        </member>
+        <member name="M:APP.MyData.BtnExit(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Closes window.
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.MyData.BtnChangeValue(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Changes value of the wallet
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.MyData.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:APP.NotificationWindow">
             <summary>
             Interaction logic for NotificationWindow.xaml
@@ -493,12 +526,24 @@
             <param name="ID">ID of the wallet looked for</param>
             <returns>Returns first Wallet object with matched given ID</returns>
         </member>
-        <member name="M:APP.PaymentsContext.GetValue(APP.Wallet)">
+        <member name="M:APP.PaymentsContext.GetValues">
             <summary>
             Part of user interface to acces Wallets table
             </summary>
-            <param name="wallet">Wallet object which value to get</param>
             <returns>Value of the given wallet</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.TakeAllWallets">
+            <summary>
+            Part of user interface to acces LoansObtained table
+            </summary>
+            <returns>Returns list of all objects in LoansObtained table</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.GetValue(System.Int32)">
+            <summary>
+            Part of user interface for database
+            </summary>
+            <param name="ID">ID of the Wallet with needed value</param>
+            <returns>Returns value of the wallet with given ID</returns>
         </member>
         <member name="T:APP.Person">
             <summary>

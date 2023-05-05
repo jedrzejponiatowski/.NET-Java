@@ -299,17 +299,40 @@ namespace APP
         /// <summary>
         /// Part of user interface to acces Wallets table
         /// </summary>
-        /// <param name="wallet">Wallet object which value to get</param>
         /// <returns>Value of the given wallet</returns>
-        public IList<int> GetValue(Wallet wallet)
+        public IList<string> GetValues()
         {
-            IList<int> valueOutput = new List<int>();
+            IList<string> valueOutput = new List<string>();
             var list = Wallets.ToList();
             foreach (var item in list)
             {
-                valueOutput.Add(item.Value);
+                valueOutput.Add($"{item.Value}PLN");
             }
             return valueOutput;
+        }
+        /// <summary>
+        /// Part of user interface to acces LoansObtained table
+        /// </summary>
+        /// <returns>Returns list of all objects in LoansObtained table</returns>
+        public IList<string> TakeAllWallets()
+        {
+            IList<Wallet> lWallet;
+            IList<string> result = new List<string>();
+            lWallet = Wallets.ToList();
+            foreach (var tmp in lWallet)
+            {
+                result.Add($"{tmp.WalletID}.{tmp.PhoneNumber}: {tmp.Value}PLN");
+            }
+            return result;
+        }
+        /// <summary>
+        /// Part of user interface for database
+        /// </summary>
+        /// <param name="ID">ID of the Wallet with needed value</param>
+        /// <returns>Returns value of the wallet with given ID</returns>
+        public int GetValue(int ID)
+        {
+            return GetWalletWithID((int)ID).Value;
         }
     }
 
