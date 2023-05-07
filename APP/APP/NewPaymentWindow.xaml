@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:APP"
         mc:Ignorable="d"
-        Title="NewLoan" Height="384" Width="629">
+        Title="NewLoan" Height="384" Width="629"
+        ResizeMode="NoResize">
 
     <Grid Background="DarkGray" Height="445" VerticalAlignment="Top">
         <Grid.RowDefinitions>

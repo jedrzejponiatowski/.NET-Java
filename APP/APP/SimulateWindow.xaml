@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:APP"
         mc:Ignorable="d"
-        Title="SimulateWindow" Height="487" Width="858">
+        Title="SimulateWindow" Height="487" Width="858"
+        ResizeMode="NoResize">
     <Grid Background="DarkGray" Margin="0,0,-16,-31">
         <Button Content="Simulate" HorizontalAlignment="Left" Height="32" Margin="621,348,0,0" VerticalAlignment="Top" Width="112" Click="BtnSimulate" Grid.ColumnSpan="2"/>
         <Button Content="Exit" HorizontalAlignment="Left" Height="34" Margin="422,348,0,0" VerticalAlignment="Top" Width="112" Click="BtnExit"/>

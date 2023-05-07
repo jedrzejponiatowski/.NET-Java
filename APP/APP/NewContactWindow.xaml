@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:APP"
         mc:Ignorable="d"
-        Title="NewContact" Height="230" Width="400">
+        Title="NewContact" Height="230" Width="400"
+        ResizeMode="NoResize">
     <Grid Background="DarkGray">
         <Button Content="Submit" Background="Tan" HorizontalAlignment="Left" Height="39" Margin="81,130,0,0" VerticalAlignment="Top" Width="102" Click="BtnSubmit"/>
         <Button Content="Exit" Background="Tan" HorizontalAlignment="Left" Height="39" Margin="240,130,0,0" VerticalAlignment="Top" Width="102" Click="BtnExit"/>

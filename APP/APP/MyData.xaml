@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:APP"
         mc:Ignorable="d"
-        Title="MyData" Height="411" Width="421">
+        Title="MyData" Height="411" Width="421"
+        ResizeMode="NoResize">
     <Grid Background="DarkGray" Margin="0,0,-18,-16">
         <Button Content="Change Value" HorizontalAlignment="Left" Height="27" Margin="231,203,0,0" VerticalAlignment="Top" Width="102" Click="BtnChangeValue"/>
         <Button Content="Exit" HorizontalAlignment="Left" Height="27" Margin="53,203,0,0" VerticalAlignment="Top" Width="109" Click="BtnExit"/>
