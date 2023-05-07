@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace APP
 {
+    /// <summary>
+    /// Person object definition for Persons table
+    /// </summary>
     public class Person
     {
         public int ID { get; set; }

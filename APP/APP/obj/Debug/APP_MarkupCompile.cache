@@ -10,11 +10,19 @@ none
 false
 DEBUG;TRACE
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP\App.xaml
+<<<<<<< HEAD
 5830776297
 
 161148961187
 18622193833
 ErasePaymentWindow.xaml;NewPaymentWindow.xaml;EraseContactWindow.xaml;MainWindow.xaml;NewContactWindow.xaml;
+=======
+8-502529916
+
+201569102685
+212043899667
+ErasePaymentWindow.xaml;MyData.xaml;NewPaymentWindow.xaml;EraseContactWindow.xaml;MainWindow.xaml;NewContactWindow.xaml;NotificationWindow.xaml;SimulateWindow.xaml;
+>>>>>>> 826f99a7cc1dfe892c39aabbe4f78f9dfe2b50c6
 
 True
 

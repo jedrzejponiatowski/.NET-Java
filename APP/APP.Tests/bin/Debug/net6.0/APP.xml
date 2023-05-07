@@ -1,0 +1,562 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>APP</name>
+    </assembly>
+    <members>
+        <member name="T:APP.Wallet">
+            <summary>
+            Wallet object definition for Wallets table
+            </summary>
+        </member>
+        <member name="T:APP.MyData">
+            <summary>
+            Interaction logic for MyData.xaml
+            </summary>
+            <summary>
+            MyData
+            </summary>
+        </member>
+        <member name="M:APP.MyData.#ctor">
+            <summary>
+            Set up when opened. Creates connection to DB
+            and lists all wallets
+            </summary>
+        </member>
+        <member name="M:APP.MyData.BtnExit(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Closes window.
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.MyData.BtnChangeValue(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Changes value of the wallet
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.MyData.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:APP.NotificationWindow">
+            <summary>
+            Interaction logic for NotificationWindow.xaml
+            </summary>
+            <summary>
+            NotificationWindow
+            </summary>
+        </member>
+        <member name="M:APP.NotificationWindow.#ctor">
+            <summary>
+            Set up when opened. Creates connection to DB
+            and lists all contacts
+            </summary>
+        </member>
+        <member name="M:APP.NotificationWindow.BtnSend(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Handling external API to send an email to selected contact on click
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.NotificationWindow.BtnExit(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Closes window.
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.NotificationWindow.BtnCheck(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Takes selected contact and sums up all loans by it
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.NotificationWindow.Execute(SendGrid.Helpers.Mail.SendGridMessage)">
+            <summary>
+            Connection with API and wait for the response
+            </summary>
+            <param name="msg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:APP.NotificationWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:APP.SimulateWindow">
+            <summary>
+            Interaction logic for SimulateWindow.xaml
+            </summary>
+            <summary>
+            SimulateWindow
+            </summary>
+        </member>
+        <member name="M:APP.SimulateWindow.#ctor">
+            <summary>
+            Set up when opened. Creates connection to DB
+            and lists all contacts
+            </summary>
+        </member>
+        <member name="M:APP.SimulateWindow.BtnExit(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Closes window.
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.SimulateWindow.BtnSimulate(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Takes selected contact and deletes all loans connected to it,
+            then change value of the wallet
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.SimulateWindow.BtnCheck(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Takes selected contact and sums up all loans by it
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.SimulateWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:APP.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:APP.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:APP.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:APP.ErasePaymentWindow">
+            <summary>
+            Interaction logic for ErasePaymentWindow.xaml
+            </summary>
+            <summary>
+            ErasePaymentWindow
+            </summary>
+        </member>
+        <member name="M:APP.ErasePaymentWindow.#ctor">
+            <summary>
+            Set up when opened. Creates connection to DB
+            and lists all payments
+            </summary>
+        </member>
+        <member name="M:APP.ErasePaymentWindow.BtnErase(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Takes selected loan and deletes it from table
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.ErasePaymentWindow.BtnExit(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Closes window.
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.ErasePaymentWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:APP.NewPaymentWindow">
+            <summary>
+            Interaction logic for CFormWindow.xaml
+            </summary>
+            <summary>
+            NewPaymentWindow
+            </summary>
+        </member>
+        <member name="M:APP.NewPaymentWindow.#ctor">
+            <summary>
+            Set up when opened. Creates connection to DB
+            and lists all contacts
+            </summary>
+        </member>
+        <member name="M:APP.NewPaymentWindow.BtnSubmit(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Takes selected contact and filled form data
+            to add loan to selected table
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.NewPaymentWindow.BtnExit(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Closes window.
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.NewPaymentWindow.DatePicker_SelectedDateChangedIssue(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Handling first date picker for WPF window
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.NewPaymentWindow.DatePicker_SelectedDateChangedExpire(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Handling second date picker for WPF window
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.NewPaymentWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:APP.EraseContactWindow">
+            <summary>
+            Interaction logic for EraseContactWindow.xaml
+            </summary>
+            <summary>
+            EraseContactWindow
+            </summary>
+        </member>
+        <member name="M:APP.EraseContactWindow.#ctor">
+            <summary>
+            Set up when opened. Creates connection to DB
+            and lists all contacts
+            </summary>
+        </member>
+        <member name="M:APP.EraseContactWindow.BtnEraseContact(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Takes selected contact and deletes it from table Persons
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.EraseContactWindow.BtnExit(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Closes window.
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.EraseContactWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:APP.LoanGranted">
+            <summary>
+            LoanGranted object definition for LoansGranted table
+            </summary>
+        </member>
+        <member name="T:APP.LoanObtained">
+            <summary>
+            LoanObtained object definition for LoansObtained table
+            </summary>
+        </member>
+        <member name="T:APP.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:APP.MainWindow.#ctor">
+            <summary>
+            Statement of the main window of aplication
+            </summary>
+        </member>
+        <member name="M:APP.MainWindow.MainWindowRefresh">
+            <summary>
+            Reloads all data from database that is shown at main window
+            </summary>
+        </member>
+        <member name="M:APP.MainWindow.btnAddCont(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Definition of click action on button AddPayment.
+            Opens form window to add contacts.
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.MainWindow.BtnAddContact(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Definition of click action on button AddContact.
+            Opens form window to add contacts.
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.MainWindow.BtnEraseContact(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Definition of click action on button EraseContact.
+            Opens form window to erase contacts.
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.MainWindow.btnErasePayment(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Definition of click action on button ErasePayment.
+            Opens form window to erase contacts.
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.MainWindow.btnSimulate(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Definition of click action on button Simulate.
+            Opens form window to simulate and pay loans by contact.
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.MainWindow.BtnNotification(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Definition of click action on button Notification.
+            Opens form window to send emails to contacts.
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:APP.NewContactWindow">
+            <summary>
+            Interaction logic for NewContactWindow.xaml
+            </summary>
+            <summary>
+            NewContactWindow
+            </summary>
+        </member>
+        <member name="M:APP.NewContactWindow.#ctor">
+            <summary>
+            Set up window when opened
+            </summary>
+        </member>
+        <member name="M:APP.NewContactWindow.BtnSubmit(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Takes data from form and adds it to database
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.NewContactWindow.BtnExit(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Closes window.
+            </summary>
+            <param name="sender">Automated parameter from WPF</param>
+            <param name="e">Automatic parameter. In this situation is NULL</param>
+        </member>
+        <member name="M:APP.NewContactWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:APP.PaymentsContext">
+            <summary>
+            Model of the local database
+            </summary>
+        </member>
+        <member name="M:APP.PaymentsContext.#ctor">
+            <summary>
+            Parameterless constructor of the database
+            </summary>
+            <returns>New database object with seed data set by initializer</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.AddNewPerson(APP.Person)">
+            <summary>
+            Adds new person to the table Persons
+            </summary>
+            <param name="person">An entity Person object to add</param>
+        </member>
+        <member name="M:APP.PaymentsContext.DeletePerson(APP.Person)">
+            <summary>
+            Deletes given person
+            </summary>
+            <param name="person">An entity Person object to delete</param>
+        </member>
+        <member name="M:APP.PaymentsContext.GetFirstPerson">
+            <summary>
+            Part of user interface to acces Persons table
+            </summary>
+            <returns>Returns first Person object from the Persons table</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.GetPerson(System.String,System.String)">
+            <summary>
+            Part of user interface to acces Persons table
+            </summary>
+            <param name="firstName">First name of the person looked for</param>
+            <param name="lastName">Last name of the person looked for</param>
+            <returns>Returns first Person object with matched given keys</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.GetPersonWithID(System.Int32)">
+            <summary>
+            Part of user interface to acces Persons table
+            </summary>
+            <param name="ID">ID of the person looked for</param>
+            <returns>Returns first Person object with matched given ID</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.AddNewLoanGranted(APP.LoanGranted)">
+            <summary>
+            Adds new loan to LoansGranted table
+            </summary>
+            <param name="loan">LoanGranted object to add</param>
+        </member>
+        <member name="M:APP.PaymentsContext.GetFirstLoanGranted">
+            <summary>
+            Part of user interface to acces LoansGranted table
+            </summary>
+            <returns>Returns first LoanGranted object from table</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.GetLoanGrantedwithID(System.Int32)">
+            <summary>
+            Part of user interface to acces LoansGranted table
+            </summary>
+            <param name="ID">ID of the loan looked for</param>
+            <returns>Returns first LoanGranted object with matched given ID</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.GetLoanObtainedwithID(System.Int32)">
+            <summary>
+            Part of user interface to acces LoansObtained table
+            </summary>
+            <param name="ID">ID of the loan looked for</param>
+            <returns>Returns first LoanObtained object with matched given ID</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.DeleteLoanGranted(APP.LoanGranted)">
+            <summary>
+            Deletes given loan
+            </summary>
+            <param name="loan">LoanGranted object to be deleted</param>
+        </member>
+        <member name="M:APP.PaymentsContext.DeleteLoanObtained(APP.LoanObtained)">
+            <summary>
+            Deletes given loan
+            </summary>
+            <param name="loan">LoanObtained object to be deleted</param>
+        </member>
+        <member name="M:APP.PaymentsContext.AddNewLoanObtained(APP.LoanObtained)">
+            <summary>
+            Adds new loan
+            </summary>
+            <param name="loan">LoanObtained object to add</param>
+        </member>
+        <member name="M:APP.PaymentsContext.PrintAllPersons">
+            <summary>
+            Creates list of all objects in Persons table
+            and prints it in human readable format.
+            </summary>
+        </member>
+        <member name="M:APP.PaymentsContext.PrintAllLoans">
+            <summary>
+            Creates two list of all objects in LoansGranted and LoansObtained tables
+            and prints them in human readable format.
+            </summary>
+        </member>
+        <member name="T:APP.PaymentsContext.PaymentsDBInitializer">
+            <summary>
+            Class of database initializer used to create seed for aplication testing
+            </summary>
+        </member>
+        <member name="M:APP.PaymentsContext.TakeAllPersons">
+            <summary>
+            Part of user interface to acces Persons table
+            </summary>
+            <returns>Return list of all objects in Persons table</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.TakeAllGrants">
+            <summary>
+            Part of user interface to acces LoansGranted table
+            </summary>
+            <returns>Returns list of all objects in LoansGranted table</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.TakeAllObtains">
+            <summary>
+            Part of user interface to acces LoansObtained table
+            </summary>
+            <returns>Returns list of all objects in LoansObtained table</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.AddNewWallet(APP.Wallet)">
+            <summary>
+            Adds new wallet to the table Wallets
+            </summary>
+            <param name="wallet">An entity Wallet object to add</param>
+        </member>
+        <member name="M:APP.PaymentsContext.ChangeWalletValue(APP.Wallet,System.Int32)">
+            <summary>
+            Changes given wallet value
+            </summary>
+            <param name="wallet">Wallet object to be changed</param>
+            <param name="value">Value to be inserted</param>
+        </member>
+        <member name="M:APP.PaymentsContext.GetWalletWithID(System.Int32)">
+            <summary>
+            Part of user interface to acces Wallets table
+            </summary>
+            <param name="ID">ID of the wallet looked for</param>
+            <returns>Returns first Wallet object with matched given ID</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.GetValues">
+            <summary>
+            Part of user interface to acces Wallets table
+            </summary>
+            <returns>Value of the given wallet</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.TakeAllWallets">
+            <summary>
+            Part of user interface to acces LoansObtained table
+            </summary>
+            <returns>Returns list of all objects in LoansObtained table</returns>
+        </member>
+        <member name="M:APP.PaymentsContext.GetValue(System.Int32)">
+            <summary>
+            Part of user interface for database
+            </summary>
+            <param name="ID">ID of the Wallet with needed value</param>
+            <returns>Returns value of the wallet with given ID</returns>
+        </member>
+        <member name="T:APP.Person">
+            <summary>
+            Person object definition for Persons table
+            </summary>
+        </member>
+        <member name="T:APP.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:APP.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:APP.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

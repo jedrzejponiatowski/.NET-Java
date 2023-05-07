@@ -22,7 +22,10 @@ namespace APP
         private bool loanGranted = true; 
         private string dateOfIssue = null;
         private string dateOfExpire = null;
-
+        /// <summary>
+        /// Set up when opened. Creates connection to DB
+        /// and lists all contacts
+        /// </summary>
         public NewPaymentWindow()
         {
             InitializeComponent();
@@ -40,7 +43,12 @@ namespace APP
         {
             loanGranted = false;
         }
-
+        /// <summary>
+        /// Takes selected contact and filled form data
+        /// to add loan to selected table
+        /// </summary>
+        /// <param name="sender">Automated parameter from WPF</param>
+        /// <param name="e">Automatic parameter. In this situation is NULL</param>
         private void BtnSubmit(object sender, RoutedEventArgs e)
         {
             var context = new PaymentsContext();
@@ -80,12 +88,20 @@ namespace APP
             context.SaveChanges();
             this.Close();
         }
-
+        /// <summary>
+        /// Closes window.
+        /// </summary>
+        /// <param name="sender">Automated parameter from WPF</param>
+        /// <param name="e">Automatic parameter. In this situation is NULL</param>
         private void BtnExit(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
+        /// <summary>
+        /// Handling first date picker for WPF window
+        /// </summary>
+        /// <param name="sender">Automated parameter from WPF</param>
+        /// <param name="e">Automatic parameter. In this situation is NULL</param>
         private void DatePicker_SelectedDateChangedIssue(object sender, SelectionChangedEventArgs e)
         {
             var picker = sender as DatePicker;
@@ -102,7 +118,11 @@ namespace APP
                 Console.WriteLine(date.Value.ToShortDateString()); 
             }
         }
-
+        /// <summary>
+        /// Handling second date picker for WPF window
+        /// </summary>
+        /// <param name="sender">Automated parameter from WPF</param>
+        /// <param name="e">Automatic parameter. In this situation is NULL</param>
         private void DatePicker_SelectedDateChangedExpire(object sender, SelectionChangedEventArgs e)
         {
             var picker = sender as DatePicker;

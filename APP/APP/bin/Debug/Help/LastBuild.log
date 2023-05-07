@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shfbBuild product="Sandcastle Help File Builder and Tools" version="2023.3.4.0" projectFile="E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\documentation.shfbproj" started="5/5/2023 7:49:43 PM">
+<buildStep step="Initializing">
+The Sandcastle tools are located in &#39;E:\SHFB&#39;
+Locating components in the following folder(s):
+    E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug
+    C:\ProgramData\EWSoftware\Sandcastle Help File Builder\Components and Plug-Ins
+    E:\SHFB\Components
+Using framework reflection data for &#39;.NET Framework 4.7.2&#39; located in &#39;E:\SHFB\Data\.NETFramework&#39;
+Using presentation style &#39;Default2022&#39; located in &#39;E:\SHFB\Components\Default2022&#39;
+Loading and initializing plug-ins...
+Website Table of Contents Generator Version 2023.3.4.0
+Copyright &#169; 2006-2023, Eric Woodruff, All Rights Reserved
+-------------------------------
+Clearing any prior web/markdown output...
+</buildStep>
+<buildStep step="ValidatingDocumentationSources">
+Validating and copying documentation source information
+Source: E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\APP.xml
+Source: E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\APP.exe
+    Found assembly &#39;E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\APP.exe&#39;
+
+Copying XML comments files
+    E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\APP.xml -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\APP.xml
+</buildStep>
+<buildStep step="GenerateSharedContent">
+Generating shared content files (en-US, English (United States))...
+    Last step completed in 00:00:00.0079
+</buildStep>
+<buildStep step="GenerateApiFilter">
+Generating API filter for MRefBuilder...
+    Last step completed in 00:00:00.0169
+</buildStep>
+<buildStep step="GenerateReflectionInfo">
+Generating reflection information...
+[E:\VisualStudio\IDE\MSBuild\Current\Bin\amd64\MSBuild.exe - GenerateRefInfo-ef5398d9-8c51-4297-88ed-959d142bb4c0.proj]
+Build started 5/5/2023 7:49:44 PM.
+Included response file: E:\VisualStudio\IDE\MSBuild\Current\Bin\amd64\MSBuild.rsp
+
+Project &quot;E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\GenerateRefInfo-ef5398d9-8c51-4297-88ed-959d142bb4c0.proj&quot; on node 1 (default targets).
+PrepareForBuild:
+  Creating directory &quot;obj\Debug\&quot;.
+GenerateBindingRedirects:
+  No suggested binding redirects from ResolveAssemblyReferences.
+GenerateRefInfo:
+  Microsoft.Build (v17.5.0+6f08c67f3ed838dccfbcdab91e6bebc54a26fd94)
+  c Microsoft Corporation. All rights reserved.
+  Found a current program database (PDB) file for &#39;E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\APP.exe&#39;.
+  Loaded 1 assemblies for reflection and 1 dependency assemblies.
+  Source code location not found for APP.App
+  Source code location not found for APP.EraseContactWindow
+  Source code location not found for APP.ErasePaymentWindow
+  Source code location not found for APP.LoanGranted
+  Source code location not found for APP.LoanObtained
+  Source code location not found for APP.MainWindow
+  Source code location not found for APP.MyData
+  Source code location not found for APP.NewContactWindow
+  Source code location not found for APP.NewPaymentWindow
+  Source code location not found for APP.NotificationWindow
+  Source code location not found for APP.PaymentsContext
+  Source code location not found for APP.PaymentsContext+PaymentsDBInitializer
+  Source code location not found for APP.Person
+  Source code location not found for APP.SimulateWindow
+  Source code location not found for APP.Wallet
+  Source code location not found for APP.Migrations.InitialCreate
+  Wrote information on 2 namespaces, 16 types, and 78 members
+  Merging duplicate type and member information
+  Merged 0 duplicate type(s) and 0 duplicate member(s)
+Done Building Project &quot;E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\GenerateRefInfo-ef5398d9-8c51-4297-88ed-959d142bb4c0.proj&quot; (default targets).
+    Last step completed in 00:00:02.0633
+</buildStep>
+<buildStep step="ApplyDocumentModel">
+Applying document model to reflection output...
+    Last step completed in 00:00:00.2877
+</buildStep>
+<buildStep step="AddApiTopicFilenames">
+Adding topic filenames to API members...
+    Last step completed in 00:00:00.3120
+</buildStep>
+<buildStep step="GenerateApiTopicManifest">
+Generating API topic manifest...
+    Last step completed in 00:00:00.3211
+</buildStep>
+<buildStep step="GenerateNamespaceSummaries">
+Generating namespace summary information...
+    Last step completed in 00:00:00.1173
+</buildStep>
+<buildStep step="CopyAdditionalContent">
+Copying additional content files...
+No additional content to copy
+    Last step completed in 00:00:00.0030
+</buildStep>
+<buildStep step="MergeTablesOfContents">
+Merging conceptual and additional tables of contents...
+    Last step completed in 00:00:00.0000
+</buildStep>
+<buildStep step="GenerateIntermediateTableOfContents">
+Generating intermediate table of contents file for API content...
+Generating conceptual content intermediate TOC file...
+    Last step completed in 00:00:00.1097
+</buildStep>
+<buildStep step="CreateBuildAssemblerConfigs">
+Creating Sandcastle configuration files...
+    Last step completed in 00:00:00.3487
+</buildStep>
+<buildStep step="CombiningIntermediateTocFiles">
+Combining conceptual and API intermediate TOC files...
+    Last step completed in 00:00:00.0120
+</buildStep>
+<buildStep step="MergeCustomConfigs">
+Merging custom build component configurations
+E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\BuildAssembler.config
+  Updating reference topic configurations.
+  No conceptual content.  Removing conceptual content components.
+    Last step completed in 00:00:00.0219
+</buildStep>
+<buildStep step="BuildTopics">
+Building help topics...
+<plugIn name="Website Table of Contents Generator" behavior="Before" priority="1000">
+Loading TOC info and adding unique IDs to parent nodes
+</plugIn>Loading configuration...
+Processing topics...
+SHFB: Warning BE0066: ShowMissingComponent: [N:APP] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.LoanGranted.DateOfExpiry] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.LoanGranted.DateOfIssue] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.LoanGranted.LoanGrantedID] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.LoanGranted.LoanSize] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.LoanGranted.Person] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.LoanGranted.PersonID] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.LoanObtained.DateOfExpiry] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.LoanObtained.DateOfIssue] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.LoanObtained.LoanObtainedID] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.LoanObtained.LoanSize] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.LoanObtained.Person] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.LoanObtained.PersonID] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.PaymentsContext.LoansGranted] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.PaymentsContext.LoansObtained] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.PaymentsContext.Persons] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.PaymentsContext.Wallets] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [M:APP.PaymentsContext.PaymentsDBInitializer.Seed(APP.PaymentsContext)] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [M:APP.PaymentsContext.PaymentsDBInitializer.Seed(APP.PaymentsContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.Person.E_Mail] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.Person.FirstName] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.Person.ID] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.Person.LastName] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.Person.PhoneNumber] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.Wallet.E_Mail] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.Wallet.PhoneNumber] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.Wallet.Value] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.Wallet.WalletID] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [N:APP.Migrations] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [T:APP.Migrations.InitialCreate] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [M:APP.Migrations.InitialCreate.Down] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [M:APP.Migrations.InitialCreate.Up] Missing &lt;summary&gt; documentation
+Processed 135 topic(s)
+32 warning(s)
+CopyFromIndexComponent: &quot;reflection&quot; in-memory cache entries used: 4 of 15.
+CopyFromIndexComponent: &quot;comments&quot; in-memory cache entries used: 5 of 30.
+SaveComponent: Waiting for the document writer task to finish (16 Website API file(s) remaining)...
+<plugIn name="Website Table of Contents Generator" behavior="After" priority="1000">
+Generating TOC fragment files
+</plugIn>    Last step completed in 00:00:13.9612
+</buildStep>
+<buildStep step="CopyStandardHelpContent">
+Copying standard help content...
+E:\SHFB\Components\Default2022\css\bulma.css -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\css\bulma.css
+E:\SHFB\Components\Default2022\css\bulma.css.map -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\css\bulma.css.map
+E:\SHFB\Components\Default2022\css\bulma.min.css -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\css\bulma.min.css
+E:\SHFB\Components\Default2022\css\font-awesome.css -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\css\font-awesome.css
+E:\SHFB\Components\Default2022\css\font-awesome.min.css -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\css\font-awesome.min.css
+E:\SHFB\Components\Default2022\css\ja-JP.css -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\css\ja-JP.css
+E:\SHFB\Components\Default2022\css\ko-KR.css -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\css\ko-KR.css
+E:\SHFB\Components\Default2022\css\presentationStyle.css -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\css\presentationStyle.css
+E:\SHFB\Components\Default2022\css\vs.min.css -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\css\vs.min.css
+E:\SHFB\Components\Default2022\css\zh-CN.css -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\css\zh-CN.css
+E:\SHFB\Components\Default2022\css\zh-TW.css -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\css\zh-TW.css
+E:\SHFB\Components\Default2022\icons\favicon.ico -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\icons\favicon.ico
+E:\SHFB\Components\Default2022\scripts\clipboard.min.js -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\scripts\clipboard.min.js
+E:\SHFB\Components\Default2022\scripts\highlight.min.js -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\scripts\highlight.min.js
+E:\SHFB\Components\Default2022\scripts\jquery-3.5.1.min.js -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\scripts\jquery-3.5.1.min.js
+E:\SHFB\Components\Default2022\scripts\presentationStyle.js -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\scripts\presentationStyle.js
+E:\SHFB\Components\Default2022\webfonts\fa-brands-400.ttf -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\webfonts\fa-brands-400.ttf
+E:\SHFB\Components\Default2022\webfonts\fa-brands-400.woff2 -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\webfonts\fa-brands-400.woff2
+E:\SHFB\Components\Default2022\webfonts\fa-regular-400.ttf -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\webfonts\fa-regular-400.ttf
+E:\SHFB\Components\Default2022\webfonts\fa-regular-400.woff2 -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\webfonts\fa-regular-400.woff2
+E:\SHFB\Components\Default2022\webfonts\fa-solid-900.ttf -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\webfonts\fa-solid-900.ttf
+E:\SHFB\Components\Default2022\webfonts\fa-solid-900.woff2 -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\webfonts\fa-solid-900.woff2
+E:\SHFB\Components\Default2022\webfonts\fa-v4compatibility.ttf -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\webfonts\fa-v4compatibility.ttf
+E:\SHFB\Components\Default2022\webfonts\fa-v4compatibility.woff2 -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\webfonts\fa-v4compatibility.woff2
+E:\SHFB\Components\Default2022\RootWebsiteContent\GeneralError.html -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\GeneralError.html
+E:\SHFB\Components\Default2022\RootWebsiteContent\index.html -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\index.html
+E:\SHFB\Components\Default2022\RootWebsiteContent\PageNotFound.html -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\PageNotFound.html
+E:\SHFB\Components\Default2022\RootWebsiteContent\search.html -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\search.html
+E:\SHFB\Components\Default2022\RootWebsiteContent\SearchHelp.aspx -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\SearchHelp.aspx
+E:\SHFB\Components\Default2022\RootWebsiteContent\SearchHelp.inc.php -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\SearchHelp.inc.php
+E:\SHFB\Components\Default2022\RootWebsiteContent\SearchHelp.php -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\SearchHelp.php
+E:\SHFB\Components\Default2022\RootWebsiteContent\Web.Config -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\Web.Config
+    Last step completed in 00:00:00.1641
+</buildStep>
+<buildStep step="GenerateFullTextIndex">
+Generating full-text index for the website...
+
+    Last step completed in 00:00:00.7144
+</buildStep>
+<buildStep step="CopyingWebsiteFiles">
+Copying website files to output folder...
+
+Copied 228 files for the website content
+    Last step completed in 00:00:00.2300
+</buildStep>
+<buildStep step="CleanIntermediates">
+Removing intermediate files...
+    Last step completed in 00:00:00.2521
+</buildStep>
+<buildStep step="Completed">
+
+Build completed successfully at 5/5/2023 7:50:02 PM.  Total time: 00:00:19.6099
+
+</buildStep>
+</shfbBuild>
