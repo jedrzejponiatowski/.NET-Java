@@ -52,7 +52,15 @@ namespace APP
         private void BtnSubmit(object sender, RoutedEventArgs e)
         {
             var context = new PaymentsContext();
-
+            TextBoxLoanSize.MaxLength = 3;
+            if (ContactsList3.SelectedItem == null)
+            {
+                return;
+            }
+            if (!TextBoxLoanSize.Text.Any())
+            {
+                return;
+            }
             string person = (string) ContactsList3.SelectedItems[0];
             string IDstring = new string(person.TakeWhile(Char.IsDigit).ToArray());
             Console.WriteLine(person);
@@ -61,9 +69,9 @@ namespace APP
 
             Person loanPerson = context.GetPersonWithID(ID);
 
-            int loanSize = int.Parse(TextBoxLoanSize.Text.Trim());
+            int loanSize= int.Parse(TextBoxLoanSize.Text.Trim());
 
-            
+
             if (loanGranted == true)
             {
                 LoanGranted LG = new LoanGranted() {

@@ -35,6 +35,9 @@ namespace APP
         /// <param name="e">Automatic parameter. In this situation is NULL</param>
         private void BtnSubmit(object sender, RoutedEventArgs e)
         {
+            if(TextBoxFirstName.Text == "Name" || TextBoxLastName.Text == "Surname" || TextBoxEMail.Text == "E-Mail" || TextBoxPhoneNumber.Text == "Phone" )
+            { return; }
+
             string firstName = TextBoxFirstName.Text.Trim();
             string lastName = TextBoxLastName.Text.Trim();
             string e_mail = TextBoxEMail.Text.Trim();

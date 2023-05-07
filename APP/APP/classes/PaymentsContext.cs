@@ -191,7 +191,7 @@ namespace APP
         /// <summary>
         /// Class of database initializer used to create seed for aplication testing
         /// </summary>
-        public class PaymentsDBInitializer : CreateDatabaseIfNotExists<PaymentsContext>
+        public class PaymentsDBInitializer : DropCreateDatabaseAlways<PaymentsContext>
         {
             protected override void Seed(PaymentsContext context)
             {

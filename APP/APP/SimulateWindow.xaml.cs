@@ -51,7 +51,8 @@ namespace APP
         /// <param name="e">Automatic parameter. In this situation is NULL</param>
         private void BtnSimulate(object sender, RoutedEventArgs e)
         {
-            if (ContactsList2.SelectedItem == null)
+            var sum = int.Parse(SumBox.Text.Trim());
+            if (ContactsList2.SelectedItem == null || sum == 0)
             {
                 return;
             }
@@ -60,7 +61,7 @@ namespace APP
             int ID = int.Parse(IDstring);
 
             var context = new PaymentsContext();
-            var sum = int.Parse(SumBox.Text.Trim());
+            
             
             context.ChangeWalletValue(context.GetWalletWithID(1), context.GetValue(1) + sum);
 
