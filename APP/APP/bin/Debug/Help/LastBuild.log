@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shfbBuild product="Sandcastle Help File Builder and Tools" version="2023.3.4.0" projectFile="E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\documentation.shfbproj" started="5/5/2023 7:49:43 PM">
+<shfbBuild product="Sandcastle Help File Builder and Tools" version="2023.3.4.0" projectFile="E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\documentation.shfbproj" started="5/7/2023 10:40:03 PM">
 <buildStep step="Initializing">
 The Sandcastle tools are located in &#39;E:\SHFB&#39;
 Locating components in the following folder(s):
@@ -25,19 +25,19 @@ Copying XML comments files
 </buildStep>
 <buildStep step="GenerateSharedContent">
 Generating shared content files (en-US, English (United States))...
-    Last step completed in 00:00:00.0079
+    Last step completed in 00:00:00.0010
 </buildStep>
 <buildStep step="GenerateApiFilter">
 Generating API filter for MRefBuilder...
-    Last step completed in 00:00:00.0169
+    Last step completed in 00:00:00.0090
 </buildStep>
 <buildStep step="GenerateReflectionInfo">
 Generating reflection information...
-[E:\VisualStudio\IDE\MSBuild\Current\Bin\amd64\MSBuild.exe - GenerateRefInfo-ef5398d9-8c51-4297-88ed-959d142bb4c0.proj]
-Build started 5/5/2023 7:49:44 PM.
+[E:\VisualStudio\IDE\MSBuild\Current\Bin\amd64\MSBuild.exe - GenerateRefInfo-41d1b79d-9dbf-475a-9eaa-4e7fc6a15e29.proj]
+Build started 5/7/2023 10:40:04 PM.
 Included response file: E:\VisualStudio\IDE\MSBuild\Current\Bin\amd64\MSBuild.rsp
 
-Project &quot;E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\GenerateRefInfo-ef5398d9-8c51-4297-88ed-959d142bb4c0.proj&quot; on node 1 (default targets).
+Project &quot;E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\GenerateRefInfo-41d1b79d-9dbf-475a-9eaa-4e7fc6a15e29.proj&quot; on node 1 (default targets).
 PrepareForBuild:
   Creating directory &quot;obj\Debug\&quot;.
 GenerateBindingRedirects:
@@ -62,57 +62,58 @@ GenerateRefInfo:
   Source code location not found for APP.Person
   Source code location not found for APP.SimulateWindow
   Source code location not found for APP.Wallet
+  Source code location not found for APP.Migrations.Configuration
   Source code location not found for APP.Migrations.InitialCreate
-  Wrote information on 2 namespaces, 16 types, and 78 members
+  Wrote information on 2 namespaces, 17 types, and 163 members
   Merging duplicate type and member information
   Merged 0 duplicate type(s) and 0 duplicate member(s)
-Done Building Project &quot;E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\GenerateRefInfo-ef5398d9-8c51-4297-88ed-959d142bb4c0.proj&quot; (default targets).
-    Last step completed in 00:00:02.0633
+Done Building Project &quot;E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\GenerateRefInfo-41d1b79d-9dbf-475a-9eaa-4e7fc6a15e29.proj&quot; (default targets).
+    Last step completed in 00:00:01.1741
 </buildStep>
 <buildStep step="ApplyDocumentModel">
 Applying document model to reflection output...
-    Last step completed in 00:00:00.2877
+    Last step completed in 00:00:00.0119
 </buildStep>
 <buildStep step="AddApiTopicFilenames">
 Adding topic filenames to API members...
-    Last step completed in 00:00:00.3120
+    Last step completed in 00:00:00.0600
 </buildStep>
 <buildStep step="GenerateApiTopicManifest">
 Generating API topic manifest...
-    Last step completed in 00:00:00.3211
+    Last step completed in 00:00:00.0279
 </buildStep>
 <buildStep step="GenerateNamespaceSummaries">
 Generating namespace summary information...
-    Last step completed in 00:00:00.1173
+    Last step completed in 00:00:00.0050
 </buildStep>
 <buildStep step="CopyAdditionalContent">
 Copying additional content files...
 No additional content to copy
-    Last step completed in 00:00:00.0030
+    Last step completed in 00:00:00.0000
 </buildStep>
 <buildStep step="MergeTablesOfContents">
 Merging conceptual and additional tables of contents...
-    Last step completed in 00:00:00.0000
+    Last step completed in 00:00:00.0010
 </buildStep>
 <buildStep step="GenerateIntermediateTableOfContents">
 Generating intermediate table of contents file for API content...
 Generating conceptual content intermediate TOC file...
-    Last step completed in 00:00:00.1097
+    Last step completed in 00:00:00.0230
 </buildStep>
 <buildStep step="CreateBuildAssemblerConfigs">
 Creating Sandcastle configuration files...
-    Last step completed in 00:00:00.3487
+    Last step completed in 00:00:00.1288
 </buildStep>
 <buildStep step="CombiningIntermediateTocFiles">
 Combining conceptual and API intermediate TOC files...
-    Last step completed in 00:00:00.0120
+    Last step completed in 00:00:00.0020
 </buildStep>
 <buildStep step="MergeCustomConfigs">
 Merging custom build component configurations
 E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\BuildAssembler.config
   Updating reference topic configurations.
   No conceptual content.  Removing conceptual content components.
-    Last step completed in 00:00:00.0219
+    Last step completed in 00:00:00.0200
 </buildStep>
 <buildStep step="BuildTopics">
 Building help topics...
@@ -121,6 +122,12 @@ Loading TOC info and adding unique IDs to parent nodes
 </plugIn>Loading configuration...
 Processing topics...
 SHFB: Warning BE0066: ShowMissingComponent: [N:APP] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.App._contentLoaded] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.EraseContactWindow._contentLoaded] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.EraseContactWindow.ContactsList2] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.ErasePaymentWindow._contentLoaded] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.ErasePaymentWindow.GrantedList_EPW] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.ErasePaymentWindow.ObtainedList_EPW] Missing &lt;summary&gt; documentation
 SHFB: Warning BE0066: ShowMissingComponent: [P:APP.LoanGranted.DateOfExpiry] Missing &lt;summary&gt; documentation
 SHFB: Warning BE0066: ShowMissingComponent: [P:APP.LoanGranted.DateOfIssue] Missing &lt;summary&gt; documentation
 SHFB: Warning BE0066: ShowMissingComponent: [P:APP.LoanGranted.LoanGrantedID] Missing &lt;summary&gt; documentation
@@ -133,6 +140,57 @@ SHFB: Warning BE0066: ShowMissingComponent: [P:APP.LoanObtained.LoanObtainedID] 
 SHFB: Warning BE0066: ShowMissingComponent: [P:APP.LoanObtained.LoanSize] Missing &lt;summary&gt; documentation
 SHFB: Warning BE0066: ShowMissingComponent: [P:APP.LoanObtained.Person] Missing &lt;summary&gt; documentation
 SHFB: Warning BE0066: ShowMissingComponent: [P:APP.LoanObtained.PersonID] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.MainWindow._contentLoaded] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.MainWindow.B1] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.MainWindow.B2] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.MainWindow.B3] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.MainWindow.B4] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.MainWindow.B5] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.MainWindow.B6] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.MainWindow.B7] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [M:APP.MainWindow.BtnMyData(System.Object,System.Windows.RoutedEventArgs)] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [M:APP.MainWindow.BtnMyData(System.Object,System.Windows.RoutedEventArgs)] Missing &lt;param name=&quot;sender&quot;/&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [M:APP.MainWindow.BtnMyData(System.Object,System.Windows.RoutedEventArgs)] Missing &lt;param name=&quot;e&quot;/&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.MainWindow.ContactsList] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.MainWindow.GrantedList] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.MainWindow.Money] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.MainWindow.ObtainsList] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.MyData._contentLoaded] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.MyData.TextBoxValue] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.MyData.Wallets] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.NewContactWindow._contentLoaded] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.NewContactWindow.TextBoxEMail] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.NewContactWindow.TextBoxFirstName] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.NewContactWindow.TextBoxLastName] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.NewContactWindow.TextBoxPhoneNumber] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.NewPaymentWindow._contentLoaded] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.NewPaymentWindow.ContactsList3] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.NewPaymentWindow.dateOfExpire] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.NewPaymentWindow.dateOfIssue] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [M:APP.NewPaymentWindow.HandleCheckMinus(System.Object,System.Windows.RoutedEventArgs)] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [M:APP.NewPaymentWindow.HandleCheckMinus(System.Object,System.Windows.RoutedEventArgs)] Missing &lt;param name=&quot;sender&quot;/&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [M:APP.NewPaymentWindow.HandleCheckMinus(System.Object,System.Windows.RoutedEventArgs)] Missing &lt;param name=&quot;e&quot;/&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [M:APP.NewPaymentWindow.HandleCheckPlus(System.Object,System.Windows.RoutedEventArgs)] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [M:APP.NewPaymentWindow.HandleCheckPlus(System.Object,System.Windows.RoutedEventArgs)] Missing &lt;param name=&quot;sender&quot;/&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [M:APP.NewPaymentWindow.HandleCheckPlus(System.Object,System.Windows.RoutedEventArgs)] Missing &lt;param name=&quot;e&quot;/&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.NewPaymentWindow.loanGranted] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.NewPaymentWindow.rb1] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.NewPaymentWindow.rb2] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.NewPaymentWindow.textBlock] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.NewPaymentWindow.textBlock2] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.NewPaymentWindow.textBlock5] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.NewPaymentWindow.textBlock6] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.NewPaymentWindow.TextBoxLoanSize] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.NotificationWindow._contentLoaded] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.NotificationWindow.ContactsList2] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [M:APP.NotificationWindow.Execute(SendGrid.Helpers.Mail.SendGridMessage)] Missing &lt;returns&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [M:APP.NotificationWindow.Execute(SendGrid.Helpers.Mail.SendGridMessage)] Missing &lt;param name=&quot;msg&quot;/&gt; documentation
+SHFB: Warning BE0066: ResolveReferenceLinksComponent: [M:APP.NotificationWindow.Execute(SendGrid.Helpers.Mail.SendGridMessage)] Unknown reference link target &#39;T:SendGrid.Helpers.Mail.SendGridMessage&#39;.
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.NotificationWindow.NameTextBox] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [M:APP.NotificationWindow.NameTextBox_TextChanged(System.Object,System.Windows.Controls.TextChangedEventArgs)] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [M:APP.NotificationWindow.NameTextBox_TextChanged(System.Object,System.Windows.Controls.TextChangedEventArgs)] Missing &lt;param name=&quot;sender&quot;/&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [M:APP.NotificationWindow.NameTextBox_TextChanged(System.Object,System.Windows.Controls.TextChangedEventArgs)] Missing &lt;param name=&quot;e&quot;/&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.NotificationWindow.YouReceiveBox] Missing &lt;summary&gt; documentation
 SHFB: Warning BE0066: ShowMissingComponent: [P:APP.PaymentsContext.LoansGranted] Missing &lt;summary&gt; documentation
 SHFB: Warning BE0066: ShowMissingComponent: [P:APP.PaymentsContext.LoansObtained] Missing &lt;summary&gt; documentation
 SHFB: Warning BE0066: ShowMissingComponent: [P:APP.PaymentsContext.Persons] Missing &lt;summary&gt; documentation
@@ -144,22 +202,38 @@ SHFB: Warning BE0066: ShowMissingComponent: [P:APP.Person.FirstName] Missing &lt
 SHFB: Warning BE0066: ShowMissingComponent: [P:APP.Person.ID] Missing &lt;summary&gt; documentation
 SHFB: Warning BE0066: ShowMissingComponent: [P:APP.Person.LastName] Missing &lt;summary&gt; documentation
 SHFB: Warning BE0066: ShowMissingComponent: [P:APP.Person.PhoneNumber] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.SimulateWindow._contentLoaded] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.SimulateWindow.ContactsList2] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.SimulateWindow.NameTextBox] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [M:APP.SimulateWindow.NameTextBox_TextChanged(System.Object,System.Windows.Controls.TextChangedEventArgs)] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [M:APP.SimulateWindow.NameTextBox_TextChanged(System.Object,System.Windows.Controls.TextChangedEventArgs)] Missing &lt;param name=&quot;sender&quot;/&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [M:APP.SimulateWindow.NameTextBox_TextChanged(System.Object,System.Windows.Controls.TextChangedEventArgs)] Missing &lt;param name=&quot;e&quot;/&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.SimulateWindow.SumBox] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.SimulateWindow.textBlock1] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.SimulateWindow.textBlock2] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.SimulateWindow.YouPayBox] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.SimulateWindow.YouReceiveBox] Missing &lt;summary&gt; documentation
 SHFB: Warning BE0066: ShowMissingComponent: [P:APP.Wallet.E_Mail] Missing &lt;summary&gt; documentation
 SHFB: Warning BE0066: ShowMissingComponent: [P:APP.Wallet.PhoneNumber] Missing &lt;summary&gt; documentation
 SHFB: Warning BE0066: ShowMissingComponent: [P:APP.Wallet.Value] Missing &lt;summary&gt; documentation
 SHFB: Warning BE0066: ShowMissingComponent: [P:APP.Wallet.WalletID] Missing &lt;summary&gt; documentation
 SHFB: Warning BE0066: ShowMissingComponent: [N:APP.Migrations] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [T:APP.Migrations.Configuration] Missing &lt;summary&gt; documentation
 SHFB: Warning BE0066: ShowMissingComponent: [T:APP.Migrations.InitialCreate] Missing &lt;summary&gt; documentation
 SHFB: Warning BE0066: ShowMissingComponent: [M:APP.Migrations.InitialCreate.Down] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [F:APP.Migrations.InitialCreate.Resources] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.Migrations.InitialCreate.System#Data#Entity#Migrations#Infrastructure#IMigrationMetadata#Id] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.Migrations.InitialCreate.System#Data#Entity#Migrations#Infrastructure#IMigrationMetadata#Source] Missing &lt;summary&gt; documentation
+SHFB: Warning BE0066: ShowMissingComponent: [P:APP.Migrations.InitialCreate.System#Data#Entity#Migrations#Infrastructure#IMigrationMetadata#Target] Missing &lt;summary&gt; documentation
 SHFB: Warning BE0066: ShowMissingComponent: [M:APP.Migrations.InitialCreate.Up] Missing &lt;summary&gt; documentation
-Processed 135 topic(s)
-32 warning(s)
-CopyFromIndexComponent: &quot;reflection&quot; in-memory cache entries used: 4 of 15.
-CopyFromIndexComponent: &quot;comments&quot; in-memory cache entries used: 5 of 30.
-SaveComponent: Waiting for the document writer task to finish (16 Website API file(s) remaining)...
+Processed 210 topic(s)
+105 warning(s)
+CopyFromIndexComponent: &quot;reflection&quot; in-memory cache entries used: 8 of 15.
+CopyFromIndexComponent: &quot;comments&quot; in-memory cache entries used: 1 of 30.
+ResolveReferenceLinksComponent: 15 entries added to the member ID URL cache.  New cache size: 1256 entries
 <plugIn name="Website Table of Contents Generator" behavior="After" priority="1000">
 Generating TOC fragment files
-</plugIn>    Last step completed in 00:00:13.9612
+</plugIn>    Last step completed in 00:00:08.3355
 </buildStep>
 <buildStep step="CopyStandardHelpContent">
 Copying standard help content...
@@ -195,26 +269,26 @@ E:\SHFB\Components\Default2022\RootWebsiteContent\SearchHelp.aspx -&gt; E:\C#_pr
 E:\SHFB\Components\Default2022\RootWebsiteContent\SearchHelp.inc.php -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\SearchHelp.inc.php
 E:\SHFB\Components\Default2022\RootWebsiteContent\SearchHelp.php -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\SearchHelp.php
 E:\SHFB\Components\Default2022\RootWebsiteContent\Web.Config -&gt; E:\C#_projects\source\repos\final\.NET-Java\APP\APP\bin\Debug\Help\Working\Output\Website\Web.Config
-    Last step completed in 00:00:00.1641
+    Last step completed in 00:00:00.0379
 </buildStep>
 <buildStep step="GenerateFullTextIndex">
 Generating full-text index for the website...
 
-    Last step completed in 00:00:00.7144
+    Last step completed in 00:00:00.2471
 </buildStep>
 <buildStep step="CopyingWebsiteFiles">
 Copying website files to output folder...
 
-Copied 228 files for the website content
-    Last step completed in 00:00:00.2300
+Copied 315 files for the website content
+    Last step completed in 00:00:00.2258
 </buildStep>
 <buildStep step="CleanIntermediates">
 Removing intermediate files...
-    Last step completed in 00:00:00.2521
+    Last step completed in 00:00:00.1670
 </buildStep>
 <buildStep step="Completed">
 
-Build completed successfully at 5/5/2023 7:50:02 PM.  Total time: 00:00:19.6099
+Build completed successfully at 5/7/2023 10:40:14 PM.  Total time: 00:00:11.2381
 
 </buildStep>
 </shfbBuild>
