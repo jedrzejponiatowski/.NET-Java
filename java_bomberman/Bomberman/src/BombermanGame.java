@@ -10,12 +10,10 @@ public class BombermanGame extends JPanel implements KeyListener {
     private static final int TILE_SIZE = 40;
     private static final int ROWS = 10;
     private static final int COLS = 10;
-    private int playerRow;
-    private int playerCol;
+    private Player player;
 
     public BombermanGame() {
-        playerRow = 0;
-        playerCol = 0;
+        player = new Player(0, 0, Color.BLUE);
 
         setPreferredSize(new Dimension(COLS * TILE_SIZE, ROWS * TILE_SIZE));
         setFocusable(true);
@@ -26,9 +24,8 @@ public class BombermanGame extends JPanel implements KeyListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        // Rysowanie gracza na planszy
-        g.setColor(Color.BLUE);
-        g.fillRect(playerCol * TILE_SIZE, playerRow * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+        // Rysowanie gracza
+        player.draw(g, TILE_SIZE);
     }
 
     @Override
@@ -37,16 +34,16 @@ public class BombermanGame extends JPanel implements KeyListener {
 
         switch (keyCode) {
             case KeyEvent.VK_UP:
-                playerRow = Math.max(0, playerRow - 1);
+                player.moveUp();
                 break;
             case KeyEvent.VK_DOWN:
-                playerRow = Math.min(ROWS - 1, playerRow + 1);
+                player.moveDown(ROWS);
                 break;
             case KeyEvent.VK_LEFT:
-                playerCol = Math.max(0, playerCol - 1);
+                player.moveLeft();
                 break;
             case KeyEvent.VK_RIGHT:
-                playerCol = Math.min(COLS - 1, playerCol + 1);
+                player.moveRight(COLS);
                 break;
         }
 
@@ -69,3 +66,4 @@ public class BombermanGame extends JPanel implements KeyListener {
         frame.setVisible(true);
     }
 }
+
