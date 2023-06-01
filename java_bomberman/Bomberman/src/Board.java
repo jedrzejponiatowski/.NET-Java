@@ -32,17 +32,6 @@ public class Board extends JPanel implements KeyListener {
             }
         }
 
-        bombTimer = new Timer(3000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                removeExpiredBombs();
-                repaint();
-            }
-        });
-        bombTimer.start();
-
-
-
         // Dodanie losowych ścian
         Random random = new Random();
         for (int row = 1; row < ROWS - 1; row += 2) {
@@ -92,12 +81,20 @@ public class Board extends JPanel implements KeyListener {
             for (int col = 0; col < COLS; col++) {
                 int tile = map[row][col];
                 if (tile == 2) {
-                    // Rysowanie ściany
-                    g.setColor(Color.BLACK);
+                    // Rysowanie twardej ściany
+                    g.setColor(Color.DARK_GRAY);
                     g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-                } else if (tile ==  1){
-                    // Rysowanie pustego pola
-                    g.setColor(Color.GRAY);
+                } else if (tile == 1) {
+                    // Rysowanie  miekkiej sciany
+                    g.setColor(Color.LIGHT_GRAY);
+                    g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                } else if (tile == 3) {
+                    // Rysowanie wybuchu bomby
+                    g.setColor(Color.RED);
+                    g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                } else if (tile == 4) {
+                    // Rysowanie efektu wybuchu
+                    g.setColor(Color.YELLOW);
                     g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
                 } else {
                     g.setColor(Color.WHITE);
@@ -110,7 +107,7 @@ public class Board extends JPanel implements KeyListener {
             if (!bomb.isExpired()) {
                 int bombRow = bomb.getRow();
                 int bombCol = bomb.getCol();
-                g.setColor(Color.RED);
+                g.setColor(Color.BLACK);
                 g.fillRect(bombCol * TILE_SIZE, bombRow * TILE_SIZE, TILE_SIZE, TILE_SIZE);
             }
         }
@@ -118,6 +115,69 @@ public class Board extends JPanel implements KeyListener {
 
         // Rysowanie gracza
         player.draw(g, TILE_SIZE);
+    }
+
+
+    private void placeBombExplosion(int row, int col) {
+        // Ustawienie wybuchu bomby i efektów wybuchu wokół niej
+        map[row][col] = 3; // Wybuch na pozycji bomby
+        if (row > 0) {
+            if(map[row - 1][col] != 2)
+                map[row - 1][col] = 3; // Wybuch na górze
+        }
+        if (row < ROWS - 1) {
+            if(map[row + 1][col] != 2)
+                map[row + 1][col] = 3; // Wybuch na dole
+        }
+        if (col > 0) {
+            if(map[row][col - 1] != 2)
+                map[row][col - 1] = 3; // Wybuch po lewej
+        }
+        if (col < COLS - 1) {
+            if(map[row][col + 1] != 2)
+                map[row][col + 1] = 3; // Wybuch po prawej
+        }
+        repaint();
+
+        // Opóźnienie efektu wybuchu
+        Timer explosionTimer = new Timer(500, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                removeExpiredExplosions();
+                repaint();
+            }
+        });
+        explosionTimer.setRepeats(false); // Timer wykonuje się tylko raz
+        explosionTimer.start();
+    }
+
+    private void removeExpiredExplosions() {
+        // Usunięcie wygasłych efektów wybuchu
+        for (int row = 0; row < ROWS; row++) {
+            for (int col = 0; col < COLS; col++) {
+                if (map[row][col] == 3) {
+                    map[row][col] = 0; // Efekt wybuchu
+                } else if (map[row][col] == 4) {
+                    map[row][col] = 0; // Puste pole
+                }
+            }
+        }
+    }
+
+    private void updateExplosion() {
+        // Aktualizacja efektu wybuchu
+        for (int row = 0; row < ROWS; row++) {
+            for (int col = 0; col < COLS; col++) {
+                int tile = map[row][col];
+                if (tile == 3) {
+                    // Zmiana wybuchu na efekt wybuchu
+                    map[row][col] = 4;
+                } else if (tile == 4) {
+                    // Wygaszanie efektu wybuchu
+                    map[row][col] = 1;
+                }
+            }
+        }
     }
 
     @Override
@@ -170,6 +230,17 @@ public class Board extends JPanel implements KeyListener {
         // Dodaj nową bombę na aktualne położenie gracza
         Bomb newBomb = new Bomb(playerRow, playerCol, Color.RED, 3);
         bombs.add(newBomb);
+
+        // Opóźnienie wybuchu bomby
+        Timer bombTimer = new Timer(3000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                removeExpiredBombs();
+                placeBombExplosion(playerRow, playerCol);
+            }
+        });
+        bombTimer.setRepeats(false); // Timer wykonuje się tylko raz
+        bombTimer.start();
     }
 
     private void removeExpiredBombs() {

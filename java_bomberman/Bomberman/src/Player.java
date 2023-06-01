@@ -7,6 +7,7 @@ public class Player {
     private Color color;
     private int[][] map;
 
+
     public Player(int row, int col, Color color, int[][] map) {
         this.row = row;
         this.col = col;
