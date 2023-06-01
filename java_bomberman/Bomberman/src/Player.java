@@ -5,11 +5,13 @@ public class Player {
     private int row;
     private int col;
     private Color color;
+    private int[][] map;
 
-    public Player(int row, int col, Color color) {
+    public Player(int row, int col, Color color, int[][] map) {
         this.row = row;
         this.col = col;
         this.color = color;
+        this.map = map;
     }
 
     public int getRow() {
@@ -21,19 +23,31 @@ public class Player {
     }
 
     public void moveUp() {
-        row = Math.max(0, row - 1);
+        int newRow = row - 1;
+        if (newRow >= 0 && map[newRow][col] == 0) {
+            row = newRow;
+        }
     }
 
-    public void moveDown(int maxRows) {
-        row = Math.min(maxRows - 1, row + 1);
+    public void moveDown(int rows) {
+        int newRow = row + 1;
+        if (newRow < rows && map[newRow][col] == 0) {
+            row = newRow;
+        }
     }
 
     public void moveLeft() {
-        col = Math.max(0, col - 1);
+        int newCol = col - 1;
+        if (newCol >= 0 && map[row][newCol] == 0) {
+            col = newCol;
+        }
     }
 
-    public void moveRight(int maxCols) {
-        col = Math.min(maxCols - 1, col + 1);
+    public void moveRight(int cols) {
+        int newCol = col + 1;
+        if (newCol < cols && map[row][newCol] == 0) {
+            col = newCol;
+        }
     }
 
     public void draw(Graphics g, int tileSize) {
