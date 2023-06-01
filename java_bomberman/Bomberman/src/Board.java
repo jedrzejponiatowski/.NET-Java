@@ -1,10 +1,16 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.Timer;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 
 public class Board extends JPanel implements KeyListener {
@@ -13,7 +19,10 @@ public class Board extends JPanel implements KeyListener {
     private static final int COLS = 17;
     private Player player;
     private int[][] map;
+    private List<Bomb> bombs;
+    private Timer bombTimer;
     public Board() {
+        bombs = new ArrayList<>();
         map = new int[ROWS][COLS];
         player = new Player(0, 0, Color.BLUE, map);
         // Inicjalizacja mapy gry
@@ -22,6 +31,17 @@ public class Board extends JPanel implements KeyListener {
                 map[row][col] = 2;
             }
         }
+
+        bombTimer = new Timer(3000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                removeExpiredBombs();
+                repaint();
+            }
+        });
+        bombTimer.start();
+
+
 
         // Dodanie losowych ścian
         Random random = new Random();
@@ -86,6 +106,16 @@ public class Board extends JPanel implements KeyListener {
             }
         }
 
+        for (Bomb bomb : bombs) {
+            if (!bomb.isExpired()) {
+                int bombRow = bomb.getRow();
+                int bombCol = bomb.getCol();
+                g.setColor(Color.RED);
+                g.fillRect(bombCol * TILE_SIZE, bombRow * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+            }
+        }
+
+
         // Rysowanie gracza
         player.draw(g, TILE_SIZE);
     }
@@ -111,6 +141,10 @@ public class Board extends JPanel implements KeyListener {
                 player.moveRight(COLS);
                 break;
             }
+            case KeyEvent.VK_SPACE: {
+                placeBomb();
+                break;
+            }
         }
 
         repaint();
@@ -121,6 +155,32 @@ public class Board extends JPanel implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {}
+
+    private void placeBomb() {
+        int playerRow = player.getRow();
+        int playerCol = player.getCol();
+
+        // Sprawdź, czy na tym polu nie ma już bomby
+        for (Bomb bomb : bombs) {
+            if (bomb.getRow() == playerRow && bomb.getCol() == playerCol) {
+                return; // Jeśli jest już bomba na tym polu, nie można postawić kolejnej
+            }
+        }
+
+        // Dodaj nową bombę na aktualne położenie gracza
+        Bomb newBomb = new Bomb(playerRow, playerCol, Color.RED, 3);
+        bombs.add(newBomb);
+    }
+
+    private void removeExpiredBombs() {
+        Iterator<Bomb> iterator = bombs.iterator();
+        while (iterator.hasNext()) {
+            Bomb bomb = iterator.next();
+            if (bomb.isExpired()) {
+                iterator.remove();
+            }
+        }
+    }
 
 }
 
