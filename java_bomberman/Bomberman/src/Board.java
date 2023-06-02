@@ -78,7 +78,7 @@ public class Board extends JPanel implements KeyListener {
         map[ROWS-2][0]=0;
         map[ROWS-1][1]=0;
 
-        boardTimer = new Timer(100, new ActionListener() {
+        boardTimer = new Timer(25, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Kod do wykonania przy każdym odświeżeniu planszy
@@ -96,45 +96,55 @@ public class Board extends JPanel implements KeyListener {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        // 0 - puste pole
+        // 1 - miekka sciana
+        // 2 - twarda sciana
+        // 3 - bomba
+        // 4 - eksplozja
 
         // Rysowanie planszy
         for (int row = 0; row < ROWS; row++) {
             for (int col = 0; col < COLS; col++) {
                 int tile = map[row][col];
-                if (tile == 2) {
-                    // Rysowanie twardej ściany
-                    g.setColor(Color.DARK_GRAY);
-                    g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-                } else if (tile == 1) {
-                    // Rysowanie  miekkiej sciany
-                    g.setColor(Color.LIGHT_GRAY);
-                    g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-                } else if (tile == 3) {
-                    // Rysowanie wybuchu bomby
-                    g.setColor(Color.RED);
-                    g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-                } else if (tile == 4) {
-                    // Rysowanie efektu wybuchu
-                    g.setColor(Color.YELLOW);
-                    g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-                } else {
-                    g.setColor(Color.WHITE);
-                    g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                switch (tile)
+                {
+                    case 0:
+                        g.setColor(Color.WHITE);
+                        g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                        break;
+                    case 1:
+                        g.setColor(Color.LIGHT_GRAY);
+                        g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                        break;
+                    case 2:
+                        g.setColor(Color.DARK_GRAY);
+                        g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                        break;
+                    case 3:
+                        g.setColor(Color.BLACK);
+                        g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                        break;
+                    case 4:
+                        g.setColor(Color.YELLOW);
+                        g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                        break;
                 }
             }
         }
 
-        for (Bomb bomb : bombs) {
+        Iterator<Bomb> bombIterator = bombs.iterator();
+        while (bombIterator.hasNext()) {
+            Bomb bomb = bombIterator.next();
             if (!bomb.isExpired()) {
                 int bombRow = bomb.getRow();
                 int bombCol = bomb.getCol();
                 g.setColor(Color.BLACK);
                 g.fillRect(bombCol * TILE_SIZE, bombRow * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-            }
-            else {
+            } else {
                 int bombRow = bomb.getRow();
                 int bombCol = bomb.getCol();
-                placeBombExplosion(bombRow,bombCol);
+                placeBombExplosion(bombRow, bombCol);
+                bombIterator.remove();
             }
         }
 
@@ -152,22 +162,22 @@ public class Board extends JPanel implements KeyListener {
 
     private void placeBombExplosion(int row, int col) {
         // Ustawienie wybuchu bomby i efektów wybuchu wokół niej
-        map[row][col] = 3; // Wybuch na pozycji bomby
+        map[row][col] = 4; // Wybuch na pozycji bomby
         if (row > 0) {
-            if(map[row - 1][col] != 2)
-                map[row - 1][col] = 3; // Wybuch na górze
+            if(map[row - 1][col] != 2 && map[row - 1][col] != 3)
+                map[row - 1][col] = 4; // Wybuch na górze
         }
         if (row < ROWS - 1) {
-            if(map[row + 1][col] != 2)
-                map[row + 1][col] = 3; // Wybuch na dole
+            if(map[row + 1][col] != 2 && map[row + 1][col] != 3)
+                map[row + 1][col] = 4; // Wybuch na dole
         }
         if (col > 0) {
-            if(map[row][col - 1] != 2)
-                map[row][col - 1] = 3; // Wybuch po lewej
+            if(map[row][col - 1] != 2 && map[row][col - 1] != 3)
+                map[row][col - 1] = 4; // Wybuch po lewej
         }
         if (col < COLS - 1) {
-            if(map[row][col + 1] != 2)
-                map[row][col + 1] = 3; // Wybuch po prawej
+            if(map[row][col + 1] != 2 && map[row][col + 1] != 3 )
+                map[row][col + 1] = 4; // Wybuch po prawej
         }
         repaint();
 
@@ -175,14 +185,14 @@ public class Board extends JPanel implements KeyListener {
         Timer explosionTimer = new Timer(500, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                removeExpiredExplosions();
-                repaint();
+                removeExpiredExplosions(row, col);
+                //repaint();
             }
         });
         explosionTimer.setRepeats(false); // Timer wykonuje się tylko raz
         explosionTimer.start();
     }
-
+/*
     private void removeExpiredExplosions() {
         // Usunięcie wygasłych efektów wybuchu
         for (int row = 0; row < ROWS; row++) {
@@ -196,6 +206,29 @@ public class Board extends JPanel implements KeyListener {
         }
         removeExpiredBombs();
     }
+
+ */
+private void removeExpiredExplosions(int row, int col) {
+    map[row][col] = 0; // Usunięcie wybuchu na pozycji bomby
+
+    if (row > 0) {
+        if (map[row - 1][col] != 2 && map[row - 1][col] != 3)
+            map[row - 1][col] = 0;
+    }
+    if (row < ROWS - 1) {
+        if (map[row + 1][col] != 2 && map[row + 1][col] != 3)
+            map[row + 1][col] = 0;
+    }
+    if (col > 0) {
+        if (map[row][col - 1] != 2 && map[row][col - 1] != 3)
+            map[row][col - 1] = 0;
+    }
+    if (col < COLS - 1) {
+        if (map[row][col + 1] != 2 && map[row][col + 1] != 3)
+            map[row][col + 1] = 0;
+    }
+    repaint();
+}
 
     private void updateExplosion() {
         // Aktualizacja efektu wybuchu

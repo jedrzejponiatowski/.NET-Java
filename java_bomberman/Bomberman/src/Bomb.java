@@ -42,4 +42,9 @@ public class Bomb {
         return currentTime - startTime >= 3000;
     }
 
+    public void setExpired()
+    {
+        startTime -= 3000;
+    }
+
 }
