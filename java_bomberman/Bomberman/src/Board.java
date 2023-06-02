@@ -20,10 +20,21 @@ public class Board extends JPanel implements KeyListener {
     private Player player;
     private int[][] map;
     private List<Bomb> bombs;
-    private Timer bombTimer;
+    private List<Enemy> enemies;
+    private Timer boardTimer;
     public Board() {
         bombs = new ArrayList<>();
         map = new int[ROWS][COLS];
+        enemies = new ArrayList<>(3);
+        enemies.add(new Enemy(10, 16, Color.RED, map, bombs));
+        enemies.add(new Enemy(0, 16, Color.RED, map, bombs));
+        enemies.add(new Enemy(10, 0, Color.RED, map, bombs));
+
+        for (Enemy enemy : enemies) {
+            Thread enemyThread = new Thread(enemy);
+            enemyThread.start();
+        }
+
         player = new Player(0, 0, Color.BLUE, map);
         // Inicjalizacja mapy gry
         for (int row = 1; row < ROWS - 1; row += 2) {
@@ -66,6 +77,16 @@ public class Board extends JPanel implements KeyListener {
         map[ROWS-1][0]=0;
         map[ROWS-2][0]=0;
         map[ROWS-1][1]=0;
+
+        boardTimer = new Timer(100, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Kod do wykonania przy każdym odświeżeniu planszy
+
+                repaint(); // Odświeżenie planszy
+            }
+        });
+        boardTimer.start();
 
         setPreferredSize(new Dimension(COLS * TILE_SIZE, ROWS * TILE_SIZE));
         setFocusable(true);
@@ -110,6 +131,17 @@ public class Board extends JPanel implements KeyListener {
                 g.setColor(Color.BLACK);
                 g.fillRect(bombCol * TILE_SIZE, bombRow * TILE_SIZE, TILE_SIZE, TILE_SIZE);
             }
+            else {
+                int bombRow = bomb.getRow();
+                int bombCol = bomb.getCol();
+                placeBombExplosion(bombRow,bombCol);
+            }
+        }
+
+        // Rysowania przeciwników
+        for (Enemy enemy : enemies)
+        {
+            enemy.draw(g, TILE_SIZE);
         }
 
 
@@ -162,6 +194,7 @@ public class Board extends JPanel implements KeyListener {
                 }
             }
         }
+        removeExpiredBombs();
     }
 
     private void updateExplosion() {
@@ -230,17 +263,6 @@ public class Board extends JPanel implements KeyListener {
         // Dodaj nową bombę na aktualne położenie gracza
         Bomb newBomb = new Bomb(playerRow, playerCol, Color.RED, 3);
         bombs.add(newBomb);
-
-        // Opóźnienie wybuchu bomby
-        Timer bombTimer = new Timer(3000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                removeExpiredBombs();
-                placeBombExplosion(playerRow, playerCol);
-            }
-        });
-        bombTimer.setRepeats(false); // Timer wykonuje się tylko raz
-        bombTimer.start();
     }
 
     private void removeExpiredBombs() {
@@ -252,6 +274,5 @@ public class Board extends JPanel implements KeyListener {
             }
         }
     }
-
 }
 
