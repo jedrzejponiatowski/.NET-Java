@@ -3,7 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import javax.swing.JFrame;
+//import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class Board extends JPanel implements KeyListener {
     private int[][] map;
     private List<Bomb> bombs;
     private List<Enemy> enemies;
-    private Timer boardTimer;
+
     public Board() {
         bombs = new ArrayList<>();
         map = new int[ROWS][COLS];
@@ -78,7 +78,9 @@ public class Board extends JPanel implements KeyListener {
         map[ROWS-2][0]=0;
         map[ROWS-1][1]=0;
 
-        boardTimer = new Timer(25, new ActionListener() {
+        // Kod do wykonania przy każdym odświeżeniu planszy
+        // Odświeżenie planszy
+        Timer boardTimer = new Timer(25, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Kod do wykonania przy każdym odświeżeniu planszy
@@ -332,7 +334,6 @@ private void removeExpiredExplosions(int row, int col) {
             g.setColor(Color.red);
         }
         Font big = new Font("Helvetica", Font.BOLD, 50);
-        FontMetrics fm = getFontMetrics(big);
 
         g.setFont(big);
         g.drawString(msg, (ROWS * TILE_SIZE) / 2,

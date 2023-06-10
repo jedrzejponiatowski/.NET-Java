@@ -2,8 +2,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Player {
-    private int x;
-    private int y;
     private int row;
     private int col;
     private Color color;
