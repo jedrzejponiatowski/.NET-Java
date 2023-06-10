@@ -94,9 +94,8 @@ public class Board extends JPanel implements KeyListener {
         addKeyListener(this);
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
+
+    private  void drawBackground(Graphics g){
         // 0 - puste pole
         // 1 - miekka sciana
         // 2 - twarda sciana
@@ -104,9 +103,7 @@ public class Board extends JPanel implements KeyListener {
         // 4 - eksplozja
         // 5 - kolizja
 
-//        if(!ingame)
-//            drawGameEnd(g);
-        checkDamages();
+        // Ustawienie graczy
         if(map[player.getRow()][player.getCol()] != 4)
             map[player.getRow()][player.getCol()] = 5;
         for(Enemy enemy: enemies){
@@ -117,36 +114,33 @@ public class Board extends JPanel implements KeyListener {
         for (int row = 0; row < ROWS; row++) {
             for (int col = 0; col < COLS; col++) {
                 int tile = map[row][col];
-                switch (tile)
-                {
-                    case 0:
+                switch (tile) {
+                    case 0, 5 -> {
                         g.setColor(Color.WHITE);
                         g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-                        break;
-                    case 1:
+                    }
+                    case 1 -> {
                         g.setColor(Color.LIGHT_GRAY);
                         g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-                        break;
-                    case 2:
+                    }
+                    case 2 -> {
                         g.setColor(Color.DARK_GRAY);
                         g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-                        break;
-                    case 3:
+                    }
+                    case 3 -> {
                         g.setColor(Color.BLACK);
                         g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-                        break;
-                    case 4:
+                    }
+                    case 4 -> {
                         g.setColor(Color.YELLOW);
                         g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-                        break;
-                    case 5:
-                        g.setColor(Color.WHITE);
-                        g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-                        break;
+                    }
                 }
             }
         }
+    }
 
+    private void drawBombs(Graphics g){
         Iterator<Bomb> bombIterator = bombs.iterator();
         while (bombIterator.hasNext()) {
             Bomb bomb = bombIterator.next();
@@ -163,14 +157,27 @@ public class Board extends JPanel implements KeyListener {
                 bombIterator.remove();
             }
         }
+    }
 
-        // Rysowania przeciwników
-        for (Enemy enemy : enemies)
-        {
-            enemy.draw(g, TILE_SIZE);
-        }
-        // Rysowanie gracza
-        player.draw(g, TILE_SIZE);
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+      if(ingame){
+          drawBombs(g);
+          drawBackground(g);
+          checkDamages();
+          // Rysowanie przeciwnikow
+          for (Enemy enemy : enemies)
+          {
+              enemy.draw(g, TILE_SIZE);
+          }
+          // Rysowanie gracza
+          player.draw(g, TILE_SIZE);
+      }else{
+          drawBackground(g);
+          drawGameEnd(g);
+      }
     }
 
 
@@ -313,16 +320,16 @@ private void removeExpiredExplosions(int row, int col) {
     }
 
     private void checkDamages(){
-        for(Enemy enemy: enemies){
-            if(map[enemy.getRow()][enemy.getCol()] == 4){
-                enemy.kill();
-                enemies.remove(enemy);
-                enemy = null;
-            }
-        }
         if(enemies.isEmpty()){
             ingame = false;
             victory = true;
+        }else{
+            for(Enemy enemy: enemies){
+                if(map[enemy.getRow()][enemy.getCol()] == 4){
+                    enemy.kill();
+                    enemies.remove(enemy);
+                }
+            }
         }
         if(map[player.getRow()][player.getCol()] == 4){
             ingame = false;
@@ -341,14 +348,13 @@ private void removeExpiredExplosions(int row, int col) {
             msg = "Game Over";
             g.setColor(Color.red);
         }
-        Font small = new Font("Helvetica", Font.BOLD, 14);
-        FontMetrics fm = getFontMetrics(small);
+        Font big = new Font("Helvetica", Font.BOLD, 50);
+        FontMetrics fm = getFontMetrics(big);
 
-        g.setFont(small);
-        g.drawString(msg, (ROWS * TILE_SIZE - fm.stringWidth(msg)) / 2,
+        g.setFont(big);
+        g.drawString(msg, (ROWS * TILE_SIZE - fm.stringWidth(msg)),
                 COLS*TILE_SIZE / 2);
     }
-
 
 
 

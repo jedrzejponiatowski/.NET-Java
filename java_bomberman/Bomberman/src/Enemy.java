@@ -50,24 +50,15 @@ public class Enemy implements Runnable {
     public void run() {
         Random random = new Random();
 
-        while (true) {
+        while (isAlive) {
             int direction = random.nextInt(4); // Losowanie kierunku (0 - góra, 1 - dół, 2 - lewo, 3 - prawo)
 
             switch (direction) {
-                case 0:
-                    moveUp();
-                    break;
-                case 1:
-                    moveDown();
-                    break;
-                case 2:
-                    moveLeft();
-                    break;
-                case 3:
-                    moveRight();
-                    break;
+                case 0 -> moveUp();
+                case 1 -> moveDown();
+                case 2 -> moveLeft();
+                case 3 -> moveRight();
             }
-
             try {
                 // Odczekaj pewien czas przed kolejnym ruchem
                 Thread.sleep(250);
