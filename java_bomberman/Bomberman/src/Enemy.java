@@ -82,7 +82,7 @@ public class Enemy implements Runnable {
         if (newRow >= 0 && map[newRow][col] == 0) {
             map[row][col] = 0;
             row = newRow;
-            map[row][col] = 1;
+
         }
     }
 
@@ -91,7 +91,7 @@ public class Enemy implements Runnable {
         if (newRow < ROWS && map[newRow][col] == 0) {
             map[row][col] = 0;
             row = newRow;
-            map[row][col] = 1;
+
         }
     }
 
@@ -100,7 +100,7 @@ public class Enemy implements Runnable {
         if (newCol >= 0 && map[row][newCol] == 0) {
             map[row][col] = 0;
             col = newCol;
-            map[row][col] = 1;
+
         }
     }
 
@@ -109,7 +109,7 @@ public class Enemy implements Runnable {
         if (newCol < COLS && map[row][newCol] == 0) {
             map[row][col] = 0;
             col = newCol;
-            map[row][col] = 1;
+
         }
     }
 
@@ -128,5 +128,6 @@ public class Enemy implements Runnable {
         // Dodaj nową bombę na aktualne położenie gracza
         Bomb newBomb = new Bomb(row, col, Color.RED, 3);
         bombs.add(newBomb);
+        map[row][col] = 3;
     }
 }

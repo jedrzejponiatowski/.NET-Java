@@ -101,7 +101,13 @@ public class Board extends JPanel implements KeyListener {
         // 2 - twarda sciana
         // 3 - bomba
         // 4 - eksplozja
+        // 5 - kolizja
 
+
+        map[player.getRow()][player.getCol()] = 5;
+        for(Enemy enemy: enemies){
+            map[enemy.getRow()][enemy.getCol()] = 5;
+        }
         // Rysowanie planszy
         for (int row = 0; row < ROWS; row++) {
             for (int col = 0; col < COLS; col++) {
@@ -128,6 +134,10 @@ public class Board extends JPanel implements KeyListener {
                         g.setColor(Color.YELLOW);
                         g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
                         break;
+                    case 5:
+                        g.setColor(Color.WHITE);
+                        g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                        break;
                 }
             }
         }
@@ -138,6 +148,7 @@ public class Board extends JPanel implements KeyListener {
             if (!bomb.isExpired()) {
                 int bombRow = bomb.getRow();
                 int bombCol = bomb.getCol();
+                map[bombRow][bombCol] = 3;
                 g.setColor(Color.BLACK);
                 g.fillRect(bombCol * TILE_SIZE, bombRow * TILE_SIZE, TILE_SIZE, TILE_SIZE);
             } else {
@@ -153,8 +164,6 @@ public class Board extends JPanel implements KeyListener {
         {
             enemy.draw(g, TILE_SIZE);
         }
-
-
         // Rysowanie gracza
         player.draw(g, TILE_SIZE);
     }

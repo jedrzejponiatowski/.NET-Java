@@ -28,6 +28,7 @@ public class Player {
     public void moveUp() {
         int newRow = row - 1;
         if (newRow >= 0 && map[newRow][col] == 0) {
+            map[row][col] = 0;
             row = newRow;
         }
     }
@@ -35,6 +36,7 @@ public class Player {
     public void moveDown(int rows) {
         int newRow = row + 1;
         if (newRow < rows && map[newRow][col] == 0) {
+            map[row][col] = 0;
             row = newRow;
         }
     }
@@ -42,6 +44,7 @@ public class Player {
     public void moveLeft() {
         int newCol = col - 1;
         if (newCol >= 0 && map[row][newCol] == 0) {
+            map[row][col] = 0;
             col = newCol;
         }
     }
@@ -49,8 +52,10 @@ public class Player {
     public void moveRight(int cols) {
         int newCol = col + 1;
         if (newCol < cols && map[row][newCol] == 0) {
+            map[row][col] = 0;
             col = newCol;
         }
+
     }
 
     public void draw(Graphics g, int tileSize) {
