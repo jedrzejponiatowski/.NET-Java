@@ -1,6 +1,4 @@
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -17,6 +15,8 @@ public class Board extends JPanel implements KeyListener {
     private static final int TILE_SIZE = 40;
     private static final int ROWS = 11;
     private static final int COLS = 17;
+    private boolean ingame = true;
+    private boolean victory = false;
     private Player player;
     private int[][] map;
     private List<Bomb> bombs;
@@ -83,6 +83,7 @@ public class Board extends JPanel implements KeyListener {
             public void actionPerformed(ActionEvent e) {
                 // Kod do wykonania przy każdym odświeżeniu planszy
 
+
                 repaint(); // Odświeżenie planszy
             }
         });
@@ -103,10 +104,14 @@ public class Board extends JPanel implements KeyListener {
         // 4 - eksplozja
         // 5 - kolizja
 
-
-        map[player.getRow()][player.getCol()] = 5;
+//        if(!ingame)
+//            drawGameEnd(g);
+        checkDamages();
+        if(map[player.getRow()][player.getCol()] != 4)
+            map[player.getRow()][player.getCol()] = 5;
         for(Enemy enemy: enemies){
-            map[enemy.getRow()][enemy.getCol()] = 5;
+            if(map[enemy.getRow()][enemy.getCol()]!= 4)
+                map[enemy.getRow()][enemy.getCol()] = 5;
         }
         // Rysowanie planszy
         for (int row = 0; row < ROWS; row++) {
@@ -307,6 +312,47 @@ private void removeExpiredExplosions(int row, int col) {
         bombs.add(newBomb);
     }
 
+    private void checkDamages(){
+        for(Enemy enemy: enemies){
+            if(map[enemy.getRow()][enemy.getCol()] == 4){
+                enemy.kill();
+                enemies.remove(enemy);
+                enemy = null;
+            }
+        }
+        if(enemies.isEmpty()){
+            ingame = false;
+            victory = true;
+        }
+        if(map[player.getRow()][player.getCol()] == 4){
+            ingame = false;
+            victory = false;
+        }
+    }
+
+
+    private void drawGameEnd(Graphics g) {
+        String msg;
+        if(victory){
+            msg = "Victory!";
+            g.setColor(Color.green);
+        }
+        else{
+            msg = "Game Over";
+            g.setColor(Color.red);
+        }
+        Font small = new Font("Helvetica", Font.BOLD, 14);
+        FontMetrics fm = getFontMetrics(small);
+
+        g.setFont(small);
+        g.drawString(msg, (ROWS * TILE_SIZE - fm.stringWidth(msg)) / 2,
+                COLS*TILE_SIZE / 2);
+    }
+
+
+
+
+/*
     private void removeExpiredBombs() {
         Iterator<Bomb> iterator = bombs.iterator();
         while (iterator.hasNext()) {
@@ -315,6 +361,10 @@ private void removeExpiredExplosions(int row, int col) {
                 iterator.remove();
             }
         }
-    }
+    }*/
+
+
+
+
 }
 

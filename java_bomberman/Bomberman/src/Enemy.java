@@ -10,6 +10,7 @@ import javax.swing.Timer;
 public class Enemy implements Runnable {
     private static final int ROWS = 11;
     private static final int COLS = 17;
+    private boolean isAlive = true;
     private int row;
     private int col;
     private Color color;
@@ -28,8 +29,8 @@ public class Enemy implements Runnable {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Kod do wykonania przy każdym odświeżeniu planszy
-                enemyPlaceBomb();
-                 // Odświeżenie planszy
+                if(isAlive)
+                    enemyPlaceBomb();
             }
         });
         enemyBombTimer.start();
@@ -129,5 +130,9 @@ public class Enemy implements Runnable {
         Bomb newBomb = new Bomb(row, col, Color.RED, 3);
         bombs.add(newBomb);
         map[row][col] = 3;
+    }
+
+    public void kill(){
+        isAlive = false;
     }
 }
