@@ -174,10 +174,12 @@ public class Board extends JPanel implements KeyListener {
               if(enemy.status())
                   enemy.draw(g, TILE_SIZE);
           }
+          checkDamages();
           // Rysowanie gracza
           player.draw(g, TILE_SIZE);
       }else{
           drawBackground(g);
+          player.draw(g, TILE_SIZE);
           drawGameEnd(g);
       }
     }
