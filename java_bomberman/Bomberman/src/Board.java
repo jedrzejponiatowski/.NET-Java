@@ -170,7 +170,8 @@ public class Board extends JPanel implements KeyListener {
           // Rysowanie przeciwnikow
           for (Enemy enemy : enemies)
           {
-              enemy.draw(g, TILE_SIZE);
+              if(enemy.status())
+                  enemy.draw(g, TILE_SIZE);
           }
           // Rysowanie gracza
           player.draw(g, TILE_SIZE);
@@ -213,22 +214,6 @@ public class Board extends JPanel implements KeyListener {
         explosionTimer.setRepeats(false); // Timer wykonuje się tylko raz
         explosionTimer.start();
     }
-/*
-    private void removeExpiredExplosions() {
-        // Usunięcie wygasłych efektów wybuchu
-        for (int row = 0; row < ROWS; row++) {
-            for (int col = 0; col < COLS; col++) {
-                if (map[row][col] == 3) {
-                    map[row][col] = 0; // Efekt wybuchu
-                } else if (map[row][col] == 4) {
-                    map[row][col] = 0; // Puste pole
-                }
-            }
-        }
-        removeExpiredBombs();
-    }
-
- */
 private void removeExpiredExplosions(int row, int col) {
     map[row][col] = 0; // Usunięcie wybuchu na pozycji bomby
 
@@ -355,22 +340,6 @@ private void removeExpiredExplosions(int row, int col) {
         g.drawString(msg, (ROWS * TILE_SIZE - fm.stringWidth(msg)),
                 COLS*TILE_SIZE / 2);
     }
-
-
-
-/*
-    private void removeExpiredBombs() {
-        Iterator<Bomb> iterator = bombs.iterator();
-        while (iterator.hasNext()) {
-            Bomb bomb = iterator.next();
-            if (bomb.isExpired()) {
-                iterator.remove();
-            }
-        }
-    }*/
-
-
-
 
 }
 

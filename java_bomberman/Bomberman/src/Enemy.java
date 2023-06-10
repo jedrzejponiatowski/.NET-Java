@@ -50,9 +50,8 @@ public class Enemy implements Runnable {
     public void run() {
         Random random = new Random();
 
-        while (isAlive) {
+        while (isAlive && !Thread.currentThread().isInterrupted()) {
             int direction = random.nextInt(4); // Losowanie kierunku (0 - góra, 1 - dół, 2 - lewo, 3 - prawo)
-
             switch (direction) {
                 case 0 -> moveUp();
                 case 1 -> moveDown();
@@ -63,11 +62,11 @@ public class Enemy implements Runnable {
                 // Odczekaj pewien czas przed kolejnym ruchem
                 Thread.sleep(250);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
+                return;
             }
         }
     }
-
 
     private void moveUp() {
         int newRow = row - 1;
@@ -106,8 +105,10 @@ public class Enemy implements Runnable {
     }
 
     public void draw(Graphics g, int tileSize) {
-        g.setColor(color);
-        g.fillRect(col * tileSize, row * tileSize, tileSize, tileSize);
+        if(isAlive){
+            g.setColor(color);
+            g.fillRect(col * tileSize, row * tileSize, tileSize, tileSize);
+        }
     }
 
     private void enemyPlaceBomb(){
@@ -125,5 +126,11 @@ public class Enemy implements Runnable {
 
     public void kill(){
         isAlive = false;
+        col = -10;
+        row = -10;
+    }
+
+    public boolean status(){
+        return isAlive;
     }
 }
