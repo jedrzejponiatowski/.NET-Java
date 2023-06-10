@@ -171,10 +171,6 @@ public class Board extends JPanel implements KeyListener {
           {
               if(enemy.status())
                   enemy.draw(g, TILE_SIZE);
-              else{
-                  g.setColor(Color.WHITE);
-                  g.fillRect(enemy.getCol() * TILE_SIZE, enemy.getRow() * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-              }
           }
           // Rysowanie gracza
           player.draw(g, TILE_SIZE);
@@ -240,7 +236,7 @@ private void removeExpiredExplosions(int row, int col) {
     repaint();
 }
 
-    private void updateExplosion() {
+/*    private void updateExplosion() {
         // Aktualizacja efektu wybuchu
         for (int row = 0; row < ROWS; row++) {
             for (int col = 0; col < COLS; col++) {
@@ -254,32 +250,27 @@ private void removeExpiredExplosions(int row, int col) {
                 }
             }
         }
-    }
+    }*/
 
     @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
 
         switch (keyCode) {
-            case KeyEvent.VK_UP: {
+            case KeyEvent.VK_UP -> {
                 player.moveUp();
-                break;
             }
-            case KeyEvent.VK_DOWN: {
+            case KeyEvent.VK_DOWN -> {
                 player.moveDown(ROWS);
-                break;
             }
-            case KeyEvent.VK_LEFT: {
+            case KeyEvent.VK_LEFT -> {
                 player.moveLeft();
-                break;
             }
-            case KeyEvent.VK_RIGHT: {
+            case KeyEvent.VK_RIGHT -> {
                 player.moveRight(COLS);
-                break;
             }
-            case KeyEvent.VK_SPACE: {
+            case KeyEvent.VK_SPACE -> {
                 placeBomb();
-                break;
             }
         }
 
@@ -344,8 +335,8 @@ private void removeExpiredExplosions(int row, int col) {
         FontMetrics fm = getFontMetrics(big);
 
         g.setFont(big);
-        g.drawString(msg, (ROWS * TILE_SIZE - fm.stringWidth(msg)),
-                COLS*TILE_SIZE / 2);
+        g.drawString(msg, (ROWS * TILE_SIZE) / 2,
+                COLS*TILE_SIZE / 3);
     }
 
 }
