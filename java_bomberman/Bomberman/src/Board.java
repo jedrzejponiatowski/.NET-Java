@@ -104,10 +104,10 @@ public class Board extends JPanel implements KeyListener {
         // 5 - kolizja
 
         // Ustawienie graczy
-        if(map[player.getRow()][player.getCol()] != 4)
+        if(map[player.getRow()][player.getCol()] != 4 && map[player.getRow()][player.getCol()] != 3 )
             map[player.getRow()][player.getCol()] = 5;
         for(Enemy enemy: enemies){
-            if(map[enemy.getRow()][enemy.getCol()]!= 4)
+            if(map[enemy.getRow()][enemy.getCol()]!= 4 && map[player.getRow()][player.getCol()] != 3)
                 map[enemy.getRow()][enemy.getCol()] = 5;
         }
         // Rysowanie planszy
@@ -164,14 +164,17 @@ public class Board extends JPanel implements KeyListener {
         super.paintComponent(g);
 
       if(ingame){
-          drawBombs(g);
           drawBackground(g);
-          checkDamages();
+          drawBombs(g);
           // Rysowanie przeciwnikow
           for (Enemy enemy : enemies)
           {
               if(enemy.status())
                   enemy.draw(g, TILE_SIZE);
+              else{
+                  g.setColor(Color.WHITE);
+                  g.fillRect(enemy.getCol() * TILE_SIZE, enemy.getRow() * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+              }
           }
           // Rysowanie gracza
           player.draw(g, TILE_SIZE);
@@ -186,21 +189,22 @@ public class Board extends JPanel implements KeyListener {
         // Ustawienie wybuchu bomby i efektów wybuchu wokół niej
         map[row][col] = 4; // Wybuch na pozycji bomby
         if (row > 0) {
-            if(map[row - 1][col] != 2 && map[row - 1][col] != 3)
+            if(map[row - 1][col] != 2)
                 map[row - 1][col] = 4; // Wybuch na górze
         }
         if (row < ROWS - 1) {
-            if(map[row + 1][col] != 2 && map[row + 1][col] != 3)
+            if(map[row + 1][col] != 2 )
                 map[row + 1][col] = 4; // Wybuch na dole
         }
         if (col > 0) {
-            if(map[row][col - 1] != 2 && map[row][col - 1] != 3)
+            if(map[row][col - 1] != 2 )
                 map[row][col - 1] = 4; // Wybuch po lewej
         }
         if (col < COLS - 1) {
-            if(map[row][col + 1] != 2 && map[row][col + 1] != 3 )
+            if(map[row][col + 1] != 2  )
                 map[row][col + 1] = 4; // Wybuch po prawej
         }
+        checkDamages();
         repaint();
 
         // Opóźnienie efektu wybuchu
@@ -305,16 +309,19 @@ private void removeExpiredExplosions(int row, int col) {
     }
 
     private void checkDamages(){
+
         if(enemies.isEmpty()){
             ingame = false;
             victory = true;
         }else{
+            List<Enemy> losers = new ArrayList<>();
             for(Enemy enemy: enemies){
                 if(map[enemy.getRow()][enemy.getCol()] == 4){
                     enemy.kill();
-                    enemies.remove(enemy);
+                    losers.add(enemy);
                 }
             }
+            enemies.removeAll(losers);
         }
         if(map[player.getRow()][player.getCol()] == 4){
             ingame = false;
@@ -323,7 +330,7 @@ private void removeExpiredExplosions(int row, int col) {
     }
 
 
-    private void drawGameEnd(Graphics g) {
+    private void drawGameEnd(Graphics g){
         String msg;
         if(victory){
             msg = "Victory!";
