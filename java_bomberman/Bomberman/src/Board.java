@@ -26,9 +26,9 @@ public class Board extends JPanel implements KeyListener {
         bombs = new ArrayList<>();
         map = new int[ROWS][COLS];
         enemies = new ArrayList<>(3);
-        enemies.add(new Enemy(10, 16, Color.RED, map, bombs));
-        enemies.add(new Enemy(0, 16, Color.RED, map, bombs));
-        enemies.add(new Enemy(10, 0, Color.RED, map, bombs));
+        enemies.add(new Cowardly(10, 16, Color.RED, map, bombs, 6000));
+        enemies.add(new Ordinary(0, 16, Color.RED, map, bombs,6000));
+        enemies.add(new Agressive(10, 0, Color.RED, map, bombs,3000));
 
         for (Enemy enemy : enemies) {
             Thread enemyThread = new Thread(enemy);

@@ -7,33 +7,43 @@ import java.util.Random;
 //import java.util.Timer;
 import javax.swing.Timer;
 
-public class Enemy implements Runnable {
+public class Enemy implements Runnable, ActionListener {
     private static final int ROWS = 11;
     private static final int COLS = 17;
     private boolean isAlive = true;
+    private Timer timer;
     private int row;
     private int col;
     private Color color;
     private int[][] map;
     private List<Bomb> bombs;
 
-    public Enemy(int row, int col, Color color, int[][] map, List<Bomb> bomb ) {
+    public Enemy(int row, int col, Color color, int[][] map, List<Bomb> bomb , int delay) {
         this.row = row;
         this.col = col;
         this.color = color;
         this.map = map;
         this.bombs = bomb;
 
-        // Kod do wykonania przy każdym odświeżeniu planszy
-        Timer enemyBombTimer = new Timer(3000, new ActionListener() {
+        timer = new Timer(delay, this);
+        timer.start();
+
+
+        /*Timer enemyBombTimer = new Timer(4500, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Kod do wykonania przy każdym odświeżeniu planszy
                 if (isAlive)
                     enemyPlaceBomb();
             }
-        });
-        enemyBombTimer.start();
+        });*/
+    }
+
+    // Kod do wykonania przy każdym odświeżeniu planszy
+    public void actionPerformed(ActionEvent e) {
+        // Kod do wykonania przy każdym odświeżeniu planszy
+        if (isAlive)
+            enemyPlaceBomb();
     }
 
     public int getRow(){
@@ -45,6 +55,9 @@ public class Enemy implements Runnable {
     }
     public Color getColor(){
         return color;
+    }
+    public boolean status(){
+        return isAlive;
     }
 
     public void run() {
@@ -68,7 +81,7 @@ public class Enemy implements Runnable {
         }
     }
 
-    private void moveUp() {
+    private void moveUp(){
         int newRow = row - 1;
         if (newRow >= 0 && map[newRow][col] == 0) {
             map[row][col] = 0;
@@ -113,7 +126,6 @@ public class Enemy implements Runnable {
                 return; // Jeśli jest już bomba na tym polu, nie można postawić kolejnej
             }
         }
-
         // Dodaj nową bombę na aktualne położenie gracza
         Bomb newBomb = new Bomb(row, col, Color.RED, 3);
         bombs.add(newBomb);
@@ -126,7 +138,5 @@ public class Enemy implements Runnable {
         row = -10;
     }
 
-    public boolean status(){
-        return isAlive;
-    }
+
 }
