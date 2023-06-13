@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Random;
 
 public class Ordinary extends Enemy{
-    public Ordinary(int row, int col, Color color, int[][] map, List<Bomb> bomb, int delay, BiconnectivityInspector<Integer, DefaultEdge> inspector) {
-        super(row, col, color, map, bomb, delay,inspector);
+    public Ordinary(int row, int col, Color color, int mobility, int[][] map, List<Bomb> bomb, int delay, BiconnectivityInspector<Integer, DefaultEdge> inspector, Integer playerPosition) {
+        super(row, col, color, mobility, map,  bomb, delay,inspector,playerPosition);
     }
 
 
@@ -21,13 +21,6 @@ public class Ordinary extends Enemy{
                 case 1 -> moveDown();
                 case 2 -> moveLeft();
                 case 3 -> moveRight();
-            }
-            try {
-                // Odczekaj pewien czas przed kolejnym ruchem
-                Thread.sleep(250);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                return;
             }
         }
     }

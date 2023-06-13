@@ -22,9 +22,11 @@ public class Board extends JPanel implements KeyListener {
     private boolean ingame = true;
     private boolean victory = false;
     private Player player;
+    private Integer playerPosition;
     private int[][] map;
     private List<Bomb> bombs;
     private List<Enemy> enemies;
+    private Graph<Integer,DefaultEdge> paths;
 
     public Board() {
         bombs = new ArrayList<>();
@@ -32,6 +34,7 @@ public class Board extends JPanel implements KeyListener {
 
 
         player = new Player(0, 0, Color.BLUE, map);
+        this.playerPosition = player.getRow() * 100 + player.getCol();
         // Inicjalizacja mapy gry
         for (int row = 1; row < ROWS - 1; row += 2) {
             for (int col = 1; col < COLS - 1; col += 2) {
@@ -75,8 +78,8 @@ public class Board extends JPanel implements KeyListener {
 
 
         // Graf dozwolonych miejsc oraz mozliwe polaczenia
-        Graph<Integer,DefaultEdge> paths
-                = new DefaultUndirectedGraph<>(DefaultEdge.class);
+
+         paths = new DefaultUndirectedGraph<>(DefaultEdge.class);
         for (int row = 0; row < ROWS; row += 1) {
             for (int col = 0; col < COLS; col += 1) {
                 if (map[row][col] == 0 || map[row][col] == 1)
@@ -96,9 +99,9 @@ public class Board extends JPanel implements KeyListener {
                 = new BiconnectivityInspector<>(paths);
 
         enemies = new ArrayList<>(3);
-        enemies.add(new Cowardly(10, 16, Color.RED, map, bombs, 6000,inspector));
-        enemies.add(new Ordinary(0, 16, Color.RED, map, bombs,6000,inspector));
-        enemies.add(new Agressive(10, 0, Color.RED, map, bombs,3000,inspector));
+       // enemies.add(new Cowardly(10, 16, Color.RED, map, bombs, 6000,inspector,playerPosition));
+        //enemies.add(new Ordinary(0, 16, Color.RED, map, bombs,6000,inspector,playerPosition));
+        enemies.add(new Aggressive(10, 0, Color.RED,400, map, bombs,3000,inspector,playerPosition));
 
         for (Enemy enemy : enemies) {
             Thread enemyThread = new Thread(enemy);
@@ -111,8 +114,8 @@ public class Board extends JPanel implements KeyListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Kod do wykonania przy każdym odświeżeniu planszy
-
-
+                update();
+                checkDamages();
                 repaint(); // Odświeżenie planszy
             }
         });
@@ -201,7 +204,6 @@ public class Board extends JPanel implements KeyListener {
               if(enemy.status())
                   enemy.draw(g, TILE_SIZE);
           }
-          checkDamages();
           // Rysowanie gracza
           player.draw(g, TILE_SIZE);
       }else{
@@ -289,16 +291,16 @@ private void removeExpiredExplosions(int row, int col) {
 
         switch (keyCode) {
             case KeyEvent.VK_UP -> {
-                player.moveUp();
+                playerPosition =  player.moveUp();
             }
             case KeyEvent.VK_DOWN -> {
-                player.moveDown(ROWS);
+                playerPosition =  player.moveDown(ROWS);
             }
             case KeyEvent.VK_LEFT -> {
-                player.moveLeft();
+                playerPosition =  player.moveLeft();
             }
             case KeyEvent.VK_RIGHT -> {
-                player.moveRight(COLS);
+                playerPosition =  player.moveRight(COLS);
             }
             case KeyEvent.VK_SPACE -> {
                 placeBomb();
@@ -369,5 +371,25 @@ private void removeExpiredExplosions(int row, int col) {
                 COLS*TILE_SIZE / 3);
     }
 
+
+    private void update(){
+        for (int row = 0; row < ROWS; row += 1) {
+            for (int col = 0; col < COLS; col += 1) {
+                if(col != 0){
+                    if(map[row][col] == 0 && map[row][col-1] == 0)
+                        paths.addEdge(row * 100 + col - 1, row * 100 + col);
+                }
+                if(row != 0){
+                    if(map[row][col] == 0 && map[row-1][col] == 0)
+                        paths.addEdge(row * 100 + col, (row - 1) * 100 + col);
+                }
+            }
+        }
+        BiconnectivityInspector<Integer, DefaultEdge> inspector
+                = new BiconnectivityInspector<>(paths);
+        for(Enemy enemy: enemies){
+            enemy.update(playerPosition, inspector);
+        }
+    }
 }
 

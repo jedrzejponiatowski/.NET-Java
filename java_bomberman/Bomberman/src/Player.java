@@ -1,5 +1,4 @@
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
 
 public class Player {
     private int row;
@@ -23,37 +22,40 @@ public class Player {
         return col;
     }
 
-    public void moveUp() {
+    public Integer moveUp() {
         int newRow = row - 1;
         if (newRow >= 0 && map[newRow][col] == 0) {
             map[row][col] = 0;
             row = newRow;
         }
+        return row*100 + col;
     }
 
-    public void moveDown(int rows) {
+    public Integer moveDown(int rows) {
         int newRow = row + 1;
         if (newRow < rows && map[newRow][col] == 0) {
             map[row][col] = 0;
             row = newRow;
         }
+        return row*100 + col;
     }
 
-    public void moveLeft() {
+    public Integer moveLeft() {
         int newCol = col - 1;
         if (newCol >= 0 && map[row][newCol] == 0) {
             map[row][col] = 0;
             col = newCol;
         }
+        return row*100 + col;
     }
 
-    public void moveRight(int cols) {
+    public Integer moveRight(int cols) {
         int newCol = col + 1;
         if (newCol < cols && map[row][newCol] == 0) {
             map[row][col] = 0;
             col = newCol;
         }
-
+        return row*100 + col;
     }
 
     public void draw(Graphics g, int tileSize) {

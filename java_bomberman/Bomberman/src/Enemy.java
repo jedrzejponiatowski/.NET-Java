@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
@@ -11,26 +12,32 @@ import org.jgrapht.alg.connectivity.*;
 import org.jgrapht.graph.*;
 
 public abstract class Enemy implements Runnable, ActionListener {
-    private static final int ROWS = 11;
-    private static final int COLS = 17;
-    private boolean isAlive = true;
-    private Timer timer;
-    private Point position;
-    private int row;
-    private int col;
-    private Color color;
-    private int[][] map;
-    private List<Bomb> bombs;
-    private Graph<Integer,DefaultEdge> path;
+    protected static final int ROWS = 11;
+    protected static final int COLS = 17;
+    protected boolean isAlive = true;
+    protected Timer timer;
 
-    public Enemy(int row, int col, Color color, int[][] map, List<Bomb> bomb , int delay, BiconnectivityInspector<Integer, DefaultEdge> inspector) {
+    protected int row;
+    protected int col;
+
+    protected Color color;
+
+    protected int[][] map;
+    protected List<Bomb> bombs;
+    protected Graph<Integer,DefaultEdge> paths;
+    protected Integer playerPosition;
+
+    protected int mobility;
+
+    public Enemy(int row, int col, Color color, int mobility , int[][] map, List<Bomb> bomb , int delay, BiconnectivityInspector<Integer, DefaultEdge> inspector, Integer playerPosition) {
         this.row = row;
         this.col = col;
         this.color = color;
+        this.mobility = mobility;
         this.map = map;
         this.bombs = bomb;
-        this.position = new Point(row,col);
-        this.path = inspector.getConnectedComponent(row * 100 + col);
+        this.playerPosition = playerPosition;
+        this.paths = inspector.getConnectedComponent(row * 100 + col);
 
         timer = new Timer(delay, this);
         timer.start();
@@ -49,8 +56,8 @@ public abstract class Enemy implements Runnable, ActionListener {
     // Kod do wykonania przy każdym odświeżeniu planszy
     public void actionPerformed(ActionEvent e) {
         // Kod do wykonania przy każdym odświeżeniu planszy
-        if (isAlive)
-            enemyPlaceBomb();
+        if (isAlive && this.isSafe());
+            //enemyPlaceBomb();
     }
 
     public int getRow(){
@@ -63,18 +70,32 @@ public abstract class Enemy implements Runnable, ActionListener {
     public Color getColor(){
         return color;
     }
-
-    public Point getPosition(){ return position; }
     public boolean status(){
         return isAlive;
     }
 
+
+    protected void move(Integer destination){
+        Integer way =row * 100 + col - destination;
+        switch(way){
+            case  100 -> moveUp();
+            case -100 -> moveDown();
+            case    1 -> moveLeft();
+            case   -1 -> moveRight();
+        }
+    }
 
     protected void moveUp(){
         int newRow = row - 1;
         if (newRow >= 0 && map[newRow][col] == 0) {
             map[row][col] = 0;
             row = newRow;
+        }
+        try {
+            // Odczekaj pewien czas przed kolejnym ruchem
+            Thread.sleep(mobility);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
     }
 
@@ -84,6 +105,12 @@ public abstract class Enemy implements Runnable, ActionListener {
             map[row][col] = 0;
             row = newRow;
         }
+        try {
+            // Odczekaj pewien czas przed kolejnym ruchem
+            Thread.sleep(mobility);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 
     protected void moveLeft() {
@@ -92,6 +119,12 @@ public abstract class Enemy implements Runnable, ActionListener {
             map[row][col] = 0;
             col = newCol;
         }
+        try {
+            // Odczekaj pewien czas przed kolejnym ruchem
+            Thread.sleep(mobility);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 
     protected void moveRight() {
@@ -99,6 +132,12 @@ public abstract class Enemy implements Runnable, ActionListener {
         if (newCol < COLS && map[row][newCol] == 0) {
             map[row][col] = 0;
             col = newCol;
+        }
+        try {
+            // Odczekaj pewien czas przed kolejnym ruchem
+            Thread.sleep(mobility);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
     }
 
@@ -125,6 +164,35 @@ public abstract class Enemy implements Runnable, ActionListener {
         isAlive = false;
         col = -10;
         row = -10;
+    }
+
+    protected boolean isSafe(){
+        for (Bomb bomb : bombs) {
+            int away = Math.abs(100 * row + col - (100 * bomb.getRow() - bomb.getCol()));
+            if (away == 1 || away == 100 || away == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    protected boolean isSafe(Integer x){
+        for (Bomb bomb : bombs) {
+            int away = Math.abs(x - (100 * bomb.getRow() - bomb.getCol()));
+            if (away == 1 || away == 100 || away == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    protected void update(Integer x, BiconnectivityInspector<Integer, DefaultEdge> inspector){
+        playerPosition = x;
+        paths = inspector.getConnectedComponent(row * 100 + col);
+    }
+
+    static <E> E getRandomSetElement(Set<E> set) {
+        return set.stream().skip(new Random().nextInt(set.size())).findFirst().orElse(null);
     }
 
 
