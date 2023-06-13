@@ -10,6 +10,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import org.jgrapht.Graph;
+import org.jgrapht.graph.*;
+import org.jgrapht.alg.connectivity.*;
+
 
 public class Board extends JPanel implements KeyListener {
     private static final int TILE_SIZE = 40;
@@ -25,15 +29,7 @@ public class Board extends JPanel implements KeyListener {
     public Board() {
         bombs = new ArrayList<>();
         map = new int[ROWS][COLS];
-        enemies = new ArrayList<>(3);
-        enemies.add(new Cowardly(10, 16, Color.RED, map, bombs, 6000));
-        enemies.add(new Ordinary(0, 16, Color.RED, map, bombs,6000));
-        enemies.add(new Agressive(10, 0, Color.RED, map, bombs,3000));
 
-        for (Enemy enemy : enemies) {
-            Thread enemyThread = new Thread(enemy);
-            enemyThread.start();
-        }
 
         player = new Player(0, 0, Color.BLUE, map);
         // Inicjalizacja mapy gry
@@ -60,7 +56,6 @@ public class Board extends JPanel implements KeyListener {
                 map[randomRow][randomCol] = 1;
             }
         }
-
         //Usunięcie scian z narożnika
         map[0][0]=0;
         map[1][0]=0;
@@ -77,6 +72,38 @@ public class Board extends JPanel implements KeyListener {
         map[ROWS-1][0]=0;
         map[ROWS-2][0]=0;
         map[ROWS-1][1]=0;
+
+
+        // Graf dozwolonych miejsc oraz mozliwe polaczenia
+        Graph<Integer,DefaultEdge> paths
+                = new DefaultUndirectedGraph<>(DefaultEdge.class);
+        for (int row = 0; row < ROWS; row += 1) {
+            for (int col = 0; col < COLS; col += 1) {
+                if (map[row][col] == 0 || map[row][col] == 1)
+                    paths.addVertex(row * 100 + col);
+                if(col != 0){
+                    if(map[row][col] == 0 && map[row][col-1] == 0)
+                        paths.addEdge(row * 100 + col - 1, row * 100 + col);
+                }
+                if(row != 0){
+                    if(map[row][col] == 0 && map[row-1][col] == 0)
+                        paths.addEdge(row * 100 + col, (row - 1) * 100 + col);
+                }
+            }
+        }
+
+        BiconnectivityInspector<Integer, DefaultEdge> inspector
+                = new BiconnectivityInspector<>(paths);
+
+        enemies = new ArrayList<>(3);
+        enemies.add(new Cowardly(10, 16, Color.RED, map, bombs, 6000,inspector));
+        enemies.add(new Ordinary(0, 16, Color.RED, map, bombs,6000,inspector));
+        enemies.add(new Agressive(10, 0, Color.RED, map, bombs,3000,inspector));
+
+        for (Enemy enemy : enemies) {
+            Thread enemyThread = new Thread(enemy);
+            enemyThread.start();
+        }
 
         // Kod do wykonania przy każdym odświeżeniu planszy
         // Odświeżenie planszy

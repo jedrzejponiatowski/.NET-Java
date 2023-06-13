@@ -1,29 +1,36 @@
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 //import java.util.Timer;
 import javax.swing.Timer;
+import org.jgrapht.Graph;
+import org.jgrapht.alg.connectivity.*;
+import org.jgrapht.graph.*;
 
 public class Enemy implements Runnable, ActionListener {
     private static final int ROWS = 11;
     private static final int COLS = 17;
     private boolean isAlive = true;
     private Timer timer;
+    private Point position;
     private int row;
     private int col;
     private Color color;
     private int[][] map;
     private List<Bomb> bombs;
+    private Graph<Integer,DefaultEdge> path;
 
-    public Enemy(int row, int col, Color color, int[][] map, List<Bomb> bomb , int delay) {
+    public Enemy(int row, int col, Color color, int[][] map, List<Bomb> bomb , int delay, BiconnectivityInspector<Integer, DefaultEdge> inspector) {
         this.row = row;
         this.col = col;
         this.color = color;
         this.map = map;
         this.bombs = bomb;
+        this.position = new Point(row,col);
+        this.path = inspector.getConnectedComponent(row * 100 + col);
 
         timer = new Timer(delay, this);
         timer.start();
@@ -56,6 +63,8 @@ public class Enemy implements Runnable, ActionListener {
     public Color getColor(){
         return color;
     }
+
+    public Point getPosition(){ return position; }
     public boolean status(){
         return isAlive;
     }
