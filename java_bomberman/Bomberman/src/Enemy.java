@@ -76,69 +76,85 @@ public abstract class Enemy implements Runnable, ActionListener {
 
 
     protected void move(Integer destination){
+        boolean result = false;
+        int[] array = {100,-100,1,-1};
+        int n = -1;
         Integer way =row * 100 + col - destination;
-        switch(way){
-            case  100 -> moveUp();
-            case -100 -> moveDown();
-            case    1 -> moveLeft();
-            case   -1 -> moveRight();
-        }
+        do{
+            switch(way) {
+                case 100 -> result = moveUp();
+                case -100 -> result = moveDown();
+                case 1 -> result = moveLeft();
+                case -1 -> result = moveRight();
+            }
+            ++n;
+            if(n < 4)
+                way = array[n];
+        }while(!result || n == 4);
     }
 
-    protected void moveUp(){
+    protected boolean moveUp(){
+        try {
+            // Odczekaj pewien czas przed kolejnym ruchem
+            Thread.sleep(mobility);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
         int newRow = row - 1;
         if (newRow >= 0 && map[newRow][col] == 0) {
             map[row][col] = 0;
             row = newRow;
+            return true;
         }
+        return false;
+    }
+
+    protected boolean moveDown() {
         try {
             // Odczekaj pewien czas przed kolejnym ruchem
             Thread.sleep(mobility);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-    }
-
-    protected void moveDown() {
         int newRow = row + 1;
         if (newRow < ROWS && map[newRow][col] == 0) {
             map[row][col] = 0;
             row = newRow;
+            return true;
         }
+        return false;
+    }
+
+    protected boolean moveLeft() {
         try {
             // Odczekaj pewien czas przed kolejnym ruchem
             Thread.sleep(mobility);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-    }
-
-    protected void moveLeft() {
         int newCol = col - 1;
         if (newCol >= 0 && map[row][newCol] == 0) {
             map[row][col] = 0;
             col = newCol;
+            return true;
         }
+        return false;
+    }
+
+    protected boolean moveRight() {
         try {
             // Odczekaj pewien czas przed kolejnym ruchem
             Thread.sleep(mobility);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-    }
-
-    protected void moveRight() {
         int newCol = col + 1;
         if (newCol < COLS && map[row][newCol] == 0) {
             map[row][col] = 0;
             col = newCol;
+            return true;
         }
-        try {
-            // Odczekaj pewien czas przed kolejnym ruchem
-            Thread.sleep(mobility);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
+        return false;
     }
 
     public void draw(Graphics g, int tileSize) {
@@ -162,13 +178,11 @@ public abstract class Enemy implements Runnable, ActionListener {
 
     protected void kill(){
         isAlive = false;
-        col = -10;
-        row = -10;
     }
 
     protected boolean isSafe(){
         for (Bomb bomb : bombs) {
-            int away = Math.abs(100 * row + col - (100 * bomb.getRow() - bomb.getCol()));
+            int away = Math.abs(100 * row + col - (100 * bomb.getRow() + bomb.getCol()));
             if (away == 1 || away == 100 || away == 0) {
                 return false;
             }
@@ -178,7 +192,7 @@ public abstract class Enemy implements Runnable, ActionListener {
 
     protected boolean isSafe(Integer x){
         for (Bomb bomb : bombs) {
-            int away = Math.abs(x - (100 * bomb.getRow() - bomb.getCol()));
+            int away = Math.abs(x - (100 * bomb.getRow() + bomb.getCol()));
             if (away == 1 || away == 100 || away == 0) {
                 return false;
             }
@@ -186,9 +200,28 @@ public abstract class Enemy implements Runnable, ActionListener {
         return true;
     }
 
-    protected void update(Integer x, BiconnectivityInspector<Integer, DefaultEdge> inspector){
+    protected boolean safeBombPlacement() {
+            for(Integer x: paths.vertexSet()){
+                if (safeBombPlacement(x) && isSafe(x))
+                    return true;
+            }
+            return false;
+    }
+    protected boolean safeBombPlacement(Integer x) {
+        int away = Math.abs(x - (100 * row + col));
+        return away != 1 && away != 100 && away != 0;
+    }
+
+    protected  boolean nearPlayer(){
+        int x = Math.abs( row * 100 + col - playerPosition ) ;
+        return x == 1 || x == 100;
+    }
+
+
+    protected void update(Integer x,List<Bomb> z, BiconnectivityInspector<Integer, DefaultEdge> inspector){
         playerPosition = x;
         paths = inspector.getConnectedComponent(row * 100 + col);
+        bombs = z;
     }
 
     static <E> E getRandomSetElement(Set<E> set) {

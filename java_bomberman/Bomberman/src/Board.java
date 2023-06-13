@@ -388,7 +388,7 @@ private void removeExpiredExplosions(int row, int col) {
         BiconnectivityInspector<Integer, DefaultEdge> inspector
                 = new BiconnectivityInspector<>(paths);
         for(Enemy enemy: enemies){
-            enemy.update(playerPosition, inspector);
+            enemy.update(playerPosition,bombs, inspector);
         }
     }
 }

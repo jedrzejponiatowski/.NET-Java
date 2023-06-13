@@ -14,8 +14,6 @@ public class Aggressive extends Enemy{
     }
 
     public void run(){
-        Random random = new Random();
-
         while (this.status() && !Thread.currentThread().isInterrupted()){
             Integer whereIam = row * 100 + col;
             BidirectionalDijkstraShortestPath<Integer,DefaultEdge> shortestPath=
@@ -33,10 +31,14 @@ public class Aggressive extends Enemy{
                 }
                 List<Integer> road
                         = shortestPath.getPath(whereIam, base).getVertexList();
-                if(road.size() > 1 && isSafe(road.get(1)))
-                    this.move(road.get(1));
-//                else
-//                    this.enemyPlaceBomb();
+                if(road.size() > 1 && !nearPlayer()){
+                    if(isSafe(road.get(1)))
+                        this.move(road.get(1));
+                }
+                else{
+                    if(safeBombPlacement())
+                        this.enemyPlaceBomb();
+                }
             }else{
                 Integer base = whereIam;
                 for(Integer x : vertices){
@@ -49,8 +51,8 @@ public class Aggressive extends Enemy{
                         = shortestPath.getPath(whereIam, base).getVertexList();
                 if(road.size() > 1)
                     this.move(road.get(1));
-                else
-                    this.enemyPlaceBomb();
+//                else
+//                    this.enemyPlaceBomb();
             }
 
         }
