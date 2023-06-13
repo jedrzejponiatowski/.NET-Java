@@ -10,7 +10,7 @@ import org.jgrapht.Graph;
 import org.jgrapht.alg.connectivity.*;
 import org.jgrapht.graph.*;
 
-public class Enemy implements Runnable, ActionListener {
+public abstract class Enemy implements Runnable, ActionListener {
     private static final int ROWS = 11;
     private static final int COLS = 17;
     private boolean isAlive = true;
@@ -69,28 +69,8 @@ public class Enemy implements Runnable, ActionListener {
         return isAlive;
     }
 
-    public void run() {
-        Random random = new Random();
 
-        while (isAlive && !Thread.currentThread().isInterrupted()) {
-            int direction = random.nextInt(4); // Losowanie kierunku (0 - góra, 1 - dół, 2 - lewo, 3 - prawo)
-            switch (direction) {
-                case 0 -> moveUp();
-                case 1 -> moveDown();
-                case 2 -> moveLeft();
-                case 3 -> moveRight();
-            }
-            try {
-                // Odczekaj pewien czas przed kolejnym ruchem
-                Thread.sleep(250);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                return;
-            }
-        }
-    }
-
-    private void moveUp(){
+    protected void moveUp(){
         int newRow = row - 1;
         if (newRow >= 0 && map[newRow][col] == 0) {
             map[row][col] = 0;
@@ -98,7 +78,7 @@ public class Enemy implements Runnable, ActionListener {
         }
     }
 
-    private void moveDown() {
+    protected void moveDown() {
         int newRow = row + 1;
         if (newRow < ROWS && map[newRow][col] == 0) {
             map[row][col] = 0;
@@ -106,7 +86,7 @@ public class Enemy implements Runnable, ActionListener {
         }
     }
 
-    private void moveLeft() {
+    protected void moveLeft() {
         int newCol = col - 1;
         if (newCol >= 0 && map[row][newCol] == 0) {
             map[row][col] = 0;
@@ -114,7 +94,7 @@ public class Enemy implements Runnable, ActionListener {
         }
     }
 
-    private void moveRight() {
+    protected void moveRight() {
         int newCol = col + 1;
         if (newCol < COLS && map[row][newCol] == 0) {
             map[row][col] = 0;
@@ -129,7 +109,7 @@ public class Enemy implements Runnable, ActionListener {
         }
     }
 
-    private void enemyPlaceBomb(){
+    protected void enemyPlaceBomb(){
         for (Bomb bomb : bombs) {
             if (bomb.getRow() == row && bomb.getCol() == col) {
                 return; // Jeśli jest już bomba na tym polu, nie można postawić kolejnej
@@ -141,7 +121,7 @@ public class Enemy implements Runnable, ActionListener {
         map[row][col] = 3;
     }
 
-    public void kill(){
+    protected void kill(){
         isAlive = false;
         col = -10;
         row = -10;
