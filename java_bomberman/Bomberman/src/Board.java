@@ -1,6 +1,6 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+//import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 //import javax.swing.JFrame;
@@ -12,22 +12,20 @@ import java.util.List;
 import org.jgrapht.Graph;
 import org.jgrapht.graph.*;
 import org.jgrapht.alg.connectivity.*;
-import org.jgrapht.*;
-import org.jgrapht.traverse.DepthFirstIterator;
 
 
 public class Board extends JPanel implements KeyListener {
     private static final int TILE_SIZE = 40;
     private static final int ROWS = 11;
     private static final int COLS = 17;
-    private boolean ingame = true;
+    private boolean inGame = true;
     private boolean victory = false;
-    private Player player;
+    private final Player player;
     private Integer playerPosition;
-    private int[][] map;
-    private List<Bomb> bombs;
-    private List<Enemy> enemies;
-    private Graph<Integer,DefaultEdge> paths;
+    private final int[][] map;
+    private final List<Bomb> bombs;
+    private final List<Enemy> enemies;
+    private final Graph<Integer,DefaultEdge> paths;
 
     public Board() {
         bombs = new ArrayList<>();
@@ -47,8 +45,8 @@ public class Board extends JPanel implements KeyListener {
         Random random = new Random();
         for (int row = 1; row < ROWS - 1; row += 2) {
             for (int col = 1; col < COLS - 1; col += 2) {
-                int randomRow = row;
-                int randomCol = col;
+                int randomRow;
+                int randomCol;
 
                 // Wylosowanie losowego sąsiada
                 do {
@@ -100,7 +98,7 @@ public class Board extends JPanel implements KeyListener {
                 = new BiconnectivityInspector<>(paths);
 
         enemies = new ArrayList<>(3);
-       // enemies.add(new Cowardly(10, 16, Color.RED, map, bombs, 6000,inspector,playerPosition));
+        //enemies.add(new Cowardly(10, 16, Color.RED, map, bombs, 6000,inspector,playerPosition));
         //enemies.add(new Ordinary(0, 16, Color.RED, map, bombs,6000,inspector,playerPosition));
         enemies.add(new Aggressive(10, 0, Color.RED,400, map, bombs,3000,inspector,playerPosition));
 
@@ -111,18 +109,13 @@ public class Board extends JPanel implements KeyListener {
 
         // Kod do wykonania przy każdym odświeżeniu planszy
         // Odświeżenie planszy
-        Timer boardTimer = new Timer(15, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Kod do wykonania przy każdym odświeżeniu planszy
+        Timer boardTimer = new Timer(15, e -> {
+            // Kod do wykonania przy każdym odświeżeniu planszy
+            repaint(); // Odświeżenie planszy
 
+            checkDamages();
 
-                repaint(); // Odświeżenie planszy
-
-                checkDamages();
-
-                update();
-            }
+            update();
         });
         boardTimer.start();
 
@@ -201,7 +194,7 @@ public class Board extends JPanel implements KeyListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-      if(ingame){
+      if(inGame){
           drawBackground(g);
           drawBombs(g);
           // Rysowanie przeciwnikow
@@ -243,12 +236,9 @@ public class Board extends JPanel implements KeyListener {
         repaint();
 
         // Opóźnienie efektu wybuchu
-        Timer explosionTimer = new Timer(500, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                removeExpiredExplosions(row, col);
-                //repaint();
-            }
+        Timer explosionTimer = new Timer(500, e -> {
+            removeExpiredExplosions(row, col);
+            //repaint();
         });
         explosionTimer.setRepeats(false); // Timer wykonuje się tylko raz
         explosionTimer.start();
@@ -296,23 +286,13 @@ private void removeExpiredExplosions(int row, int col) {
         int keyCode = e.getKeyCode();
 
         switch (keyCode) {
-            case KeyEvent.VK_UP -> {
-                playerPosition =  player.moveUp();
-            }
-            case KeyEvent.VK_DOWN -> {
-                playerPosition =  player.moveDown(ROWS);
-            }
-            case KeyEvent.VK_LEFT -> {
-                playerPosition =  player.moveLeft();
-            }
-            case KeyEvent.VK_RIGHT -> {
-                playerPosition =  player.moveRight(COLS);
-            }
-            case KeyEvent.VK_SPACE -> {
-                placeBomb();
-            }
+            case KeyEvent.VK_UP -> playerPosition =  player.moveUp();
+            case KeyEvent.VK_DOWN -> playerPosition =  player.moveDown(ROWS);
+            case KeyEvent.VK_LEFT -> playerPosition =  player.moveLeft();
+            case KeyEvent.VK_RIGHT -> playerPosition =  player.moveRight(COLS);
+            case KeyEvent.VK_SPACE -> placeBomb();
+            default -> throw new IllegalStateException("Unexpected value: " + keyCode);
         }
-
         repaint();
     }
 
@@ -341,7 +321,7 @@ private void removeExpiredExplosions(int row, int col) {
     private void checkDamages(){
 
         if(enemies.isEmpty()){
-            ingame = false;
+            inGame = false;
             victory = true;
         }else{
             List<Enemy> losers = new ArrayList<>();
@@ -354,7 +334,7 @@ private void removeExpiredExplosions(int row, int col) {
             enemies.removeAll(losers);
         }
         if(map[player.getRow()][player.getCol()] == 4){
-            ingame = false;
+            inGame = false;
             victory = false;
         }
     }
@@ -379,8 +359,6 @@ private void removeExpiredExplosions(int row, int col) {
 
 
     private synchronized void update(){
-        //ArrayList<DefaultEdge> edges = ;
-        long b = paths.iterables().edgeCount();
         for (int row = 0; row < ROWS; row += 1) {
             for (int col = 0; col < COLS; col += 1 ) {
                 if(col != 0){
@@ -393,15 +371,9 @@ private void removeExpiredExplosions(int row, int col) {
                 }
             }
         }
-        //edges = new ArrayList<>(paths.edgeSet());
         BiconnectivityInspector<Integer, DefaultEdge> inspector
                 = new BiconnectivityInspector<>(paths);
-        for(Enemy enemy: enemies){
-            Graph<Integer,DefaultEdge> tmp = inspector.getConnectedComponent(
-                    enemy.row * 100 + enemy.col);
-            enemy.update(playerPosition,bombs, inspector);
-
-        }
+        enemies.forEach(enemy -> enemy.update(playerPosition, bombs, inspector));
     }
 }
 

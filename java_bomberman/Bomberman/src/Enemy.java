@@ -57,8 +57,6 @@ public abstract class Enemy implements Runnable, ActionListener {
     // Kod do wykonania przy każdym odświeżeniu planszy
     public void actionPerformed(ActionEvent e) {
         // Kod do wykonania przy każdym odświeżeniu planszy
-        if (isAlive && this.isSafe());
-            //enemyPlaceBomb();
     }
 
     public int getRow(){
@@ -92,7 +90,7 @@ public abstract class Enemy implements Runnable, ActionListener {
         boolean result = false;
         int[] array = {100,-100,1,-1};
         int n = -1;
-        Integer way =row * 100 + col - destination;
+        int way =row * 100 + col - destination;
         do{
             switch(way) {
                 case 100 -> result = moveUp();

@@ -4,7 +4,6 @@ import org.jgrapht.alg.shortestpath.*;
 
 import java.awt.*;
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
 
 public class Aggressive extends Enemy{
@@ -27,9 +26,9 @@ public class Aggressive extends Enemy{
                 this.enemyPlaceBomb();
             if(this.isSafe()) {
                 Integer base = getRandomSetElement(paths.vertexSet());
-                Integer distance = Math.abs(playerPosition - base);
+                int distance = Math.abs(playerPosition - base);
                 for(Integer x : vertices){
-                    Integer tmp = Math.abs(playerPosition - x);
+                    int tmp = Math.abs(playerPosition - x);
                     if(tmp <= distance){
                         distance = tmp;
                         base = x;
