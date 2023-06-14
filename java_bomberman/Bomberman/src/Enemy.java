@@ -1,7 +1,6 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
@@ -28,6 +27,8 @@ public abstract class Enemy implements Runnable, ActionListener {
     protected Integer playerPosition;
 
     protected int mobility;
+
+    protected volatile boolean updated = false;
 
     public Enemy(int row, int col, Color color, int mobility , int[][] map, List<Bomb> bomb , int delay, BiconnectivityInspector<Integer, DefaultEdge> inspector, Integer playerPosition) {
         this.row = row;
@@ -74,7 +75,19 @@ public abstract class Enemy implements Runnable, ActionListener {
         return isAlive;
     }
 
+    protected void move(){
+        do{
+            if(isSafe(row*100+col - (row-1)*100 - col))
+                if(moveUp()) break;
+            if(isSafe(row*100+col - (row)*100 - col+1))
+                if(moveRight()) break;
+            if(isSafe(row*100+col - (row)*100 - col-1))
+                if(moveLeft()) break;
+            if(isSafe(row*100+col - (row+1)*100 - col))
+                if(moveDown()) break;
+        }while(true);
 
+    }
     protected void move(Integer destination){
         boolean result = false;
         int[] array = {100,-100,1,-1};
@@ -192,9 +205,11 @@ public abstract class Enemy implements Runnable, ActionListener {
 
     protected boolean isSafe(Integer x){
         for (Bomb bomb : bombs) {
-            int away = Math.abs(x - (100 * bomb.getRow() + bomb.getCol()));
-            if (away == 1 || away == 100 || away == 0) {
-                return false;
+            if(bomb != null){
+                int away = Math.abs(x - (100 * bomb.getRow() + bomb.getCol()));
+                if (away == 1 || away == 100 || away == 0) {
+                    return false;
+                }
             }
         }
         return true;
@@ -217,11 +232,11 @@ public abstract class Enemy implements Runnable, ActionListener {
         return x == 1 || x == 100;
     }
 
-
-    protected void update(Integer x,List<Bomb> z, BiconnectivityInspector<Integer, DefaultEdge> inspector){
+    protected void update(Integer x, List<Bomb> z, BiconnectivityInspector<Integer, DefaultEdge> inspector){
         playerPosition = x;
         paths = inspector.getConnectedComponent(row * 100 + col);
         bombs = z;
+        updated = true;
     }
 
     static <E> E getRandomSetElement(Set<E> set) {

@@ -13,12 +13,18 @@ public class Aggressive extends Enemy{
         super(row, col, color, mobility, map, bomb,delay,inspector,playerPosition);
     }
 
+
     public void run(){
         while (this.status() && !Thread.currentThread().isInterrupted()){
+            while (!updated) {
+                Thread.onSpinWait();
+            }
             Integer whereIam = row * 100 + col;
             BidirectionalDijkstraShortestPath<Integer,DefaultEdge> shortestPath=
                     new BidirectionalDijkstraShortestPath<>( paths );
             Set<Integer> vertices = paths.vertexSet();
+            if(this.isSafe() && this.nearPlayer())
+                this.enemyPlaceBomb();
             if(this.isSafe()) {
                 Integer base = getRandomSetElement(paths.vertexSet());
                 Integer distance = Math.abs(playerPosition - base);
@@ -51,10 +57,10 @@ public class Aggressive extends Enemy{
                         = shortestPath.getPath(whereIam, base).getVertexList();
                 if(road.size() > 1)
                     this.move(road.get(1));
-//                else
-//                    this.enemyPlaceBomb();
+                else
+                    move();
             }
-
+        updated = false;
         }
     }
 }

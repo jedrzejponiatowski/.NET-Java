@@ -6,13 +6,14 @@ import java.awt.event.KeyListener;
 //import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.*;
 import java.util.List;
-import java.util.Random;
+
 import org.jgrapht.Graph;
 import org.jgrapht.graph.*;
 import org.jgrapht.alg.connectivity.*;
+import org.jgrapht.*;
+import org.jgrapht.traverse.DepthFirstIterator;
 
 
 public class Board extends JPanel implements KeyListener {
@@ -110,13 +111,17 @@ public class Board extends JPanel implements KeyListener {
 
         // Kod do wykonania przy każdym odświeżeniu planszy
         // Odświeżenie planszy
-        Timer boardTimer = new Timer(25, new ActionListener() {
+        Timer boardTimer = new Timer(15, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Kod do wykonania przy każdym odświeżeniu planszy
-                update();
-                checkDamages();
+
+
                 repaint(); // Odświeżenie planszy
+
+                checkDamages();
+
+                update();
             }
         });
         boardTimer.start();
@@ -180,6 +185,7 @@ public class Board extends JPanel implements KeyListener {
                 int bombRow = bomb.getRow();
                 int bombCol = bomb.getCol();
                 map[bombRow][bombCol] = 3;
+                paths.removeAllEdges(new ArrayList<>(paths.edgesOf(bombRow*100+bombCol)));
                 g.setColor(Color.BLACK);
                 g.fillRect(bombCol * TILE_SIZE, bombRow * TILE_SIZE, TILE_SIZE, TILE_SIZE);
             } else {
@@ -372,11 +378,13 @@ private void removeExpiredExplosions(int row, int col) {
     }
 
 
-    private void update(){
+    private synchronized void update(){
+        //ArrayList<DefaultEdge> edges = ;
+        long b = paths.iterables().edgeCount();
         for (int row = 0; row < ROWS; row += 1) {
-            for (int col = 0; col < COLS; col += 1) {
+            for (int col = 0; col < COLS; col += 1 ) {
                 if(col != 0){
-                    if(map[row][col] == 0 && map[row][col-1] == 0)
+                    if( (map[row][col] == 0 && map[row][col-1] == 0 )  ||  (map[row][col] == 5 && map[row][col-1] == 5))
                         paths.addEdge(row * 100 + col - 1, row * 100 + col);
                 }
                 if(row != 0){
@@ -385,10 +393,14 @@ private void removeExpiredExplosions(int row, int col) {
                 }
             }
         }
+        //edges = new ArrayList<>(paths.edgeSet());
         BiconnectivityInspector<Integer, DefaultEdge> inspector
                 = new BiconnectivityInspector<>(paths);
         for(Enemy enemy: enemies){
+            Graph<Integer,DefaultEdge> tmp = inspector.getConnectedComponent(
+                    enemy.row * 100 + enemy.col);
             enemy.update(playerPosition,bombs, inspector);
+
         }
     }
 }
