@@ -3,8 +3,8 @@ import java.awt.*;
 public class Player {
     private int row;
     private int col;
-    private Color color;
-    private int[][] map;
+    private final Color color;
+    private final int[][] map;
 
 
     public Player(int row, int col, Color color, int[][] map) {

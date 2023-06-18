@@ -35,7 +35,6 @@ public class Freaky extends Enemy{
             if(this.isSafe() && this.nearPlayer())
                 this.enemyPlaceBomb();
             if(this.isSafe()) {
-                int distance, destination = whereIam;
                 goal = makeGoal();
                 if(!whereIam.equals(goal)){
                     if(( road = shortestPathGlobal.getPath(whereIam,goal) ) != null){
@@ -48,7 +47,7 @@ public class Freaky extends Enemy{
                         }
                     }
                     Integer base = getRandomSetElement(vertices);
-                    distance = Math.abs(goal - base);
+                    int distance = Math.abs(goal - base);
                     for(Integer x : vertices){
                         int tmp = Math.abs(goal - x);
                         if(tmp <= distance){

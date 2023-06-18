@@ -1,9 +1,6 @@
 import java.awt.*;
-//import java.awt.event.ActionEvent;
-//import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-//import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.util.*;
@@ -76,8 +73,7 @@ public class Board extends JPanel implements KeyListener {
 
 
         // Graf dozwolonych miejsc oraz mozliwe polaczenia
-
-         paths = new DefaultUndirectedGraph<>(DefaultEdge.class);
+        paths = new DefaultUndirectedGraph<>(DefaultEdge.class);
         for (int row = 0; row < ROWS; row += 1) {
             for (int col = 0; col < COLS; col += 1) {
                 if (map[row][col] == 0 || map[row][col] == 1)
@@ -92,11 +88,10 @@ public class Board extends JPanel implements KeyListener {
                 }
             }
         }
-
         enemies = new ArrayList<>(3);
-        //enemies.add(new Cowardly(10, 16, Color.GREEN,600, map, bombs, 6000,paths,playerPosition));
-        enemies.add(new Freaky(0, 16, Color.RED,400, map, bombs,6000,paths,playerPosition));
-        //enemies.add(new Aggressive(10, 0, Color.RED,400, map, bombs,3000,paths,playerPosition));
+        enemies.add(new Cowardly(10, 16, Color.GREEN,600, map, bombs, 6000,paths,playerPosition));
+        enemies.add(new Freaky(0, 16, Color.BLUE,450, map, bombs,6000,paths,playerPosition));
+        enemies.add(new Aggressive(10, 0, Color.RED,450, map, bombs,3000,paths,playerPosition));
 
         for (Enemy enemy : enemies) {
             Thread enemyThread = new Thread(enemy);
@@ -234,7 +229,6 @@ public class Board extends JPanel implements KeyListener {
         // Opóźnienie efektu wybuchu
         Timer explosionTimer = new Timer(500, e -> {
             removeExpiredExplosions(row, col);
-            //repaint();
         });
         explosionTimer.setRepeats(false); // Timer wykonuje się tylko raz
         explosionTimer.start();
@@ -260,23 +254,6 @@ private void removeExpiredExplosions(int row, int col) {
     }
     repaint();
 }
-
-/*    private void updateExplosion() {
-        // Aktualizacja efektu wybuchu
-        for (int row = 0; row < ROWS; row++) {
-            for (int col = 0; col < COLS; col++) {
-                int tile = map[row][col];
-                if (tile == 3) {
-                    // Zmiana wybuchu na efekt wybuchu
-                    map[row][col] = 4;
-                } else if (tile == 4) {
-                    // Wygaszanie efektu wybuchu
-                    map[row][col] = 1;
-                }
-            }
-        }
-    }*/
-
     @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();

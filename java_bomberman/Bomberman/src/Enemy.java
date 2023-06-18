@@ -4,7 +4,6 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
-//import java.util.Timer;
 import javax.swing.Timer;
 import org.jgrapht.Graph;
 import org.jgrapht.alg.connectivity.*;
@@ -48,16 +47,6 @@ public abstract class Enemy implements Runnable, ActionListener {
 
         timer = new Timer(delay, this);
         timer.start();
-
-
-        /*Timer enemyBombTimer = new Timer(4500, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Kod do wykonania przy każdym odświeżeniu planszy
-                if (isAlive)
-                    enemyPlaceBomb();
-            }
-        });*/
     }
 
     // Kod do wykonania przy każdym odświeżeniu planszy
