@@ -52,12 +52,14 @@ public class Aggressive extends Enemy{
                             break;
                         }
                 }
-                List<Integer> road
-                        = shortestPath.getPath(whereIam, base).getVertexList();
-                if(road.size() > 1)
-                    this.move(road.get(1));
-                else
-                    move();
+                if(!whereIam.equals(base)){
+                    List<Integer> road
+                            = shortestPath.getPath(whereIam, base).getVertexList();
+                    if(road.size() > 1)
+                        this.move(road.get(1));
+                    else
+                        move();
+                }
             }
         updated = false;
         }

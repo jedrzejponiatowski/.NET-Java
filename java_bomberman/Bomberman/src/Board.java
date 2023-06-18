@@ -23,7 +23,11 @@ public class Board extends JPanel implements KeyListener {
     private final List<Enemy> enemies;
     private final Graph<Integer,DefaultEdge> paths;
 
+    private int gameTime;
+
+
     public Board() {
+        gameTime = 0;
         bombs = new ArrayList<>();
         map = new int[ROWS][COLS];
 
@@ -90,7 +94,7 @@ public class Board extends JPanel implements KeyListener {
         }
         enemies = new ArrayList<>(3);
         enemies.add(new Cowardly(10, 16, Color.GREEN,600, map, bombs, 6000,paths,playerPosition));
-        enemies.add(new Freaky(0, 16, Color.BLUE,450, map, bombs,6000,paths,playerPosition));
+        enemies.add(new Freaky(0, 16, Color.PINK,450, map, bombs,6000,paths,playerPosition));
         enemies.add(new Aggressive(10, 0, Color.RED,450, map, bombs,3000,paths,playerPosition));
 
         for (Enemy enemy : enemies) {
@@ -110,7 +114,10 @@ public class Board extends JPanel implements KeyListener {
         });
         boardTimer.start();
 
-        setPreferredSize(new Dimension(COLS * TILE_SIZE, ROWS * TILE_SIZE));
+        Timer gameTimer = new Timer(1000, e-> ++gameTime);
+        gameTimer.start();
+
+        setPreferredSize(new Dimension(COLS * TILE_SIZE, ROWS * TILE_SIZE + 50));
         setFocusable(true);
         addKeyListener(this);
     }
@@ -159,7 +166,13 @@ public class Board extends JPanel implements KeyListener {
                 }
             }
         }
+        for(int col = 0; col <COLS; ++col){
+            g.setColor(Color.darkGray);
+            g.fillRect(col*TILE_SIZE,ROWS*TILE_SIZE, TILE_SIZE, 50);
+        }
+        drawTimer(g,gameTime);
     }
+
 
     private void drawBombs(Graphics g){
         Iterator<Bomb> bombIterator = bombs.iterator();
@@ -227,9 +240,7 @@ public class Board extends JPanel implements KeyListener {
         repaint();
 
         // Opóźnienie efektu wybuchu
-        Timer explosionTimer = new Timer(500, e -> {
-            removeExpiredExplosions(row, col);
-        });
+        Timer explosionTimer = new Timer(500, e -> removeExpiredExplosions(row, col));
         explosionTimer.setRepeats(false); // Timer wykonuje się tylko raz
         explosionTimer.start();
     }
@@ -327,7 +338,25 @@ private void removeExpiredExplosions(int row, int col) {
 
         g.setFont(big);
         g.drawString(msg, (ROWS * TILE_SIZE) / 2,
-                COLS*TILE_SIZE / 3);
+                COLS*TILE_SIZE / 4);
+    }
+
+
+    private void drawTimer(Graphics g, int seconds){
+        StringBuilder builder = new StringBuilder();
+        int minutes = Math.floorDiv(seconds,60);
+        int sec = seconds - minutes * 60;
+        builder.append(minutes);
+        builder.append(':');
+        builder.append(sec);
+        String time = builder.toString();
+        g.setColor(Color.WHITE);
+        Font big = new Font("Helvetica", Font.ITALIC, 30);
+        g.setFont(big);
+
+
+        g.drawString(time, (ROWS * TILE_SIZE) / 2 + TILE_SIZE * 2,
+                (COLS - 5 )*TILE_SIZE);
     }
 
 
