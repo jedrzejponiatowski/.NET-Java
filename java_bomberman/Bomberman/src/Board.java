@@ -11,7 +11,6 @@ import java.util.List;
 
 import org.jgrapht.Graph;
 import org.jgrapht.graph.*;
-import org.jgrapht.alg.connectivity.*;
 
 
 public class Board extends JPanel implements KeyListener {
@@ -32,7 +31,7 @@ public class Board extends JPanel implements KeyListener {
         map = new int[ROWS][COLS];
 
 
-        player = new Player(0,16 , Color.BLUE, map);
+        player = new Player(0,0 , Color.BLUE, map);
         this.playerPosition = player.getRow() * 100 + player.getCol();
         // Inicjalizacja mapy gry
         for (int row = 1; row < ROWS - 1; row += 2) {
@@ -95,8 +94,8 @@ public class Board extends JPanel implements KeyListener {
         }
 
         enemies = new ArrayList<>(3);
-        enemies.add(new Cowardly(10, 16, Color.GREEN,600, map, bombs, 6000,paths,playerPosition));
-        //enemies.add(new Ordinary(0, 16, Color.RED, map, bombs,6000,paths,playerPosition));
+        //enemies.add(new Cowardly(10, 16, Color.GREEN,600, map, bombs, 6000,paths,playerPosition));
+        enemies.add(new Freaky(0, 16, Color.RED,400, map, bombs,6000,paths,playerPosition));
         //enemies.add(new Aggressive(10, 0, Color.RED,400, map, bombs,3000,paths,playerPosition));
 
         for (Enemy enemy : enemies) {
