@@ -1,3 +1,4 @@
+import org.jgrapht.Graph;
 import org.jgrapht.alg.connectivity.BiconnectivityInspector;
 import org.jgrapht.graph.DefaultEdge;
 
@@ -6,8 +7,8 @@ import java.util.List;
 import java.util.Random;
 
 public class Ordinary extends Enemy{
-    public Ordinary(int row, int col, Color color, int mobility, int[][] map, List<Bomb> bomb, int delay, BiconnectivityInspector<Integer, DefaultEdge> inspector, Integer playerPosition) {
-        super(row, col, color, mobility, map,  bomb, delay,inspector,playerPosition);
+    public Ordinary(int row, int col, Color color, int mobility, int[][] map, List<Bomb> bomb, int delay, Graph<Integer,DefaultEdge> board, Integer playerPosition) {
+        super(row, col, color, mobility, map,  bomb, delay,board,playerPosition);
     }
 
 

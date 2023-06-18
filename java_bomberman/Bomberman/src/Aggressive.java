@@ -1,3 +1,4 @@
+import org.jgrapht.Graph;
 import org.jgrapht.alg.connectivity.BiconnectivityInspector;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.alg.shortestpath.*;
@@ -8,8 +9,8 @@ import java.util.Set;
 
 public class Aggressive extends Enemy{
 
-    public Aggressive(int row, int col, Color color, int mobility, int[][] map, List<Bomb> bomb, int delay, BiconnectivityInspector<Integer, DefaultEdge> inspector, Integer playerPosition) {
-        super(row, col, color, mobility, map, bomb,delay,inspector,playerPosition);
+    public Aggressive(int row, int col, Color color, int mobility, int[][] map, List<Bomb> bomb, int delay, Graph<Integer,DefaultEdge> board, Integer playerPosition) {
+        super(row, col, color, mobility, map, bomb,delay,board,playerPosition);
     }
 
 

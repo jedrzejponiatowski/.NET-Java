@@ -23,6 +23,7 @@ public abstract class Enemy implements Runnable, ActionListener {
 
     protected int[][] map;
     protected List<Bomb> bombs;
+    protected  Graph<Integer,DefaultEdge> board;
     protected Graph<Integer,DefaultEdge> paths;
     protected Integer playerPosition;
 
@@ -30,7 +31,7 @@ public abstract class Enemy implements Runnable, ActionListener {
 
     protected volatile boolean updated = false;
 
-    public Enemy(int row, int col, Color color, int mobility , int[][] map, List<Bomb> bomb , int delay, BiconnectivityInspector<Integer, DefaultEdge> inspector, Integer playerPosition) {
+    public Enemy(int row, int col, Color color, int mobility , int[][] map, List<Bomb> bomb , int delay, Graph<Integer,DefaultEdge> board, Integer playerPosition) {
         this.row = row;
         this.col = col;
         this.color = color;
@@ -38,6 +39,11 @@ public abstract class Enemy implements Runnable, ActionListener {
         this.map = map;
         this.bombs = bomb;
         this.playerPosition = playerPosition;
+        this.board = board;
+
+        BiconnectivityInspector<Integer, DefaultEdge> inspector
+                = new BiconnectivityInspector<>(board);
+
         this.paths = inspector.getConnectedComponent(row * 100 + col);
 
         timer = new Timer(delay, this);
@@ -230,10 +236,19 @@ public abstract class Enemy implements Runnable, ActionListener {
         return x == 1 || x == 100;
     }
 
-    protected void update(Integer x, List<Bomb> z, BiconnectivityInspector<Integer, DefaultEdge> inspector){
+    protected void update(Integer x, List<Bomb> z,Graph<Integer,DefaultEdge> graph){
         playerPosition = x;
-        paths = inspector.getConnectedComponent(row * 100 + col);
         bombs = z;
+        board = graph;
+        BiconnectivityInspector<Integer, DefaultEdge> inspector
+                = new BiconnectivityInspector<>(board);
+        paths = inspector.getConnectedComponent(row * 100 + col);
+        paths.addVertex(this.row*100+col);
+        for(Integer n : paths.vertexSet()){
+            int result = Math.abs(n - row*100-col);
+            if(result == 1 || result == 100)
+                paths.addEdge(this.row*100+col,n);
+        }
         updated = true;
     }
 
@@ -241,5 +256,14 @@ public abstract class Enemy implements Runnable, ActionListener {
         return set.stream().skip(new Random().nextInt(set.size())).findFirst().orElse(null);
     }
 
+
+    static protected double euclideanNorm(int x, int y){
+        int x1 = Math.floorDiv(x, 100);
+        int y1 = x - x1*100;
+        int x2 = Math.floorDiv(y, 100);
+        int y2 = y - x2*100;
+
+        return Math.sqrt(Math.pow(x1-x2,2) + Math.pow(y1-y2,2));
+    }
 
 }

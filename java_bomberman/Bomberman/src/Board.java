@@ -32,7 +32,7 @@ public class Board extends JPanel implements KeyListener {
         map = new int[ROWS][COLS];
 
 
-        player = new Player(0, 0, Color.BLUE, map);
+        player = new Player(0,16 , Color.BLUE, map);
         this.playerPosition = player.getRow() * 100 + player.getCol();
         // Inicjalizacja mapy gry
         for (int row = 1; row < ROWS - 1; row += 2) {
@@ -94,13 +94,10 @@ public class Board extends JPanel implements KeyListener {
             }
         }
 
-        BiconnectivityInspector<Integer, DefaultEdge> inspector
-                = new BiconnectivityInspector<>(paths);
-
         enemies = new ArrayList<>(3);
-        //enemies.add(new Cowardly(10, 16, Color.RED, map, bombs, 6000,inspector,playerPosition));
-        //enemies.add(new Ordinary(0, 16, Color.RED, map, bombs,6000,inspector,playerPosition));
-        enemies.add(new Aggressive(10, 0, Color.RED,400, map, bombs,3000,inspector,playerPosition));
+        enemies.add(new Cowardly(10, 16, Color.GREEN,600, map, bombs, 6000,paths,playerPosition));
+        //enemies.add(new Ordinary(0, 16, Color.RED, map, bombs,6000,paths,playerPosition));
+        //enemies.add(new Aggressive(10, 0, Color.RED,400, map, bombs,3000,paths,playerPosition));
 
         for (Enemy enemy : enemies) {
             Thread enemyThread = new Thread(enemy);
@@ -362,7 +359,7 @@ private void removeExpiredExplosions(int row, int col) {
         for (int row = 0; row < ROWS; row += 1) {
             for (int col = 0; col < COLS; col += 1 ) {
                 if(col != 0){
-                    if( (map[row][col] == 0 && map[row][col-1] == 0 )  ||  (map[row][col] == 5 && map[row][col-1] == 5))
+                    if( map[row][col] == 0 && map[row][col-1] == 0 )
                         paths.addEdge(row * 100 + col - 1, row * 100 + col);
                 }
                 if(row != 0){
@@ -371,9 +368,7 @@ private void removeExpiredExplosions(int row, int col) {
                 }
             }
         }
-        BiconnectivityInspector<Integer, DefaultEdge> inspector
-                = new BiconnectivityInspector<>(paths);
-        enemies.forEach(enemy -> enemy.update(playerPosition, bombs, inspector));
+        enemies.forEach(enemy -> enemy.update(playerPosition, bombs, paths));
     }
 }
 
