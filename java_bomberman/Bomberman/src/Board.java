@@ -1,10 +1,15 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.Timer;
+import java.io.*;
 import java.util.*;
 import java.util.List;
+
 
 import org.jgrapht.Graph;
 import org.jgrapht.graph.*;
@@ -22,6 +27,10 @@ public class Board extends JPanel implements KeyListener {
     private final List<Bomb> bombs;
     private final List<Enemy> enemies;
     private final Graph<Integer,DefaultEdge> paths;
+    private JFrame rankingFrame;
+    private Timer boardTimer;
+    private Timer gameTimer;
+
 
     private int gameTime;
 
@@ -30,6 +39,7 @@ public class Board extends JPanel implements KeyListener {
         gameTime = 0;
         bombs = new ArrayList<>();
         map = new int[ROWS][COLS];
+        rankingFrame = new JFrame("Ranking");
 
 
         player = new Player(0,0 , Color.BLUE, map);
@@ -102,9 +112,22 @@ public class Board extends JPanel implements KeyListener {
             enemyThread.start();
         }
 
+
+        rankingFrame = new JFrame("Ranking");
+        rankingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        rankingFrame.setLocationRelativeTo(null);
+
+        /*
+        // Inicjalizacja przycisku w rankingFrame
+        JButton rankingButton = new JButton("Pokaż ranking");
+        rankingButton.addActionListener(e -> showRanking());
+        rankingFrame.getContentPane().add(rankingButton);
+        */
+
+
         // Kod do wykonania przy każdym odświeżeniu planszy
         // Odświeżenie planszy
-        Timer boardTimer = new Timer(15, e -> {
+        boardTimer = new Timer(15, e -> {
             // Kod do wykonania przy każdym odświeżeniu planszy
             repaint(); // Odświeżenie planszy
 
@@ -114,7 +137,7 @@ public class Board extends JPanel implements KeyListener {
         });
         boardTimer.start();
 
-        Timer gameTimer = new Timer(1000, e-> ++gameTime);
+        gameTimer = new Timer(1000, e-> ++gameTime);
         gameTimer.start();
 
         setPreferredSize(new Dimension(COLS * TILE_SIZE, ROWS * TILE_SIZE + 50));
@@ -210,6 +233,8 @@ public class Board extends JPanel implements KeyListener {
           // Rysowanie gracza
           player.draw(g, TILE_SIZE);
       }else{
+          boardTimer.stop();
+          gameTimer.stop();
           drawBackground(g);
           player.draw(g, TILE_SIZE);
           drawGameEnd(g);
@@ -329,6 +354,7 @@ private void removeExpiredExplosions(int row, int col) {
         if(victory){
             msg = "Victory!";
             g.setColor(Color.green);
+            showRanking();
         }
         else{
             msg = "Game Over";
@@ -339,6 +365,7 @@ private void removeExpiredExplosions(int row, int col) {
         g.setFont(big);
         g.drawString(msg, (ROWS * TILE_SIZE) / 2,
                 COLS*TILE_SIZE / 4);
+        showRanking();
     }
 
 
@@ -357,6 +384,116 @@ private void removeExpiredExplosions(int row, int col) {
 
         g.drawString(time, (ROWS * TILE_SIZE) / 2 + TILE_SIZE * 2,
                 (COLS - 5 )*TILE_SIZE);
+    }
+
+
+    private void showRanking() {
+        try {
+            File file = new File("ranking.txt");
+            Scanner scanner = new Scanner(file);
+
+            List<String> rankings = new ArrayList<>();
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                rankings.add(line);
+            }
+
+            scanner.close();
+
+            // Sortowanie wyników w odwrotnej kolejności (od najwyższych punktów do najniższych)
+            Collections.sort(rankings, new Comparator<String>() {
+                @Override
+                public int compare(String o1, String o2) {
+                    int score1 = extractScore(o1);
+                    int score2 = extractScore(o2);
+                    return Integer.compare(score1, score2);
+                }
+            });
+
+            rankingFrame.getContentPane().removeAll();
+
+            // Dodanie napisu "SCORE: X" na górze okna rankingowego
+            JPanel scorePanel = new JPanel();
+            JLabel scoreLabel = new JLabel("SCORE: " + gameTime);
+            scoreLabel.setFont(new Font("Arial", Font.BOLD, 16));
+            scorePanel.add(scoreLabel);
+            rankingFrame.getContentPane().add(scorePanel, BorderLayout.NORTH);
+
+            // Utworzenie panelu z dwoma kolumnami
+            JPanel rankingPanel = new JPanel(new GridLayout(0, 2));
+            rankingFrame.getContentPane().add(rankingPanel, BorderLayout.CENTER);
+
+            JPanel nicknamePanel = new JPanel();
+            JTextField nicknameField = new JTextField(20);
+            JButton submitButton = new JButton("Submit");
+            nicknamePanel.add(nicknameField);
+            nicknamePanel.add(submitButton);
+            rankingFrame.getContentPane().add(nicknamePanel, BorderLayout.SOUTH);
+
+            submitButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String nickname = nicknameField.getText();
+                    if(nickname.length() == 0)
+                        nickname = "no_name";
+                    String newRecord = nickname + " " + gameTime;
+
+                    try {
+                        FileWriter writer = new FileWriter("ranking.txt", true);
+                        writer.write(newRecord + "\n");
+                        writer.close();
+                        System.out.println("Nowy wynik został zapisany.");
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            });
+
+            int count = 0;
+            for (String line : rankings) {
+                // Podział linii na nickname i score
+                String[] parts = line.split(" ");
+                if (parts.length >= 2) {
+                    String nickname = parts[0];
+                    String score = parts[1];
+                    // Utworzenie dwóch etykiet dla nickname i score
+                    JLabel nicknameLabel = new JLabel(nickname);
+                    JLabel scoreLabel2 = new JLabel(score);
+                    // Wyśrodkowanie tekstu na etykietach
+                    nicknameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                    scoreLabel2.setHorizontalAlignment(SwingConstants.CENTER);
+                    // Ustawienie niestandardowego fontu
+                    nicknameLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+                    scoreLabel2.setFont(new Font("Arial", Font.PLAIN, 14));
+                    // Dodanie etykiet do panelu
+                    rankingPanel.add(nicknameLabel);
+                    rankingPanel.add(scoreLabel2);
+                    count++;
+                    if (count >= 10) {
+                        break; // Wyświetl tylko 10 najlepszych wyników
+                    }
+                }
+            }
+            rankingFrame.setSize(300, 400);
+            rankingFrame.pack();
+
+            rankingFrame.setVisible(true);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private int extractScore(String line) {
+        String[] parts = line.split("\\s+");
+        if (parts.length >= 2) {
+            String score = parts[1];
+            try {
+                return Integer.parseInt(score);
+            } catch (NumberFormatException e) {
+                // Jeżeli nie można sparsować liczby, zwróć wartość domyślną (0 lub inną)
+            }
+        }
+        return 0; // Domyślna wartość punktacji
     }
 
 
