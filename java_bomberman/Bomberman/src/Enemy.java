@@ -1,9 +1,12 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import javax.imageio.ImageIO;
 import javax.swing.Timer;
 import org.jgrapht.Graph;
 import org.jgrapht.alg.connectivity.*;
@@ -25,7 +28,7 @@ public abstract class Enemy implements Runnable, ActionListener {
     protected  Graph<Integer,DefaultEdge> board;
     protected Graph<Integer,DefaultEdge> paths;
     protected Integer playerPosition;
-
+    private Image enemyIcon;
     protected int mobility;
 
     protected volatile boolean updated = false;
@@ -39,6 +42,12 @@ public abstract class Enemy implements Runnable, ActionListener {
         this.bombs = bomb;
         this.playerPosition = playerPosition;
         this.board = board;
+
+        try {
+            enemyIcon = ImageIO.read(new File("windows.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         BiconnectivityInspector<Integer, DefaultEdge> inspector
                 = new BiconnectivityInspector<>(board);
@@ -165,8 +174,10 @@ public abstract class Enemy implements Runnable, ActionListener {
 
     public void draw(Graphics g, int tileSize) {
         if(isAlive){
-            g.setColor(color);
+            g.setColor(Color.WHITE);
             g.fillRect(col * tileSize, row * tileSize, tileSize, tileSize);
+            g.drawImage(enemyIcon, col * tileSize, row * tileSize, tileSize, tileSize, null);
+
         }
     }
 

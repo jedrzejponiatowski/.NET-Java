@@ -9,6 +9,8 @@ import javax.swing.Timer;
 import java.io.*;
 import java.util.*;
 import java.util.List;
+import java.awt.Image;
+import javax.imageio.ImageIO;
 
 
 import org.jgrapht.Graph;
@@ -30,7 +32,7 @@ public class Board extends JPanel implements KeyListener {
     private JFrame rankingFrame;
     private Timer boardTimer;
     private Timer gameTimer;
-
+    private Image bombIcon, blackWall, woodWall, explosionIcon;
 
     private int gameTime;
 
@@ -117,12 +119,14 @@ public class Board extends JPanel implements KeyListener {
         rankingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         rankingFrame.setLocationRelativeTo(null);
 
-        /*
-        // Inicjalizacja przycisku w rankingFrame
-        JButton rankingButton = new JButton("Pokaż ranking");
-        rankingButton.addActionListener(e -> showRanking());
-        rankingFrame.getContentPane().add(rankingButton);
-        */
+        try {
+            bombIcon = ImageIO.read(new File("bomb2.png"));
+            blackWall = ImageIO.read(new File("black_wall.jpg"));
+            woodWall = ImageIO.read(new File("wood.png"));
+            explosionIcon = ImageIO.read(new File("explosion.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
         // Kod do wykonania przy każdym odświeżeniu planszy
@@ -166,25 +170,29 @@ public class Board extends JPanel implements KeyListener {
             for (int col = 0; col < COLS; col++) {
                 int tile = map[row][col];
                 switch (tile) {
-                    case 0, 5 -> {
+                    case 0, 5  -> {
                         g.setColor(Color.WHITE);
                         g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
                     }
                     case 1 -> {
-                        g.setColor(Color.LIGHT_GRAY);
+                        g.setColor(Color.WHITE);
                         g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                        g.drawImage(woodWall, col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE, null);
                     }
                     case 2 -> {
-                        g.setColor(Color.DARK_GRAY);
+                        g.setColor(Color.WHITE);
                         g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                        g.drawImage(blackWall, col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE, null);
                     }
                     case 3 -> {
-                        g.setColor(Color.BLACK);
+                        g.setColor(Color.WHITE);
                         g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                        g.drawImage(bombIcon, col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE, null);
                     }
                     case 4 -> {
-                        g.setColor(Color.YELLOW);
+                        g.setColor(Color.WHITE);
                         g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                        g.drawImage(explosionIcon, col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE, null);
                     }
                 }
             }
@@ -206,8 +214,11 @@ public class Board extends JPanel implements KeyListener {
                 int bombCol = bomb.getCol();
                 map[bombRow][bombCol] = 3;
                 paths.removeAllEdges(new ArrayList<>(paths.edgesOf(bombRow*100+bombCol)));
-                g.setColor(Color.BLACK);
-                g.fillRect(bombCol * TILE_SIZE, bombRow * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+
+                //g.fillRect(bombCol * TILE_SIZE, bombRow * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+
+
+                //g.setColor(Color.WHITE);
             } else {
                 int bombRow = bomb.getRow();
                 int bombCol = bomb.getCol();

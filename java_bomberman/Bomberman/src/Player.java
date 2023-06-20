@@ -1,10 +1,14 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 
 public class Player {
     private int row;
     private int col;
     private final Color color;
     private final int[][] map;
+    private Image playerIcon;
 
 
     public Player(int row, int col, Color color, int[][] map) {
@@ -12,6 +16,12 @@ public class Player {
         this.col = col;
         this.color = color;
         this.map = map;
+
+        try {
+            playerIcon = ImageIO.read(new File("linux.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public int getRow() {
@@ -59,7 +69,8 @@ public class Player {
     }
 
     public void draw(Graphics g, int tileSize) {
-        g.setColor(color);
+        g.setColor(Color.WHITE);
         g.fillRect(col * tileSize, row * tileSize, tileSize, tileSize);
+        g.drawImage(playerIcon, col * tileSize, row * tileSize, tileSize, tileSize, null);
     }
 }
