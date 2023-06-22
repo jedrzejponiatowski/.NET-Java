@@ -12,27 +12,85 @@ import org.jgrapht.Graph;
 import org.jgrapht.alg.connectivity.*;
 import org.jgrapht.graph.*;
 
+/**
+ * The type Enemy. Abstract class that represents each enemy and implements thread functions class Runnable
+ */
 public abstract class Enemy implements Runnable, ActionListener {
+    /**
+     * The constant ROWS.
+     */
     protected static final int ROWS = 11;
+    /**
+     * The constant COLS.
+     */
     protected static final int COLS = 17;
+    /**
+     * The Is alive.
+     */
     protected boolean isAlive = true;
+    /**
+     * The Timer.
+     */
     protected Timer timer;
 
+    /**
+     * The Row.
+     */
     protected int row;
+    /**
+     * The Col.
+     */
     protected int col;
 
+    /**
+     * The Color.
+     */
     protected Color color;
 
+    /**
+     * The Map.
+     */
     protected int[][] map;
+    /**
+     * The Bombs.
+     */
     protected List<Bomb> bombs;
+    /**
+     * The Board.
+     */
     protected  Graph<Integer,DefaultEdge> board;
+    /**
+     * The Paths.
+     */
     protected Graph<Integer,DefaultEdge> paths;
+    /**
+     * The Player position.
+     */
     protected Integer playerPosition;
     private Image enemyIcon;
+    /**
+     * The Mobility.
+     */
     protected int mobility;
 
+    /**
+     * The Updated.
+     */
     protected volatile boolean updated = false;
 
+    /**
+     * Instantiates a new Enemy.
+     *
+     * @param row            the vertical position of the bomb
+     * @param col            the horizontal position of the bomb
+     * @param color          in basic version the color of the square that symbolises enemy
+     * @param mobility       the movement speed of the enemy
+     * @param map            two-dimensional int table that represents playing board
+     * @param bomb           the array af the active bombs
+     * @param delay          the delay for some options
+     * @param board          the graph representing possible moves ont the board
+     * @param playerPosition the player position
+     */
     public Enemy(int row, int col, Color color, int mobility , int[][] map, List<Bomb> bomb , int delay, Graph<Integer,DefaultEdge> board, Integer playerPosition) {
         this.row = row;
         this.col = col;
@@ -63,20 +121,45 @@ public abstract class Enemy implements Runnable, ActionListener {
         // Kod do wykonania przy każdym odświeżeniu planszy
     }
 
+    /**
+     * Get row int.
+     *
+     * @return the int - vertical position of the enemy
+     */
     public int getRow(){
         return row;
     }
 
+    /**
+     * Get col int.
+     *
+     * @return the int - horizontal position of the enemy
+     */
     public int getCol(){
         return col;
     }
+
+    /**
+     * Get color Color.
+     *
+     * @return the color of the square in basic version
+     */
     public Color getColor(){
         return color;
     }
+
+    /**
+     * Status boolean.
+     *
+     * @return the boolean representing life of the enemy / true - enemy is alive / false - enemy is dead
+     */
     public boolean status(){
         return isAlive;
     }
 
+    /**
+     * Move - method that tries to move object anywhere. Used by AI when safe options run out
+     */
     protected void move(){
         do{
             if(isSafe(row*100+col - (row-1)*100 - col))
@@ -90,6 +173,12 @@ public abstract class Enemy implements Runnable, ActionListener {
         }while(true);
 
     }
+
+    /**
+     * Move to the destination place
+     *
+     * @param destination the destination of the movement
+     */
     protected void move(Integer destination){
         boolean result = false;
         int[] array = {100,-100,1,-1};
@@ -108,6 +197,11 @@ public abstract class Enemy implements Runnable, ActionListener {
         }while(!result || n == 4);
     }
 
+    /**
+     * Move up boolean.
+     *
+     * @return the boolean / true - enemy moved / false - enemy couldn't move
+     */
     protected boolean moveUp(){
         try {
             // Odczekaj pewien czas przed kolejnym ruchem
@@ -124,6 +218,11 @@ public abstract class Enemy implements Runnable, ActionListener {
         return false;
     }
 
+    /**
+     * Move down boolean.
+     *
+     * @return the boolean / true - enemy moved / false - enemy couldn't move
+     */
     protected boolean moveDown() {
         try {
             // Odczekaj pewien czas przed kolejnym ruchem
@@ -140,6 +239,11 @@ public abstract class Enemy implements Runnable, ActionListener {
         return false;
     }
 
+    /**
+     * Move left boolean.
+     *
+     * @return the boolean / true - enemy moved / false - enemy couldn't move
+     */
     protected boolean moveLeft() {
         try {
             // Odczekaj pewien czas przed kolejnym ruchem
@@ -156,6 +260,11 @@ public abstract class Enemy implements Runnable, ActionListener {
         return false;
     }
 
+    /**
+     * Move right boolean.
+     *
+     * @return the boolean / true - enemy moved / false - enemy couldn't move
+     */
     protected boolean moveRight() {
         try {
             // Odczekaj pewien czas przed kolejnym ruchem
@@ -172,6 +281,12 @@ public abstract class Enemy implements Runnable, ActionListener {
         return false;
     }
 
+    /**
+     * Draw the enemy on the board
+     *
+     * @param g        the board object
+     * @param tileSize the tile size
+     */
     public void draw(Graphics g, int tileSize) {
         if(isAlive){
             g.setColor(Color.WHITE);
@@ -181,6 +296,9 @@ public abstract class Enemy implements Runnable, ActionListener {
         }
     }
 
+    /**
+     * Enemy place bomb. Places the bomb object beneath the enemy if possible
+     */
     protected void enemyPlaceBomb(){
         for (Bomb bomb : bombs) {
             if (bomb.getRow() == row && bomb.getCol() == col) {
@@ -193,10 +311,18 @@ public abstract class Enemy implements Runnable, ActionListener {
         map[row][col] = 3;
     }
 
+    /**
+     * Kills the enemy
+     */
     protected void kill(){
         isAlive = false;
     }
 
+    /**
+     * Is safe boolean. Checks if the current position of the player is safe
+     *
+     * @return the boolean / true - enemy won't die / false - enemy will die
+     */
     protected boolean isSafe(){
         for (Bomb bomb : bombs) {
             int away = Math.abs(100 * row + col - (100 * bomb.getRow() + bomb.getCol()));
@@ -207,6 +333,12 @@ public abstract class Enemy implements Runnable, ActionListener {
         return true;
     }
 
+    /**
+     * Is safe boolean. Checks if the given position is safe for the enemy
+     *
+     * @param x the Integer that stands for the vertex
+     * @return the boolean / true - that vertex is safe / false - else
+     */
     protected boolean isSafe(Integer x){
         for (Bomb bomb : bombs) {
             if(bomb != null){
@@ -219,6 +351,11 @@ public abstract class Enemy implements Runnable, ActionListener {
         return true;
     }
 
+    /**
+     * Safe bomb placement boolean. Checks if placing the bomb will cause enemy's death
+     *
+     * @return the boolean / true - when enemy places the bomb it can run / false - else
+     */
     protected boolean safeBombPlacement() {
             for(Integer x: paths.vertexSet()){
                 if (safeBombPlacement(x) && isSafe(x))
@@ -226,16 +363,35 @@ public abstract class Enemy implements Runnable, ActionListener {
             }
             return false;
     }
+
+    /**
+     * Safe bomb placement boolean. Checks if the given vertex is safe for the bomb placement
+     *
+     * @param x the Integer that stands for the vertex
+     * @return the boolean / true - when enemy places the bomb there it can run / false - else
+     */
     protected boolean safeBombPlacement(Integer x) {
         int away = Math.abs(x - (100 * row + col));
         return away != 1 && away != 100 && away != 0;
     }
 
+    /**
+     * Near player boolean. Checks if the player is one tile close to the enemy
+     *
+     * @return the boolean / true - player is reachable / false - else
+     */
     protected  boolean nearPlayer(){
         int x = Math.abs( row * 100 + col - playerPosition ) ;
         return x == 1 || x == 100;
     }
 
+    /**
+     * Updates the parameters which are given by the board - current game status
+     *
+     * @param x     the player position as a vertex
+     * @param z     the list with the current placed bombs
+     * @param graph the graph of the board after explosions
+     */
     protected void update(Integer x, List<Bomb> z,Graph<Integer,DefaultEdge> graph){
         playerPosition = x;
         bombs = z;
@@ -252,11 +408,25 @@ public abstract class Enemy implements Runnable, ActionListener {
         updated = true;
     }
 
+    /**
+     * Gets random set element.
+     *
+     * @param <E> the type parameter
+     * @param set the set
+     * @return the random set element
+     */
     static <E> E getRandomSetElement(Set<E> set) {
         return set.stream().skip(new Random().nextInt(set.size())).findFirst().orElse(null);
     }
 
 
+    /**
+     * Euclidean norm double. Takes two points of vertex that stands for position 100y+x as alias
+     *
+     * @param x the first object position as 100x+y
+     * @param y the second object position
+     * @return the double Euclidean norm between two points
+     */
     static protected double euclideanNorm(int x, int y){
         int x1 = Math.floorDiv(x, 100);
         int y1 = x - x1*100;

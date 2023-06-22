@@ -17,6 +17,10 @@ import org.jgrapht.Graph;
 import org.jgrapht.graph.*;
 
 
+/**
+ * The type Board. This is the base class for the place where game takes place. It is the projection of all game behaviours.
+ *
+ */
 public class Board extends JPanel implements KeyListener {
     private static final int TILE_SIZE = 40;
     private static final int ROWS = 11;
@@ -37,6 +41,9 @@ public class Board extends JPanel implements KeyListener {
     private int gameTime;
 
 
+    /**
+     * Instantiates a new Board.
+     */
     public Board() {
         gameTime = 0;
         bombs = new ArrayList<>();

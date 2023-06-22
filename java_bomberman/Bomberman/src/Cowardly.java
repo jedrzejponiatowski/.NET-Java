@@ -7,11 +7,38 @@ import java.awt.*;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * The type Cowardly. The extension of the enemy class that creates cowardly enemy that nonstop runs from the player
+ */
 public class Cowardly extends Enemy{
+    /**
+     * Instantiates a new Cowardly.
+     *
+     * @param row            the row
+     * @param col            the col
+     * @param color          the color
+     * @param mobility       the mobility
+     * @param map            the map
+     * @param bomb           the bomb
+     * @param delay          the delay
+     * @param board          the board
+     * @param playerPosition the player position
+     * @see Enemy
+     */
     public Cowardly(int row, int col, Color color, int mobility, int[][] map, List<Bomb> bomb, int delay, Graph<Integer,DefaultEdge> board, Integer playerPosition) {
         super(row, col, color, mobility, map, bomb, delay,board,playerPosition);
     }
-
+    /**
+     * The AI implementation for the Cowardly enemy. First of all it waits till it is updated by the board. The up-dated status is essential for
+     * proper behaviour. This enemy checks where player is and finds the furthest possible tile. If the tile isn't reachable it finds the closest
+     * tile to it and places there bomb. The process is repeated till the enemy is as far as possible. When it reaches it and player isn't near it waits.
+     * If the player is near it will try to kill him. It uses Dijkstra Algorithm for shortest pathfinding. This method is the essential implementation
+     * of the thread based programming.
+     * @see Runnable
+     * @see Enemy
+     * @see Board
+     * @see BidirectionalDijkstraShortestPath
+     */
     public void run(){
         while (this.status() && !Thread.currentThread().isInterrupted()){
             while (!updated) {

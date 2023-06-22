@@ -8,14 +8,42 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+/**
+ * The type Freaky. The extension of the enemy that creates enemy that cannot be predicted.
+ */
 public class Freaky extends Enemy{
 
     private Integer goal;
+
+    /**
+     * Instantiates a new Freaky.
+     *
+     * @param row            the row
+     * @param col            the col
+     * @param color          the color
+     * @param mobility       the mobility
+     * @param map            the map
+     * @param bomb           the bomb
+     * @param delay          the delay
+     * @param board          the board
+     * @param playerPosition the player position
+     * @see Enemy
+     */
     public Freaky(int row, int col, Color color, int mobility, int[][] map, List<Bomb> bomb, int delay, Graph<Integer,DefaultEdge> board, Integer playerPosition) {
         super(row, col, color, mobility, map,  bomb, delay,board,playerPosition);
         goal = row*100+col;
     }
 
+    /**
+     * The AI implementation for the Freaky enemy. First of all it waits till it is updated by the board. The up-dated status is essential for
+     * proper behaviour. This enemy randomly chooses goal on the map and tries to reach it. When it cannot do it, then it places randomly bomb
+     * and run. If the player is near it will try to kill him, and then continue to reaching the goal. It uses Dijkstra Algorithm for shortest
+     * pathfinding. This method is the essential implementation of the thread based programming.
+     * @see Runnable
+     * @see Enemy
+     * @see Board
+     * @see BidirectionalDijkstraShortestPath
+     */
     public void run(){
 
 
@@ -97,7 +125,11 @@ public class Freaky extends Enemy{
     }
 
 
-
+    /**
+     * Method of random choose of the destination for the Freak. If the current goal is not reached it is not changed.
+     * Else the new random aim is chosen
+     * @return Integer - vertex that is a Freak's goal
+     */
     private Integer makeGoal(){
         if( row*100 + col != goal )
             return goal;
