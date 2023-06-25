@@ -450,7 +450,8 @@ public class Board extends JPanel implements KeyListener {
      */
     private void showRanking() {
         try {
-            File file = new File("java_bomberman/Bomberman/ranking.txt");
+            //File file = new File("java_bomberman/Bomberman/ranking.txt");
+            File file = new File("ranking.txt");
             Scanner scanner = new Scanner(file);
 
             List<String> rankings = new ArrayList<>();
