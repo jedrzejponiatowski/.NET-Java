@@ -1,5 +1,14 @@
 # .NET-Java
-Zajęcia PWr
+Zajęcia PWr-documenta
+
+Gra bomberman
+
+1. Opis:
+   Aplikacja desktopowa napisana w języku Java w wersji 20, która realizuje rozgrywkę w grę Bomberman
+2. Dokumentacja
+   Dokumentacja znajduje się w katalogu 'Documentation', podstawową jest strona html otwierana poprzez plik    index html w katalogu 'web_documentation'.
+3. Uruchamianie
+   
 
 
 Aplikacja do zarządzania pożyczonymi pieniądzmi. C# + WPF + Entity Framework Core
