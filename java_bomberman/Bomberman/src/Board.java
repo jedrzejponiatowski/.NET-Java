@@ -19,7 +19,6 @@ import org.jgrapht.graph.*;
 
 /**
  * The type Board. This is the base class for the place where game takes place. It is the projection of all game behaviours.
- *
  */
 public class Board extends JPanel implements KeyListener {
     private static final int TILE_SIZE = 40;
@@ -34,8 +33,8 @@ public class Board extends JPanel implements KeyListener {
     private final List<Enemy> enemies;
     private final Graph<Integer,DefaultEdge> paths;
     private JFrame rankingFrame;
-    private Timer boardTimer;
-    private Timer gameTimer;
+    private final Timer boardTimer;
+    private final Timer gameTimer;
     private Image bombIcon, blackWall, woodWall, explosionIcon;
 
     private int gameTime;
@@ -156,7 +155,10 @@ public class Board extends JPanel implements KeyListener {
         addKeyListener(this);
     }
 
-
+    /**
+     * Method that sets map values and draws images based on them.
+     * @param g  the <code>Graphics</code> object to protect
+     */
     private  void drawBackground(Graphics g){
         // 0 - puste pole
         // 1 - miekka sciana
@@ -211,7 +213,10 @@ public class Board extends JPanel implements KeyListener {
         drawTimer(g,gameTime);
     }
 
-
+    /**
+     * Method that iterates through bombs and sets appropriate values in map.
+     * @param g  the <code>Graphics</code> object to protect
+     */
     private void drawBombs(Graphics g){
         Iterator<Bomb> bombIterator = bombs.iterator();
         while (bombIterator.hasNext()) {
@@ -235,6 +240,10 @@ public class Board extends JPanel implements KeyListener {
         }
     }
 
+    /**
+     * Method that is called every time, where window is refreshed. Decides what to draw on the screen.
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -259,7 +268,11 @@ public class Board extends JPanel implements KeyListener {
       }
     }
 
-
+    /**
+     * Set explosion values in the map, based on the given parameters
+     * @param row Vertical position of the bomb
+     * @param col Horizontal position of the bomb
+     */
     private void placeBombExplosion(int row, int col) {
         // Ustawienie wybuchu bomby i efektów wybuchu wokół niej
         map[row][col] = 4; // Wybuch na pozycji bomby
@@ -287,7 +300,13 @@ public class Board extends JPanel implements KeyListener {
         explosionTimer.setRepeats(false); // Timer wykonuje się tylko raz
         explosionTimer.start();
     }
-private void removeExpiredExplosions(int row, int col) {
+
+    /**
+     * Removes explosion values in the map, based on the given parameters
+     * @param row Vertical position of the bomb
+     * @param col Horizontal position of the bomb
+     */
+    private void removeExpiredExplosions(int row, int col) {
     map[row][col] = 0; // Usunięcie wybuchu na pozycji bomby
 
     if (row > 0) {
@@ -308,6 +327,11 @@ private void removeExpiredExplosions(int row, int col) {
     }
     repaint();
 }
+
+    /**
+     * Method that listens for player to press the key and behaves adaptively
+     * @param e the event to be processed
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
@@ -329,6 +353,9 @@ private void removeExpiredExplosions(int row, int col) {
     @Override
     public void keyReleased(KeyEvent e) {}
 
+    /**
+     * Places bomb value in the map, where player is
+     */
     private void placeBomb() {
         int playerRow = player.getRow();
         int playerCol = player.getCol();
@@ -345,6 +372,9 @@ private void removeExpiredExplosions(int row, int col) {
         bombs.add(newBomb);
     }
 
+    /**
+     * Checks number of alive enemies and player's damage. Based on that decides to continue the game or ends it
+     */
     private void checkDamages(){
 
         if(enemies.isEmpty()){
@@ -366,7 +396,10 @@ private void removeExpiredExplosions(int row, int col) {
         }
     }
 
-
+    /**
+     * Draws message on the screen based on the win conditions
+     * @param g  the <code>Graphics</code> object to protect
+     */
     private void drawGameEnd(Graphics g){
         String msg;
         if(victory){
@@ -386,7 +419,11 @@ private void removeExpiredExplosions(int row, int col) {
         showRanking();
     }
 
-
+    /**
+     * Method that draws timer in the game window
+     * @param g  the <code>Graphics</code> object to protect
+     * @param seconds Number of seconds that have passed since start of the game
+     */
     private void drawTimer(Graphics g, int seconds){
         StringBuilder builder = new StringBuilder();
         int minutes = Math.floorDiv(seconds,60);
@@ -404,7 +441,10 @@ private void removeExpiredExplosions(int row, int col) {
                 (COLS - 5 )*TILE_SIZE);
     }
 
-
+    /**
+     * Reads current ranking from the text file and draws it on the screen. If the player beaten
+     * someone then asks for nickname and writes it to the file
+     */
     private void showRanking() {
         try {
             File file = new File("ranking.txt");
@@ -501,6 +541,11 @@ private void removeExpiredExplosions(int row, int col) {
         }
     }
 
+    /**
+     * Extracts number of score from text file line
+     * @param line Line extracted from the text file
+     * @return int Number of the points
+     */
     private int extractScore(String line) {
         String[] parts = line.split("\\s+");
         if (parts.length >= 2) {
@@ -514,7 +559,9 @@ private void removeExpiredExplosions(int row, int col) {
         return 0; // Domyślna wartość punktacji
     }
 
-
+    /**
+     * Sends updated information to other threads
+     */
     private synchronized void update(){
         for (int row = 0; row < ROWS; row += 1) {
             for (int col = 0; col < COLS; col += 1 ) {
