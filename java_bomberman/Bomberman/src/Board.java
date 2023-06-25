@@ -39,12 +39,15 @@ public class Board extends JPanel implements KeyListener {
 
     private int gameTime;
 
+    private boolean saved;
+
 
     /**
      * Instantiates a new Board.
      */
     public Board() {
         gameTime = 0;
+        saved = false;
         bombs = new ArrayList<>();
         map = new int[ROWS][COLS];
         rankingFrame = new JFrame("Ranking");
@@ -126,10 +129,10 @@ public class Board extends JPanel implements KeyListener {
         rankingFrame.setLocationRelativeTo(null);
 
         try {
-            bombIcon = ImageIO.read(new File("bomb2.png"));
-            blackWall = ImageIO.read(new File("black_wall.jpg"));
-            woodWall = ImageIO.read(new File("wood.png"));
-            explosionIcon = ImageIO.read(new File("explosion.png"));
+            bombIcon = ImageIO.read(Objects.requireNonNull(getClass().getResource("/resources/bomb2.png")));
+            blackWall = ImageIO.read(Objects.requireNonNull(getClass().getResource("/resources/black_wall.jpg")));
+            woodWall = ImageIO.read(Objects.requireNonNull(getClass().getResource("/resources/wood.png")));
+            explosionIcon = ImageIO.read(Objects.requireNonNull(getClass().getResource("/resources/explosion.png")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -447,7 +450,7 @@ public class Board extends JPanel implements KeyListener {
      */
     private void showRanking() {
         try {
-            File file = new File("ranking.txt");
+            File file = new File("java_bomberman/Bomberman/ranking.txt");
             Scanner scanner = new Scanner(file);
 
             List<String> rankings = new ArrayList<>();
@@ -459,13 +462,10 @@ public class Board extends JPanel implements KeyListener {
             scanner.close();
 
             // Sortowanie wyników w odwrotnej kolejności (od najwyższych punktów do najniższych)
-            Collections.sort(rankings, new Comparator<String>() {
-                @Override
-                public int compare(String o1, String o2) {
-                    int score1 = extractScore(o1);
-                    int score2 = extractScore(o2);
-                    return Integer.compare(score1, score2);
-                }
+            rankings.sort((o1, o2) -> {
+                int score1 = extractScore(o1);
+                int score2 = extractScore(o2);
+                return Integer.compare(score1, score2);
             });
 
             rankingFrame.getContentPane().removeAll();
@@ -488,23 +488,23 @@ public class Board extends JPanel implements KeyListener {
             nicknamePanel.add(submitButton);
             rankingFrame.getContentPane().add(nicknamePanel, BorderLayout.SOUTH);
 
-            submitButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String nickname = nicknameField.getText();
-                    if(nickname.length() == 0)
-                        nickname = "no_name";
-                    String newRecord = nickname + " " + gameTime;
-
+            submitButton.addActionListener(e -> {
+                String nickname = nicknameField.getText();
+                if(nickname.length() == 0)
+                    nickname = "no_name";
+                String newRecord = nickname + " " + gameTime;
+                if(!saved){
                     try {
-                        FileWriter writer = new FileWriter("ranking.txt", true);
+                        FileWriter writer = new FileWriter("java_bomberman/Bomberman/ranking.txt", true);
                         writer.write(newRecord + "\n");
                         writer.close();
                         System.out.println("Nowy wynik został zapisany.");
+                        saved = true;
                     } catch (IOException ex) {
                         ex.printStackTrace();
                     }
-                }
+                }else
+                    System.out.println("Nowy wynik został juz zapisany.");
             });
 
             int count = 0;

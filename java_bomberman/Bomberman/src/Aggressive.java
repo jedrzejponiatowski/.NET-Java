@@ -86,6 +86,8 @@ public class Aggressive extends Enemy{
                     else
                         move();
                 }
+                else
+                    move();
             }
         updated = false;
         }

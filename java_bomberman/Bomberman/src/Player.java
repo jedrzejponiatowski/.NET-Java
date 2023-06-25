@@ -1,7 +1,7 @@
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * The type Player. Class implements Player object and all its parameters and methods
@@ -27,7 +27,7 @@ public class Player {
         this.map = map;
 
         try {
-            playerIcon = ImageIO.read(new File("linux.png"));
+            playerIcon = ImageIO.read(Objects.requireNonNull(getClass().getResource("/resources/linux.png")));
         } catch (IOException e) {
             e.printStackTrace();
         }

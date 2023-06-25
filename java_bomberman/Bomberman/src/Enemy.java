@@ -1,9 +1,9 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Set;
 import javax.imageio.ImageIO;
@@ -102,7 +102,7 @@ public abstract class Enemy implements Runnable, ActionListener {
         this.board = board;
 
         try {
-            enemyIcon = ImageIO.read(new File("windows.png"));
+            enemyIcon = ImageIO.read(Objects.requireNonNull(getClass().getResource("/resources/windows.png")));
         } catch (IOException e) {
             e.printStackTrace();
         }
