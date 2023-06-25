@@ -8,6 +8,7 @@ Gra bomberman
 2. Dokumentacja
    Dokumentacja znajduje się w katalogu 'Documentation', podstawową jest strona html otwierana poprzez plik    index html w katalogu 'web_documentation'.
 3. Uruchamianie
+   W celu uruchomienia należy odpalić plik Projekt.jar w głównym katalogu
    
 
 
